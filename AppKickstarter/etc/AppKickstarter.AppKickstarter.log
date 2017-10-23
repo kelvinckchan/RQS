@@ -1,0 +1,25 @@
+171023-23:17:27 [INFO] -- 
+171023-23:17:27 [INFO] -- 
+171023-23:17:27 [INFO] -- ============================================================
+171023-23:17:27 [INFO] -- AppKickstarter: Application Starting...
+171023-23:17:27 [INFO] -- ThreadB: starting...
+171023-23:17:27 [INFO] -- timer: starting...
+171023-23:17:27 [INFO] -- ThreadA: starting...
+171023-23:17:29 [INFO] -- ThreadA: message received: [Timer (TimesUp) -- [49126]: Time's up!].
+171023-23:17:29 [INFO] -- ThreadA: say hello to Thread B...
+171023-23:17:29 [INFO] -- ThreadB: message received: [ThreadA (Hello) -- Hello, this is Thread A!].
+171023-23:17:29 [INFO] -- ThreadB: ThreadA is saying Hello to me!!!
+171023-23:17:29 [INFO] -- ThreadA: message received: [ThreadB (HiHi) -- HiHi, this is Thread B!].
+171023-23:17:29 [INFO] -- ThreadA: ThreadB is saying HiHi to me!!!
+171023-23:17:31 [INFO] -- ThreadA: message received: [Timer (TimesUp) -- [12027]: Time's up!].
+171023-23:17:31 [INFO] -- ThreadA: say hello to Thread B...
+171023-23:17:31 [INFO] -- ThreadB: message received: [ThreadA (Hello) -- Hello, this is Thread A!].
+171023-23:17:31 [INFO] -- ThreadB: ThreadA is saying Hello to me!!!
+171023-23:17:31 [INFO] -- ThreadA: message received: [ThreadB (HiHi) -- HiHi, this is Thread B!].
+171023-23:17:31 [INFO] -- ThreadA: ThreadB is saying HiHi to me!!!
+171023-23:17:33 [INFO] -- ThreadA: message received: [Timer (TimesUp) -- [28513]: Time's up!].
+171023-23:17:33 [INFO] -- ThreadA: say hello to Thread B...
+171023-23:17:33 [INFO] -- ThreadB: message received: [ThreadA (Hello) -- Hello, this is Thread A!].
+171023-23:17:33 [INFO] -- ThreadB: ThreadA is saying Hello to me!!!
+171023-23:17:33 [INFO] -- ThreadA: message received: [ThreadB (HiHi) -- HiHi, this is Thread B!].
+171023-23:17:33 [INFO] -- ThreadA: ThreadB is saying HiHi to me!!!
