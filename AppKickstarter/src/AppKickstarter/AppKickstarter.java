@@ -16,6 +16,8 @@ import AppKickstarter.myThreads.ThreadA;
 import AppKickstarter.myThreads.ThreadB;
 //Test commit
 
+//New commit
+
 //======================================================================
 // AppKickstarter
 public class AppKickstarter {
