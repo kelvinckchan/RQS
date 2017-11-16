@@ -13,7 +13,7 @@ import java.util.Hashtable;
 import AppKickstarter.timer.Timer;
 import AppKickstarter.misc.*;
 import AppKickstarter.myThreads.ThreadA;
-import AppKickstarter.myThreads.ThreadB;
+import AppKickstarter.myThreads.ServerThread;
 //Test commit
 
 //New commit
@@ -30,7 +30,7 @@ public class AppKickstarter {
     private FileHandler logFileHd = null;
     private Timer timer = null;
     private ThreadA threadA;
-    private ThreadB threadB;
+    private ServerThread serverThread;
 
 
     //------------------------------------------------------------
@@ -39,9 +39,9 @@ public class AppKickstarter {
 	AppKickstarter appKickstarter = new AppKickstarter("AppKickstarter", "etc/MyApp.cfg");
 	appKickstarter.startApp();
 	try {
-	    Thread.sleep(30 * 1000);
+	    Thread.sleep(5000*10000);
 	} catch (Exception e) {}
-	appKickstarter.stopApp();
+//	appKickstarter.stopApp();
     } // main
 
 
@@ -94,9 +94,9 @@ public class AppKickstarter {
 	log.addHandler(logConHd);
 	log.addHandler(logFileHd);
 	log.setUseParentHandlers(false);
-	log.setLevel(Level.FINER);
-	logConHd.setLevel(Level.INFO);
-	logFileHd.setLevel(Level.INFO);
+	log.setLevel(Level.ALL);
+	logConHd.setLevel(Level.FINER);
+	logFileHd.setLevel(Level.ALL);
 	appThreads = new Hashtable<String, AppThread>();
     } // AppKickstarter
 
@@ -111,14 +111,22 @@ public class AppKickstarter {
 	log.info(id + ": Application Starting...");
 
 	// create threads
-	timer = new Timer("timer", this);
-	threadA = new ThreadA("ThreadA", this);
-	threadB = new ThreadB("ThreadB", this);
+//	timer = new Timer("timer", this);
+//	threadA = new ThreadA("ThreadA", this);
+	try {
+		serverThread = new ServerThread("serverThread", this);
+	} catch (IOException e) {
+		e.printStackTrace();
+	}
 
+	
+	
 	// start threads
-	new Thread(timer).start();
-	new Thread(threadA).start();
-	new Thread(threadB).start();
+	
+//	new Thread(timer).start();
+//	new Thread(threadA).start();
+	new Thread(serverThread).start();
+	
     } // startApp
 
 
@@ -130,7 +138,7 @@ public class AppKickstarter {
 	log.info("============================================================");
 	log.info(id + ": Application Stopping...");
 	threadA.getMBox().send(new Msg(id, null, Msg.Type.Terminate, "Terminate now!"));
-	threadB.getMBox().send(new Msg(id, null, Msg.Type.Terminate, "Terminate now!"));
+	serverThread.getMBox().send(new Msg(id, null, Msg.Type.Terminate, "Terminate now!"));
 	timer.getMBox().send(new Msg(id, null, Msg.Type.Terminate, "Terminate now!"));
     } // stopApp
 

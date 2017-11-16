@@ -78,7 +78,7 @@ public class Timer extends AppThread {
     private void chkTimeout() {
 	long currentTime = (new Date()).getTime();
 	ArrayList<ActiveTimer> timeoutTimers = new ArrayList<ActiveTimer>();
-	log.finest("Timer chk...");
+	log.finest("["+id+"] Timer chk...");
 
 	for (ActiveTimer timer : timerList) {
 	    if (timer.timeout(currentTime)) {
