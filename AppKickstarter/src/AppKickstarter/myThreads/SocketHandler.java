@@ -10,7 +10,7 @@ import AppKickstarter.AppKickstarter;
 
 //======================================================================
 // ServerThread
-public class ServerThread extends AppThread {
+public class SocketHandler extends AppThread {
 	private final int sleepTime = 2000;
 	private String ServerIP;
 	private int ServerPort;
@@ -20,7 +20,7 @@ public class ServerThread extends AppThread {
 
 	// ------------------------------------------------------------
 	// ServerThread
-	public ServerThread(String id, AppKickstarter appKickstarter) {
+	public SocketHandler(String id, AppKickstarter appKickstarter) {
 		super(id, appKickstarter);
 		this.ServerIP = appKickstarter.getProperty("ServerIP");
 		this.ServerPort = Integer.valueOf(appKickstarter.getProperty("ServerPort"));
@@ -32,22 +32,26 @@ public class ServerThread extends AppThread {
 	public void run() {
 		log.info(id + ": starting...");
 		try {
-			log.info(id + ": Listening at ServerIP>"+ServerIP+" ServerPort>"+ServerPort+"...");
+			log.info(id + ": Listening at ServerIP>" + ServerIP + " ServerPort>" + ServerPort + "...");
 			this.socket = new ServerSocket(ServerPort).accept();
 			log.info(id + ": accepted...");
 			log.info(id + ": waiting For incoming Msg...");
 			in = new DataInputStream(socket.getInputStream());
 			out = new DataOutputStream(socket.getOutputStream());
-
-			for (boolean quit = false; !quit&&socket.isConnected();) {
+			MsgHandler msghandler = new MsgHandler("MsgHandler", appKickstarter);
+			new Thread(msghandler).start();
+			while (true) {
+				// for (boolean quit = false; !quit && socket.isConnected();) {
 				byte[] buffer = new byte[1024];
 				in.read(buffer);
 				String IncomingMsg = new String(buffer);
-				log.info(id + ": IncomingMsg> "+IncomingMsg);
+				log.info(id + ": IncomingMsg> " + IncomingMsg);
+
+				// MsgParser new Runnable
+				Msg parseredMsg = msghandler.IncomingMsgParser(IncomingMsg);
 				
-				//MsgParser new Runnable
-				
-				
+				msghandler.getMBox().send(parseredMsg);
+				// }
 			}
 		} catch (IOException e) {
 			e.printStackTrace();

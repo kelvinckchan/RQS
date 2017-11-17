@@ -12,7 +12,7 @@ import java.util.Hashtable;
 
 import AppKickstarter.timer.Timer;
 import AppKickstarter.misc.*;
-import AppKickstarter.myThreads.ServerThread;
+import AppKickstarter.myThreads.SocketHandler;
 import AppKickstarter.myThreads.ThreadA;
 import AppKickstarter.myThreads.ThreadB;
 //Test commit
@@ -32,7 +32,7 @@ public class AppKickstarter {
 	private Timer timer = null;
 	private ThreadA threadA;
 	private ThreadB threadB;
-	private ServerThread serverThread;
+	private SocketHandler serverThread;
 
 	// ------------------------------------------------------------
 	// main
@@ -112,7 +112,7 @@ public class AppKickstarter {
 		// timer = new Timer("timer", this);
 		// threadA = new ThreadA("ThreadA", this);
 		// threadB = new ThreadB("ThreadB", this);
-		serverThread = new ServerThread("ServerThread", this);
+		serverThread = new SocketHandler("ServerThread", this);
 		// start threads
 
 		new Thread(serverThread).start();
