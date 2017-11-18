@@ -13,9 +13,8 @@ public class MsgHandler extends AppThread {
 
 	// ------------------------------------------------------------
 	// ThreadB
-	public MsgHandler(String id, AppKickstarter appKickstarter, String FullMsg) {
+	public MsgHandler(String id, AppKickstarter appKickstarter ) {
 		super(id, appKickstarter);
-		this.FullMsg = FullMsg;
 	} // ThreadB
 
 	// ------------------------------------------------------------
@@ -41,20 +40,6 @@ public class MsgHandler extends AppThread {
 				quit = true;
 				break;
 
-//			case TicketRep:
-//				msg.getSenderMBox().send(new Msg(id, mbox, Msg.Type.TicketRep, "HiHi, this is Thread B!"));
-//				break;
-//
-//			case TicketCall:
-//
-//				break;
-//			case TableAssign:
-//
-//				break;
-//			case QueueTooLong:
-//
-//				break;
-
 			default:
 				log.severe(id + ": unknown message type!!");
 				break;
@@ -70,7 +55,6 @@ public class MsgHandler extends AppThread {
 		String[] SplitedMsg = FullMsg.split(":");
 		String Type = SplitedMsg[0];
 		String MsgDetail = SplitedMsg[1];
-
 		String[] DetailParts = MsgDetail.trim().split("\\s+");
 
 		switch (Type) {
@@ -78,13 +62,15 @@ public class MsgHandler extends AppThread {
 		case "TicketRep":
 			String ClientId = DetailParts[0];
 			int nPerson = Integer.valueOf(DetailParts[1]);
-//			TicketRep rep = new TicketRep(id, mbox, Msg.Type.TicketRep, ClientId + "," + nPerson+ ","+ rep.getTicketNo());
+			// TicketRep rep = new TicketRep(id, mbox, Msg.Type.TicketRep, ClientId + "," +
+			// nPerson+ ","+ rep.getTicketNo());
 
 			break;
 
 		case "TicketCall":
-			
-//			TicketCall rep = new TicketCall(id, mbox, Msg.Type.TicketCall, "TicketCall: " + ClientId + " " + nPerson+ " "+ rep.getTicketNo());
+
+			// TicketCall rep = new TicketCall(id, mbox, Msg.Type.TicketCall, "TicketCall: "
+			// + ClientId + " " + nPerson+ " "+ rep.getTicketNo());
 			break;
 
 		case "TableAssign":
