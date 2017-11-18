@@ -8,22 +8,25 @@ public class Table {
 	private int TableSize;
 	private int AvailableSize;
 	private ArrayList<Ticket> TicketAtTable;
-	
-	public int getTableNo(int TableNo) {
+
+	public Table() {
+
+	}
+
+	public int getTableNo() {
 		return this.TableNo;
 	}
-	
-	public int getTableSize(int TableSize) {
+
+	public int getTableSize() {
 		return this.TableSize;
 	}
-	
-	public int AvailableSize(int AvailableSize) {
+
+	public int getAvailableSize() {
 		return this.AvailableSize;
 	}
-	
+
 	public ArrayList<Ticket> getTicketAtTable() {
 		return this.TicketAtTable;
 	}
-	
 
 }
