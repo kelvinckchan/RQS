@@ -107,7 +107,7 @@ public class MsgHandler extends AppThread {
 		case "TicketCall":
 			TicketId = Integer.valueOf(DetailParts[0]);
 			TableId = Integer.valueOf(DetailParts[1]);
-			nPerson = Integer.valueOf(DetailParts[2]);
+			
 
 			// TicketCall rep = new TicketCall(id, mbox, Msg.Type.TicketCall, "TicketCall: "
 			// + ClientId + " " + nPerson+ " "+ rep.getTicketNo());
