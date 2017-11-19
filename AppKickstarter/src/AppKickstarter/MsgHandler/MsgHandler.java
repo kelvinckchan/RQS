@@ -28,42 +28,46 @@ public class MsgHandler extends AppThread {
 		for (boolean quit = false; !quit;) {
 
 			Msg ParseredMsg = IncomingMsgParser(FullMsg);
-
-			Msg msg = mbox.receive();
-
-			log.info(id + ": message received: [" + msg + "].");
-
-			switch (msg.getType()) {
-			case Hello:
-				log.info(id + ": " + msg.getSender() + " is saying Hello to me!!!");
-				msg.getSenderMBox().send(new Msg(id, mbox, Msg.Type.HiHi, "HiHi, this is Thread B!"));
-				break;
-
-			case Terminate:
-				quit = true;
-				break;
-
-			// case TicketRep:
-			// msg.getSenderMBox().send(new Msg(id, mbox, Msg.Type.TicketRep, "HiHi, this is
-			// Thread B!"));
-			// break;
-			//
-			// case TicketCall:
-			//
-			// break;
-			// case TableAssign:
-			//
-			// break;
-			// case QueueTooLong:
-			//
-			// break;
-
-			default:
-				log.severe(id + ": unknown message type!!");
-				break;
-			}
+			// TableEmpty -> TicketCall
 		}
-
+		// Msg msg = mbox.receive();
+		//
+		// log.info(id + ": message received: [" + msg + "].");
+		//
+		// switch (msg.getType()) {
+		// case Hello:
+		// log.info(id + ": " + msg.getSender() + " is saying Hello to me!!!");
+		// msg.getSenderMBox().send(new Msg(id, mbox, Msg.Type.HiHi, "HiHi, this is
+		// Thread B!"));
+		// break;
+		//
+		// case Terminate:
+		// quit = true;
+		// break;
+		//
+		// // case TicketRep:
+		// // msg.getSenderMBox().send(new Msg(id, mbox, Msg.Type.TicketRep, "HiHi, this
+		// is
+		// // Thread B!"));
+		// // break;
+		// //
+		// // case TicketCall:
+		// //
+		// // break;
+		// // case TableAssign:
+		// //
+		// // break;
+		// // case QueueTooLong:
+		// //
+		// // break;
+		//
+		// default:
+		// log.severe(id + ": unknown message type!!");
+		// break;
+		// }
+		// }
+		//
+		
 		// declaring our departure
 		appKickstarter.unregThread(this);
 		log.info(id + ": terminating...");
@@ -99,26 +103,24 @@ public class MsgHandler extends AppThread {
 			TableId = Integer.valueOf(DetailParts[1]);
 			nPerson = Integer.valueOf(DetailParts[2]);
 
-			// TicketCall rep = new TicketCall(id, mbox, Msg.Type.TicketCall, "TicketCall: "
-			// + ClientId + " " + nPerson+ " "+ rep.getTicketNo());
+			// Table Assign
+			
 			break;
 
 		/// Where it start?
-		case "TicketCall":
-			TicketId = Integer.valueOf(DetailParts[0]);
-			TableId = Integer.valueOf(DetailParts[1]);
-			nPerson = Integer.valueOf(DetailParts[2]);
-
-			// TicketCall rep = new TicketCall(id, mbox, Msg.Type.TicketCall, "TicketCall: "
-			// + ClientId + " " + nPerson+ " "+ rep.getTicketNo());
-			break;
+//		case "TicketCall":
+//			TicketId = Integer.valueOf(DetailParts[0]);
+//			TableId = Integer.valueOf(DetailParts[1]);
+//
+//			// TicketCall rep = new TicketCall(id, mbox, Msg.Type.TicketCall, "TicketCall: "
+//			// + ClientId + " " + nPerson+ " "+ rep.getTicketNo());
+//			break;
 
 		default:
 			log.severe(id + ": unknown message type!!");
 			break;
 
 		}
-
 		return null;
 	}
 
