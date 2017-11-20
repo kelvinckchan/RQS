@@ -13,7 +13,7 @@ public class MsgHandler extends AppThread {
 
 	// ------------------------------------------------------------
 	// ThreadB
-	public MsgHandler(String id, AppKickstarter appKickstarter ) {
+	public MsgHandler(String id, AppKickstarter appKickstarter) {
 		super(id, appKickstarter);
 	} // ThreadB
 
@@ -23,8 +23,6 @@ public class MsgHandler extends AppThread {
 		log.info(id + ": starting...");
 
 		for (boolean quit = false; !quit;) {
-
-			Msg ParseredMsg = IncomingMsgParser(FullMsg);
 
 			Msg msg = mbox.receive();
 
@@ -50,44 +48,5 @@ public class MsgHandler extends AppThread {
 		appKickstarter.unregThread(this);
 		log.info(id + ": terminating...");
 	} // run
-
-	public Msg IncomingMsgParser(String FullMsg) {
-		String[] SplitedMsg = FullMsg.split(":");
-		String Type = SplitedMsg[0];
-		String MsgDetail = SplitedMsg[1];
-		String[] DetailParts = MsgDetail.trim().split("\\s+");
-
-		switch (Type) {
-
-		case "TicketRep":
-			String ClientId = DetailParts[0];
-			int nPerson = Integer.valueOf(DetailParts[1]);
-			// TicketRep rep = new TicketRep(id, mbox, Msg.Type.TicketRep, ClientId + "," +
-			// nPerson+ ","+ rep.getTicketNo());
-
-			break;
-
-		case "TicketCall":
-
-			// TicketCall rep = new TicketCall(id, mbox, Msg.Type.TicketCall, "TicketCall: "
-			// + ClientId + " " + nPerson+ " "+ rep.getTicketNo());
-			break;
-
-		case "TableAssign":
-
-			break;
-
-		case "QueueTooLong":
-
-			break;
-
-		default:
-			log.severe(id + ": unknown message type!!");
-			break;
-
-		}
-
-		return null;
-	}
 
 } // ThreadB

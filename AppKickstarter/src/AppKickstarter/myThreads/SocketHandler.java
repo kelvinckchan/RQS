@@ -8,6 +8,7 @@ import java.net.Socket;
 
 import AppKickstarter.AppKickstarter;
 import AppKickstarter.MsgHandler.MsgHandler;
+import AppKickstarter.MsgHandler.MsgParser;
 
 //======================================================================
 // ServerThread
@@ -47,14 +48,12 @@ public class SocketHandler extends AppThread {
 				in.read(buffer);
 				String IncomingMsg = new String(buffer);
 				log.info(id + ": IncomingMsg> " + IncomingMsg);
-
-				// MsgParser new Runnable
-				Msg parseredMsg = msghandler.IncomingMsgParser(IncomingMsg);
 				
-				msghandler.getMBox().send(parseredMsg);
+				// MsgParser new Runnable
+				msghandler.getMBox().send(MsgParser.IncomingMsgParser(IncomingMsg));
 				// }
 				if (!socket.isConnected())
-				break;
+					break;
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
