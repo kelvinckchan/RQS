@@ -31,7 +31,7 @@ public class MessageHandler extends AppThread {
 	    switch (msg.getType()) {
 		case TimesUp:
 		    log.info(id + ": say hello to Thread B...");
-		    appKickstarter.getThread("ThreadB").getMBox().send(new Msg(id, mbox, Msg.Type.Hello, "Hello, this is Thread A!"));
+		    appKickstarter.getThread("ThreadB").getMBox().send(new Msg(id, mbox, Msg.Type.Hello,   "Hello, this is Thread A!" ));
 		    Timer.setTimer(id, mbox, sleepTime);
 		    break;
 

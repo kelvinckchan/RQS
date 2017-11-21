@@ -1,8 +1,12 @@
 package AppKickstarter;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
 import java.util.Properties;
 import java.util.logging.Logger;
 import java.util.logging.ConsoleHandler;
@@ -13,7 +17,7 @@ import java.util.Hashtable;
 import AppKickstarter.timer.Timer;
 import AppKickstarter.misc.*;
 import AppKickstarter.myThreads.ThreadA;
-import AppKickstarter.myThreads.SocketHandler;
+import AppKickstarter.myThreads.*;
 //Test commit
 
 //New commit
@@ -30,7 +34,13 @@ public class AppKickstarter {
 	private FileHandler logFileHd = null;
 	private Timer timer = null;
 	private ThreadA threadA;
-	private SocketHandler SocketHandler;
+	private SocketInHandler socketInHandler;
+	private SocketOutHandler socketOutHandler;
+	private String ServerIP;
+	private int ServerPort;
+	private Socket socket;
+	DataInputStream in;
+	DataOutputStream out;
 
 	// ------------------------------------------------------------
 	// main
@@ -106,15 +116,26 @@ public class AppKickstarter {
 		log.info("============================================================");
 		log.info(id + ": Application Starting...");
 
+		this.ServerIP = getProperty("ServerIP");
+		this.ServerPort = Integer.valueOf(getProperty("ServerPort"));
+		log.info(id + ": Listening at ServerIP>" + ServerIP + " ServerPort>" + ServerPort + "...");
+		try {
+			this.socket = new ServerSocket(ServerPort).accept();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		log.info(id + ": accepted...");
+
 		// create threads
 		// timer = new Timer("timer", this);
 		// threadA = new ThreadA("ThreadA", this);
-		SocketHandler = new SocketHandler("SocketHandler", this);
-
+		socketInHandler = new SocketInHandler("SocketInHandler", this);
+		socketOutHandler = new SocketOutHandler("SocketOutHandler", this);
 		// start threads
 		// new Thread(timer).start();
 		// new Thread(threadA).start();
-		new Thread(SocketHandler).start();
+		new Thread(socketInHandler).start();
+		new Thread(socketOutHandler).start();
 
 	} // startApp
 
@@ -126,9 +147,17 @@ public class AppKickstarter {
 		log.info("============================================================");
 		log.info(id + ": Application Stopping...");
 		threadA.getMBox().send(new Msg(id, null, Msg.Type.Terminate, "Terminate now!"));
-		SocketHandler.getMBox().send(new Msg(id, null, Msg.Type.Terminate, "Terminate now!"));
+		socketInHandler.getMBox().send(new Msg(id, null, Msg.Type.Terminate, "Terminate now!"));
 		timer.getMBox().send(new Msg(id, null, Msg.Type.Terminate, "Terminate now!"));
 	} // stopApp
+
+	// ------------------------------------------------------------
+	// getThread
+	public Socket getSocket() {
+		synchronized (socket) {
+			return socket;
+		}
+	} // getThread
 
 	// ------------------------------------------------------------
 	// regThread

@@ -3,12 +3,13 @@ package AppKickstarter.Server;
 import java.time.LocalDateTime;
 
 public class Ticket {
-	final int TicketID;
+	static int AccTicketID = 1;
+	int TicketID;
 	LocalDateTime checkIn, checkOut;
 	private Client ClientWithTicket;
 
-	public Ticket(int TicketID, Client ClientWithTicket) {
-		this.TicketID = TicketID;
+	public Ticket(Client ClientWithTicket) {
+		this.TicketID = AccTicketID++;
 		this.ClientWithTicket = ClientWithTicket;
 	}
 

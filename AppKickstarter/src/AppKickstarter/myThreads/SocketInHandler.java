@@ -12,20 +12,21 @@ import AppKickstarter.MsgHandler.MsgParser;
 
 //======================================================================
 // ServerThread
-public class SocketHandler extends AppThread {
+public class SocketInHandler extends AppThread {
 	private final int sleepTime = 2000;
-	private String ServerIP;
-	private int ServerPort;
+	// private String ServerIP;
+	// private int ServerPort;
 	private Socket socket;
 	DataInputStream in;
 	DataOutputStream out;
 
 	// ------------------------------------------------------------
 	// ServerThread
-	public SocketHandler(String id, AppKickstarter appKickstarter) {
+	public SocketInHandler(String id, AppKickstarter appKickstarter) {
 		super(id, appKickstarter);
-		this.ServerIP = appKickstarter.getProperty("ServerIP");
-		this.ServerPort = Integer.valueOf(appKickstarter.getProperty("ServerPort"));
+		this.socket = appKickstarter.getSocket();
+		// this.ServerIP = appKickstarter.getProperty("ServerIP");
+		// this.ServerPort = Integer.valueOf(appKickstarter.getProperty("ServerPort"));
 
 	} // ServerThread
 
@@ -34,24 +35,24 @@ public class SocketHandler extends AppThread {
 	public void run() {
 		log.info(id + ": starting...");
 		try {
-			log.info(id + ": Listening at ServerIP>" + ServerIP + " ServerPort>" + ServerPort + "...");
-			this.socket = new ServerSocket(ServerPort).accept();
-			log.info(id + ": accepted...");
+
 			log.info(id + ": waiting For incoming Msg...");
 			in = new DataInputStream(socket.getInputStream());
 			out = new DataOutputStream(socket.getOutputStream());
 			MsgHandler msghandler = new MsgHandler("MsgHandler", appKickstarter);
 			new Thread(msghandler).start();
 			while (true) {
-				// for (boolean quit = false; !quit && socket.isConnected();) {
 				byte[] buffer = new byte[1024];
 				in.read(buffer);
 				String IncomingMsg = new String(buffer);
 				log.info(id + ": IncomingMsg> " + IncomingMsg);
+
 				
-				// MsgParser new Runnable
-				msghandler.getMBox().send(MsgParser.IncomingMsgParser(IncomingMsg));
-				// }
+				
+				
+				// MsgParser
+				msghandler.getMBox().send(MsgParser.IncomingMsgParser(this.id,this.mbox,IncomingMsg));
+
 				if (!socket.isConnected())
 					break;
 			}
