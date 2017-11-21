@@ -36,23 +36,19 @@ public class MsgHandler extends AppThread {
 			switch (msg.getType()) {
 
 			case TicketReq:
-				ClientId = DetailParts[0];
-				nPerson = Integer.valueOf(DetailParts[1]);
-
-				if (TicketHandler.Check(nPerson) == false) {
-					Ticket t = new Ticket(new Client(ClientId, nPerson));
-					TicketHandler.addTicketToQueue(t);
-
-					String TicketRepDetail = String.format("TicketRep: %s %s %s", ClientId, String.valueOf(nPerson),
-							String.valueOf(t.getTicketID()));
-
-					TicketRep rep = new TicketRep(id, mbox, Msg.Type.TicketRep, TicketRepDetail);
-					appKickstarter.getThread("SocketOutHandler").getMBox().send(rep);
+				Client ReqClient = new Client(DetailParts[0], Integer.valueOf(DetailParts[1]));
+				Ticket ticket = TicketHandler.ReqForTicket(ReqClient);
+				if (ticket != null) {
+					String TicketRepDetail = String.format("TicketRep: %s %s %s", ReqClient.getClientID(),
+							ReqClient.getnPerson(), ticket.getTicketID());
+					appKickstarter.getThread("SocketOutHandler").getMBox()
+							.send(new TicketRep(id, mbox, Msg.Type.TicketRep, TicketRepDetail));
 				} else {
 
-					String QueueTooLongDetail = String.format("QueueTooLong: %s %s", ClientId, String.valueOf(nPerson));
-					QueueTooLong q = new QueueTooLong(id, mbox, Msg.Type.QueueTooLong, QueueTooLongDetail);
-					appKickstarter.getThread("SocketOutHandler").getMBox().send(q);
+					String QueueTooLongDetail = String.format("QueueTooLong: %s %s", ReqClient.getClientID(),
+							ReqClient.getnPerson());
+					appKickstarter.getThread("SocketOutHandler").getMBox()
+							.send(new QueueTooLong(id, mbox, Msg.Type.QueueTooLong, QueueTooLongDetail));
 
 				}
 

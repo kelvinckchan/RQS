@@ -6,22 +6,33 @@ import java.util.List;
 import java.util.Queue;
 
 import AppKickstarter.AppKickstarter;
+import AppKickstarter.Server.Client;
+import AppKickstarter.Server.Table;
 import AppKickstarter.Server.Ticket;
+import AppKickstarter.Server.TicketQueue;
 import AppKickstarter.misc.AppThread;
 import AppKickstarter.misc.Msg;
 
 public class TicketHandler extends AppThread {
-	public static List<Queue<Ticket>> TqueueList = new ArrayList<Queue<Ticket>>();
-	public static Queue<Ticket> TqueueSize0 = new LinkedList<Ticket>();
-	public static Queue<Ticket> TqueueSize1 = new LinkedList<Ticket>();
-	public static Queue<Ticket> TqueueSize2 = new LinkedList<Ticket>();
-	public static Queue<Ticket> TqueueSize3 = new LinkedList<Ticket>();
-	public static Queue<Ticket> TqueueSize4 = new LinkedList<Ticket>();
+	public static List<TicketQueue> TqueueList;
 	private static int ServerForgetItQueueSz;
 
 	public TicketHandler(String id, AppKickstarter appKickstarter) {
 		super(id, appKickstarter);
+		createTicketQueue();
+	}
+
+	public void createTicketQueue() {
+		String tName = "NTables_";
 		this.ServerForgetItQueueSz = Integer.valueOf(appKickstarter.getProperty("ServerForgetItQueueSz"));
+		TqueueList = new ArrayList<TicketQueue>();
+		TqueueList.add(new TicketQueue(2, ServerForgetItQueueSz));
+		TqueueList.add(new TicketQueue(4, ServerForgetItQueueSz));
+		TqueueList.add(new TicketQueue(6, ServerForgetItQueueSz));
+		TqueueList.add(new TicketQueue(8, ServerForgetItQueueSz));
+		TqueueList.add(new TicketQueue(10, ServerForgetItQueueSz));
+		log.fine("Create TqueueList> ");
+
 	}
 
 	@Override
@@ -55,43 +66,22 @@ public class TicketHandler extends AppThread {
 
 	}
 
-	public static synchronized void addTicketToQueue(Ticket t) {
-		int size = t.getClientWithTicket().getnPerson();
-
-		if (size > 8) {
-			TqueueSize4.add(t);
-		} else if (size <= 8 && size > 6) {
-			TqueueSize3.add(t);
-		} else if (size <= 6 && size > 4) {
-			TqueueSize2.add(t);
-		} else if (size <= 4 && size > 2) {
-			TqueueSize1.add(t);
-		} else {
-			TqueueSize0.add(t);
+	public static Ticket ReqForTicket(Client reqClient) {
+		TicketQueue avaQueue = getTicketQueueTicketReq(reqClient);
+		if (avaQueue != null) {
+			Ticket t = new Ticket(reqClient);
+			avaQueue.addTicketToQueue(t);
+			return t;
 		}
-
+		return null;
 	}
 
-	public static boolean Check(int nPerson) {
-		boolean bool = false;
-		if (nPerson > 8) {
-			if (TicketHandler.TqueueSize4.size() >= ServerForgetItQueueSz)
-				return true;
-		} else if (nPerson <= 8 && nPerson > 6) {
-			if (TicketHandler.TqueueSize3.size() >= ServerForgetItQueueSz)
-				return true;
-		} else if (nPerson <= 6 && nPerson > 4) {
-			if (TicketHandler.TqueueSize2.size() >= ServerForgetItQueueSz)
-				return true;
-		} else if (nPerson <= 4 && nPerson > 2) {
-			if (TicketHandler.TqueueSize1.size() >= ServerForgetItQueueSz)
-				return true;
-		} else {
-			if (TicketHandler.TqueueSize0.size() >= ServerForgetItQueueSz)
-				return true;
+	public static TicketQueue getTicketQueueTicketReq(Client reqClient) {
+		TicketQueue q = TqueueList.get((reqClient.getnPerson() - 1) / 2);
+		if (q.getTicketQueue().size() < ServerForgetItQueueSz) {
+			return q;
 		}
-
-		return bool;
+		return null;
 	}
 
 }

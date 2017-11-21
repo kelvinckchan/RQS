@@ -16,45 +16,14 @@ public class TableHandler extends AppThread {
 	private static ArrayList<Table> TableList;
 	private ArrayList<Boolean> Availability;
 
-	public TableHandler(String id, AppKickstarter appKickstarter) {
-		super(id, appKickstarter);
-	}
 	// NTables_1=2
 	// NTables_2=2
 	// NTables_3=2
 	// NTables_4=1
 	// NTables_5=1
-
-	@Override
-	public void run() {
-		log.info(id + ": starting...");
-
-		for (boolean quit = false; !quit;) {
-			Msg msg = mbox.receive();
-
-			log.info(id + ": message received: [" + msg + "].");
-
-			switch (msg.getType()) {
-			case Hello:
-				log.info(id + ": " + msg.getSender() + " is saying Hello to me!!!");
-				msg.getSenderMBox().send(new Msg(id, mbox, Msg.Type.HiHi, "HiHi, this is Thread B!"));
-				break;
-
-			case Terminate:
-				quit = true;
-				break;
-
-			default:
-				log.severe(id + ": unknown message type!!");
-				break;
-			}
-		}
-
-		// declaring our departure
-		appKickstarter.unregThread(this);
-		log.info(id + ": terminating...");
-
-	} // run
+	public TableHandler(String id, AppKickstarter appKickstarter) {
+		super(id, appKickstarter);
+	}
 
 	public void createTable() {
 		String tName = "NTables_";
@@ -76,6 +45,38 @@ public class TableHandler extends AppThread {
 		}
 	}
 
+	@Override
+	public void run() {
+		log.info(id + ": starting...");
+
+		for (boolean quit = false; !quit;) {
+			Msg msg = mbox.receive();
+
+			log.info(id + ": message received: [" + msg + "].");
+
+			switch (msg.getType()) {
+
+			case Hello:
+				log.info(id + ": " + msg.getSender() + " is saying Hello to me!!!");
+				msg.getSenderMBox().send(new Msg(id, mbox, Msg.Type.HiHi, "HiHi, this is Thread B!"));
+				break;
+
+			case Terminate:
+				quit = true;
+				break;
+
+			default:
+				log.severe(id + ": unknown message type!!");
+				break;
+			}
+		}
+
+		// declaring our departure
+		appKickstarter.unregThread(this);
+		log.info(id + ": terminating...");
+
+	} // run
+
 	public ArrayList<Table> CheckAvailableTable() {
 		ArrayList<Table> result = new ArrayList<Table>();
 		for (int i = 0; i < TableList.size(); i++) {
@@ -86,6 +87,13 @@ public class TableHandler extends AppThread {
 		return result;
 	}
 
+	
+	public void call() {
+		Ticket t;
+//		CheckInTable(t,MatchTable(t));
+	}
+	
+	
 	public Table MatchTable(Ticket t) {
 		ArrayList<Table> AvailbleTable = CheckAvailableTable();
 		for (int i = 0; i < AvailbleTable.size(); i++) {
