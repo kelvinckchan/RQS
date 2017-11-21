@@ -1,4 +1,4 @@
-package AppKickstarter.MsgHandler;
+package AppKickstarter.Msg;
 
 import AppKickstarter.Server.Client;
 import AppKickstarter.Server.Ticket;

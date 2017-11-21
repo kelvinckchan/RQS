@@ -1,11 +1,12 @@
 
-package AppKickstarter.MsgHandler;
+package AppKickstarter.myHanlderThreads;
 
 import AppKickstarter.misc.*;
 import AppKickstarter.AppKickstarter;
+import AppKickstarter.Msg.QueueTooLong;
+import AppKickstarter.Msg.TicketRep;
 import AppKickstarter.Server.Client;
 import AppKickstarter.Server.Ticket;
-import AppKickstarter.Server.TicketHandler;
 
 //======================================================================
 // ThreadB
@@ -33,31 +34,26 @@ public class MsgHandler extends AppThread {
 			String ClientId;
 
 			switch (msg.getType()) {
-			case Hello:
-				log.info(id + ": " + msg.getSender() + " is saying Hello to me!!!");
-				msg.getSenderMBox().send(new Msg(id, mbox, Msg.Type.HiHi, "HiHi, this is Thread B!"));
-				break;
-
-			case Terminate:
-				quit = true;
-				break;
 
 			case TicketReq:
-
 				ClientId = DetailParts[0];
 				nPerson = Integer.valueOf(DetailParts[1]);
 
-				if (QueueTooLong.Check(nPerson) == false) {
+				if (TicketHandler.Check(nPerson) == false) {
 					Ticket t = new Ticket(new Client(ClientId, nPerson));
-					TicketHandler.add(t);
+					TicketHandler.addTicketToQueue(t);
 
-					String TicketRepDetail = String.format("%s %s %s", ClientId, String.valueOf(nPerson),
+					String TicketRepDetail = String.format("TicketRep: %s %s %s", ClientId, String.valueOf(nPerson),
 							String.valueOf(t.getTicketID()));
 
 					TicketRep rep = new TicketRep(id, mbox, Msg.Type.TicketRep, TicketRepDetail);
 					appKickstarter.getThread("SocketOutHandler").getMBox().send(rep);
 				} else {
-					QueueTooLong q = new QueueTooLong(id, mbox, Msg.Type.QueueTooLong, "QueueTooLong");
+
+					String QueueTooLongDetail = String.format("QueueTooLong: %s %s", ClientId, String.valueOf(nPerson));
+					QueueTooLong q = new QueueTooLong(id, mbox, Msg.Type.QueueTooLong, QueueTooLongDetail);
+					appKickstarter.getThread("SocketOutHandler").getMBox().send(q);
+
 				}
 
 				break;
@@ -71,6 +67,14 @@ public class MsgHandler extends AppThread {
 				// + ClientId + " " + nPerson+ " "+ rep.getTicketNo());
 				break;
 
+			case Hello:
+				log.info(id + ": " + msg.getSender() + " is saying Hello to me!!!");
+				msg.getSenderMBox().send(new Msg(id, mbox, Msg.Type.HiHi, "HiHi, this is Thread B!"));
+				break;
+
+			case Terminate:
+				quit = true;
+				break;
 			default:
 				log.severe(id + ": unknown message type!!");
 				break;

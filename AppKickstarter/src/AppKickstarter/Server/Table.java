@@ -3,14 +3,15 @@ package AppKickstarter.Server;
 import java.util.ArrayList;
 
 public class Table {
-	
+
 	private int TableNo;
 	private int TableSize;
 	private int AvailableSize;
 	private ArrayList<Ticket> TicketAtTable;
 
-	public Table() {
-
+	public Table(int TableNo, int TableSize) {
+		this.TableNo = TableNo;
+		this.TableSize = TableSize;
 	}
 
 	public int getTableNo() {
@@ -23,6 +24,14 @@ public class Table {
 
 	public int getAvailableSize() {
 		return this.AvailableSize;
+	}
+
+	public void addTicketToTable(Ticket t) {
+		this.TicketAtTable.add(t);
+	}
+
+	public void removeTicketToTable(Ticket t) {
+		this.TicketAtTable.remove(t);
 	}
 
 	public ArrayList<Ticket> getTicketAtTable() {

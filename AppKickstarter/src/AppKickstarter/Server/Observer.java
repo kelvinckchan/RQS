@@ -1,4 +1,4 @@
-package AppKickstarter.misc;
+package AppKickstarter.Server;
 //======================================================================
 // Observer
 public abstract class Observer {

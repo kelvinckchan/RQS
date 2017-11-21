@@ -1,4 +1,4 @@
-package AppKickstarter.myThreads;
+package AppKickstarter.myHanlderThreads;
 
 import AppKickstarter.misc.*;
 
@@ -7,8 +7,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 import AppKickstarter.AppKickstarter;
-import AppKickstarter.MsgHandler.MsgHandler;
-import AppKickstarter.MsgHandler.MsgParser;
+import AppKickstarter.Msg.MsgParser;
 
 //======================================================================
 // ServerThread

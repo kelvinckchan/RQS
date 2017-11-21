@@ -1,4 +1,4 @@
-package AppKickstarter.myThreads;
+package AppKickstarter.myHanlderThreads;
 
 import AppKickstarter.misc.*;
 

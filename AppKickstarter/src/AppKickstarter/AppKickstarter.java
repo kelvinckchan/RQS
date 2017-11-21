@@ -16,9 +16,7 @@ import java.util.Hashtable;
 
 import AppKickstarter.timer.Timer;
 import AppKickstarter.misc.*;
-import AppKickstarter.myThreads.ThreadA;
-import AppKickstarter.myThreads.*;
-//Test commit
+import AppKickstarter.myHanlderThreads.*;
 
 //New commit
 
@@ -36,6 +34,8 @@ public class AppKickstarter {
 	private ThreadA threadA;
 	private SocketInHandler socketInHandler;
 	private SocketOutHandler socketOutHandler;
+	private TableHandler tableManager;
+	private TicketHandler ticketHandler;
 	private String ServerIP;
 	private int ServerPort;
 	private Socket socket;
@@ -131,9 +131,14 @@ public class AppKickstarter {
 		// threadA = new ThreadA("ThreadA", this);
 		socketInHandler = new SocketInHandler("SocketInHandler", this);
 		socketOutHandler = new SocketOutHandler("SocketOutHandler", this);
+		tableManager = new TableHandler("TableManager", this);
+		ticketHandler = new TicketHandler("TicketHandler", this);
 		// start threads
 		// new Thread(timer).start();
 		// new Thread(threadA).start();
+		tableManager.createTable();
+		new Thread(tableManager).start();
+		new Thread(ticketHandler).start();
 		new Thread(socketInHandler).start();
 		new Thread(socketOutHandler).start();
 

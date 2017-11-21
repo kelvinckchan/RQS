@@ -3,9 +3,9 @@ package AppKickstarter.Server;
 import java.time.LocalDateTime;
 
 public class Ticket {
-	static int AccTicketID = 1;
-	int TicketID;
-	LocalDateTime checkIn, checkOut;
+	private static int AccTicketID = 1;
+	private int TicketID;
+	private LocalDateTime checkIn, checkOut;
 	private Client ClientWithTicket;
 
 	public Ticket(Client ClientWithTicket) {
@@ -19,6 +19,14 @@ public class Ticket {
 
 	public void setCheckOut(LocalDateTime checkOut) {
 		this.checkOut = checkOut;
+	}
+
+	public LocalDateTime getCheckIn() {
+		return this.checkIn;
+	}
+
+	public LocalDateTime getcheckOut() {
+		return this.checkOut;
 	}
 
 	public int getTicketID() {

@@ -1,4 +1,4 @@
-package AppKickstarter.misc;
+package AppKickstarter.Server;
 
 //======================================================================
 // News

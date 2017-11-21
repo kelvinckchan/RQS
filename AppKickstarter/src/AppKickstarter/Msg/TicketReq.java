@@ -1,4 +1,4 @@
-package AppKickstarter.MsgHandler;
+package AppKickstarter.Msg;
 
 import AppKickstarter.misc.MBox;
 import AppKickstarter.misc.Msg;

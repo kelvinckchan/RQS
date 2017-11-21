@@ -1,11 +1,11 @@
-package AppKickstarter.MsgHandler;
+package AppKickstarter.Msg;
 
 import AppKickstarter.misc.MBox;
 import AppKickstarter.misc.Msg;
 
-public class TableAssign extends Msg {
+public class CheckOut extends Msg {
 
-	public TableAssign(String sender, MBox senderMBox, Type type, String details) {
+	public CheckOut(String sender, MBox senderMBox, Type type, String details) {
 		super(sender, senderMBox, type, details);
 		// TODO Auto-generated constructor stub
 	}
