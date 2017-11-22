@@ -1,13 +1,26 @@
 package AppKickstarter.Msg;
 
-import AppKickstarter.misc.MBox;
-import AppKickstarter.misc.Msg;
+public class CheckOut extends Command {
 
-public class CheckOut extends Msg {
+	private int TableNo;
+	private int TotalSpending;
 
-	public CheckOut(String sender, MBox senderMBox, Type type, String details) {
-		super(sender, senderMBox, type, details);
-		// TODO Auto-generated constructor stub
+	public CheckOut(int TableNo, int TotalSpending) {
+		this.TableNo = TableNo;
+		this.TotalSpending = TotalSpending;
+	}
+
+	public int getTableNo() {
+		return this.TableNo;
+	}
+
+	public int getTotalSpending() {
+		return this.TotalSpending;
+	}
+
+	@Override
+	public String toString() {
+		return String.format("CheckOut: %s %s", this.TableNo, this.TotalSpending);
 	}
 
 }

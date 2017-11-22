@@ -1,17 +1,27 @@
 package AppKickstarter.Msg;
 
-import AppKickstarter.misc.MBox;
-import AppKickstarter.misc.Msg;
+import AppKickstarter.Server.Table;
+import AppKickstarter.Server.Ticket;
 
-public class TicketCall extends Msg {
+public class TicketCall extends Command {
+	private Ticket ticket;
+	private Table table;
 
-	public TicketCall(String sender, MBox senderMBox, Type type, String details) {
-		super(sender, senderMBox, type, details);
-		// TODO Auto-generated constructor stub
+	public TicketCall(Ticket ticket, Table table) {
+		this.ticket = ticket;
+		this.table = table;
 	}
 
-	public void TicketCall() {
-
+	public Ticket getTicket() {
+		return this.ticket;
 	}
 
+	public Table getTable() {
+		return this.table;
+	}
+
+	@Override
+	public String toString() {
+		return String.format("TicketCall: %s %s", ticket.getTicketID(), table.getTableNo());
+	}
 }

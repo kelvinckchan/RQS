@@ -1,5 +1,7 @@
 package AppKickstarter.misc;
 
+import AppKickstarter.Msg.Command;
+
 //======================================================================
 // Msg
 public class Msg {
@@ -7,6 +9,7 @@ public class Msg {
 	private MBox senderMBox;
 	private Type type;
 	private String details;
+	private Command command;
 
 	// ------------------------------------------------------------
 	// Msg
@@ -15,6 +18,14 @@ public class Msg {
 		this.senderMBox = senderMBox;
 		this.type = type;
 		this.details = details;
+	} // Msg
+
+	// Msg
+	public Msg(String sender, MBox senderMBox, Type type, Command command) {
+		this.sender = sender;
+		this.senderMBox = senderMBox;
+		this.type = type;
+		this.command = command;
 	} // Msg
 
 	// ------------------------------------------------------------
@@ -31,13 +42,22 @@ public class Msg {
 		return type;
 	}
 
+	public Command getCommand() {
+		return command;
+	}
+
 	public String getDetails() {
+		if (details == null)
+			return command.toString();
 		return details;
 	}
 
 	// ------------------------------------------------------------
 	// toString
 	public String toString() {
+		if (details == null)
+			return sender + " (" + type + ") -- " + command;
+
 		return sender + " (" + type + ") -- " + details;
 	} // toString
 

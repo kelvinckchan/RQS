@@ -1,13 +1,15 @@
 package AppKickstarter.myHanlderThreads;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
+import java.util.Objects;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 import AppKickstarter.AppKickstarter;
 import AppKickstarter.Msg.TicketCall;
+import AppKickstarter.Msg.TicketRep;
+import AppKickstarter.Msg.TicketReq;
 import AppKickstarter.Server.Client;
 import AppKickstarter.Server.Observer;
 import AppKickstarter.Server.Subject;
@@ -21,34 +23,20 @@ import AppKickstarter.timer.Timer;
 public class TicketHandler extends AppThread {
 	public static List<TicketQueue> TqueueList = new ArrayList<TicketQueue>();
 	private static int ServerForgetItQueueSz;
-	TableHandler tableHandler;
-	private final int sleepTime = 5000;
-	static TicketQueue TicketQueue_0, TicketQueue_1, TicketQueue_2, TicketQueue_3, TicketQueue_4;
+	static TableHandler tableHandler;
+	private final int sleepTime = 10;
+	private static BlockingQueue<TicketCall> WaitForAckTicketQueue = new LinkedBlockingQueue<TicketCall>();
 
 	public TicketHandler(String id, AppKickstarter appKickstarter) {
 		super(id, appKickstarter);
 		createTicketQueue();
-		this.tableHandler = new TableHandler(this.appKickstarter);
+		this.tableHandler = new TableHandler("TableHandler", this.appKickstarter);
+
 	}
 
 	public void createTicketQueue() {
 		String tName = "NTables_";
 		this.ServerForgetItQueueSz = Integer.valueOf(appKickstarter.getProperty("ServerForgetItQueueSz"));
-		// TicketQueue_0 = new TicketQueue(2, ServerForgetItQueueSz);
-		// TicketQueue_0.addObs(new TicketQueueObserver(TicketQueue_0));
-		// TicketQueue_1 = new TicketQueue(4, ServerForgetItQueueSz);
-		// TicketQueue_1.addObs(new TicketQueueObserver(TicketQueue_1));
-		// TicketQueue_2 = new TicketQueue(6, ServerForgetItQueueSz);
-		// TicketQueue_2.addObs(new TicketQueueObserver(TicketQueue_2));
-		// TicketQueue_3 = new TicketQueue(8, ServerForgetItQueueSz);
-		// TicketQueue_3.addObs(new TicketQueueObserver(TicketQueue_3));
-		// TicketQueue_4 = new TicketQueue(10, ServerForgetItQueueSz);
-		// TicketQueue_4.addObs(new TicketQueueObserver(TicketQueue_4));
-		// TqueueList.add(TicketQueue_0);
-		// TqueueList.add(TicketQueue_1);
-		// TqueueList.add(TicketQueue_2);
-		// TqueueList.add(TicketQueue_3);
-		// TqueueList.add(TicketQueue_4);
 		TqueueList.add(new TicketQueue(2, ServerForgetItQueueSz));
 		TqueueList.add(new TicketQueue(4, ServerForgetItQueueSz));
 		TqueueList.add(new TicketQueue(6, ServerForgetItQueueSz));
@@ -59,7 +47,6 @@ public class TicketHandler extends AppThread {
 		});
 
 		log.fine("Create TqueueList> ");
-
 	}
 
 	@Override
@@ -69,18 +56,11 @@ public class TicketHandler extends AppThread {
 		for (boolean quit = false; !quit;) {
 			Msg msg = mbox.receive();
 
-			log.info(id + ": message received: [" + msg + "].");
-
+			// log.info(id + ": message received: [" + msg + "].");
 			switch (msg.getType()) {
 
 			case TimesUp:
-				TqueueList.forEach(q -> {
-					log.info("TqW_" + q.getForTableSize());
-					q.getTicketQueue().forEach(t -> {
-						log.info("Tiq:" + t.getTicketID());
-					});
-				});
-
+				MatchAllTicketQueue();
 				Timer.setTimer(id, mbox, sleepTime);
 				break;
 
@@ -98,28 +78,97 @@ public class TicketHandler extends AppThread {
 				break;
 			}
 		}
-
 		// declaring our departure
 		appKickstarter.unregThread(this);
 		log.info(id + ": terminating...");
 
 	}
 
-	public static Ticket ReqForTicket(Client reqClient) {
-		TicketQueue avaQueue = TqueueList.get((reqClient.getnPerson() - 1) / 2);
-		System.out.println(reqClient.getClientID() + " " + reqClient.getnPerson() + " avaQSize: "
-				+ avaQueue.getForTableSize() + "> " + avaQueue.getTicketQueue().size());
-		if (avaQueue.getTicketQueue().size() < ServerForgetItQueueSz) {
+	// public static void MatchTicketForSize(int TableSize) {
+	// TicketQueue ticketqueue = TqueueList.get((TableSize - 1) / 2);
+	// Table avaTable;
+	// for (Ticket incomingTicket : ticketqueue.getTicketQueue()) {
+	// avaTable = tableHandler.MatchAvailableTable(incomingTicket);
+	// if (avaTable != null) {
+	// Ticket WaitForAckTicket = incomingTicket;
+	// ticketqueue.removeTicketFromQueue(incomingTicket);
+	// TicketCall tickCall = new TicketCall(WaitForAckTicket, avaTable);
+	//
+	// try {
+	// WaitForAckTicketQueue.put(tickCall);
+	// } catch (InterruptedException e) {
+	// e.printStackTrace();
+	// }
+	//
+	// appKickstarter.getThread("MsgHandler").getMBox().send(new Msg(id, mbox,
+	// Msg.Type.TicketCall, tickCall));
+	// tableHandler.print();
+	// }
+	// }
+	// }
+
+	public static Ticket ReqForTicket(Client reqClient) throws InterruptedException {
+		TicketQueue ticketQueue = TqueueList.get((reqClient.getnPerson() - 1) / 2);
+		// System.out.println(reqClient.getClientID() + " " + reqClient.getnPerson() + "
+		// avaQSize: "
+		// + avaQueue.getForTableSize() + "> " + avaQueue.getTicketQueue().size());
+		if (ticketQueue.getTicketQueue().size() < ServerForgetItQueueSz) {
 			Ticket t = new Ticket(reqClient);
-			try {
-				System.out.println(avaQueue.addTicketToQueue(t) + ", " + t.getTicketID() + " Added TtQ["
-						+ avaQueue.getForTableSize() + "]" + avaQueue.getTicketQueue());
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+			ticketQueue.addTicketToQueue(t);
+
 			return t;
 		}
 		return null;
+	}
+
+	public static BlockingQueue<TicketCall> getWaitForAckTicketQueue() {
+		return WaitForAckTicketQueue;
+	}
+
+	public static void removeFromWaitForAckTicketQueue(int TicketID) {
+		WaitForAckTicketQueue.removeIf(tc -> tc.getTicket().getTicketID() == TicketID);
+	}
+
+	public static TicketCall FindWaitingTicketAndPoll(int TicketId) {
+		TicketCall tc = WaitForAckTicketQueue.stream()
+				.filter(t -> Objects.equals(t.getTicket().getTicketID(), TicketId)).findFirst().orElse(null);
+		if (tc != null)
+			WaitForAckTicketQueue.remove(tc);
+		return tc;
+	}
+
+	public void MatchAllTicketQueue() {
+		for (TicketQueue tq : TqueueList) {
+			MatchTicketQueue(tq);
+		}
+	}
+
+	public void MatchTicketQueue(TicketQueue ticketqueue) {
+		// Find Table For Ticket
+		Table avaTable = null;
+		for (Ticket incomingTicket : ticketqueue.getTicketQueue()) {
+			avaTable = tableHandler.MatchAvailableTable(incomingTicket);
+			if (avaTable != null) {
+				// If Found, Create TicketCall and Sent,
+				// Poll Ticket From TicketQueue
+				// Put Ticket in WaitForAckTicketQueue
+				Ticket WaitForAckTicket = incomingTicket;
+				ticketqueue.removeTicketFromQueue(incomingTicket);
+				TicketCall tickCall = new TicketCall(WaitForAckTicket, avaTable);
+
+				try {
+					WaitForAckTicketQueue.put(tickCall);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+
+				log.info("Found Table & Poll TicketQueue> Tid=" + WaitForAckTicket);
+				appKickstarter.getThread("MsgHandler").getMBox().send(new Msg(id, mbox, Msg.Type.TicketCall, tickCall));
+				tableHandler.print();
+			} else {
+				// log.info("No Table Available For > Tid=" + incomingTicket.getTicketID());
+			}
+		}
 	}
 
 	private class TicketQueueObserver extends Observer {
@@ -135,21 +184,10 @@ public class TicketHandler extends AppThread {
 		// update
 		public void update() {
 			String status = subject.getStatus();
+			// When Ticket Added To TicketQueue
 			if (status.equals("Add")) {
-				Ticket incomingTicket = ((TicketQueue) subject).getTicketQueue().peek();
-				log.info(name + ": [" + status + "] Find Table for Ticket> " + incomingTicket.getTicketID());
-				Table avaTable = tableHandler.MatchTable(incomingTicket);
-				if (avaTable != null) {
-					log.info("Found Table & Poll> " + ((TicketQueue) subject).getTicketQueue().poll());
-					
-					String TicketCalldetail = String.format("TicketCall: %s %s", incomingTicket.getTicketID(),
-							avaTable.getTableNo());
-					tableHandler.HoldTable(incomingTicket, avaTable);
-
-					appKickstarter.getThread("MsgHandler").getMBox()
-							.send(new TicketCall(id, mbox, Msg.Type.TicketCall, TicketCalldetail));
-				}
-
+				MatchTicketQueue(((TicketQueue) subject));
+				log.info(name + ": [" + status + "] Find Table for Ticket> ");
 			}
 		} // update
 
@@ -159,4 +197,5 @@ public class TicketHandler extends AppThread {
 			return name;
 		} // toString
 	}
+
 }

@@ -7,7 +7,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 import AppKickstarter.AppKickstarter;
-import AppKickstarter.Msg.MsgParser;
+import AppKickstarter.Msg.IncomingMsgParser;
 
 //======================================================================
 // ServerThread
@@ -52,7 +52,7 @@ public class SocketInHandler extends AppThread {
 				// out.write(s.getBytes());
 				// out.flush();
 				// MsgParser
-				msghandler.getMBox().send(MsgParser.IncomingMsgParser(this.id, this.mbox, IncomingMsg));
+				msghandler.getMBox().send(IncomingMsgParser.IncomingMsgParser(this.id, this.mbox, IncomingMsg));
 //				in.close();
 				// if (!socket.isConnected())
 				// break;

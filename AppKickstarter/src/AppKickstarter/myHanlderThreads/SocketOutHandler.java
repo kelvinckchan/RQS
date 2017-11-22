@@ -7,24 +7,21 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 import AppKickstarter.AppKickstarter;
-import AppKickstarter.Msg.MsgParser;
+import AppKickstarter.Msg.IncomingMsgParser;
 
 //======================================================================
 // ServerThread
 public class SocketOutHandler extends AppThread {
 	private final int sleepTime = 2000;
 	private PrintWriter out;
-	// private String ServerIP;
-	// private int ServerPort;
-//	private Socket socket;
-//	private DataOutputStream out;
+	// private Socket socket;
+	// private DataOutputStream out;
 
 	// ------------------------------------------------------------
 	// ServerThread
 	public SocketOutHandler(String id, AppKickstarter appKickstarter) {
 		super(id, appKickstarter);
-//		this.socket = appKickstarter.getSocket();
-		
+		// this.socket = appKickstarter.getSocket();
 
 	} // ServerThread
 
@@ -32,22 +29,13 @@ public class SocketOutHandler extends AppThread {
 	// run
 	public void run() {
 		log.info(id + ": starting...");
-//		try {
-
-			for (boolean quit = false; !quit;) {
-//				this.out = appKickstarter.getDataOutputStream();
-				this.out = appKickstarter.getPrintWriter();
-//				DataOutputStream out = new DataOutputStream(socket.getOutputStream());
-				Msg msg = mbox.receive();
-//				log.info(id + ": message to be sent: [" + msg + "].");
-				out.println(msg.getDetails());
-				out.flush();
-//				out.close();
-				log.info(id + ": message Sent: [" + msg.getDetails() + "].");
-			}
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
+		for (boolean quit = false; !quit;) {
+			this.out = appKickstarter.getPrintWriter();
+			Msg msg = mbox.receive();
+			out.println(msg.getDetails());
+			out.flush();
+			log.info(id + ": message Sent: [" + msg.getDetails() + "].");
+		}
 		// declaring our departure
 		appKickstarter.unregThread(this);
 		log.info(id + ": terminating...");

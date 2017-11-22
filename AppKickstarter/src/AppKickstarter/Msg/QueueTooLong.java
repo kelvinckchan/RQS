@@ -1,14 +1,21 @@
 package AppKickstarter.Msg;
 
-import AppKickstarter.misc.MBox;
-import AppKickstarter.misc.Msg;
+import AppKickstarter.Server.Client;
 
-public class QueueTooLong extends Msg {
-	
+public class QueueTooLong extends Command {
+	private Client client;
 
-	public QueueTooLong(String sender, MBox senderMBox, Type type, String details) {
-		super(sender, senderMBox, type, details);
+	public QueueTooLong(Client client) {
+		this.client = client;
 	}
 
-	
+	public Client getClient() {
+		return this.client;
+	}
+
+	@Override
+	public String toString() {
+		return String.format("QueueTooLong: %s %s", client.getClientID(), client.getnPerson());
+	}
+
 }

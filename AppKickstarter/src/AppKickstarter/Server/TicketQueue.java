@@ -16,7 +16,6 @@ public class TicketQueue extends Subject {
 		this.ticketQueue = new LinkedBlockingQueue<Ticket>();
 		this.ForTableSize = ForTableSize;
 		this.ServerForgetItQueueSz = ServerForgetItQueueSz;
-
 	}
 
 	// ------------------------------------------------------------
@@ -25,7 +24,8 @@ public class TicketQueue extends Subject {
 		// if (ticketQueue.size() < ServerForgetItQueueSz) {
 		this.setStatus("Add");
 		this.ticketQueue.put(t);
-//		this.ticketQueue.forEach(tk -> System.out.println("Adddd" + tk.getTicketID()));
+		// this.ticketQueue.forEach(tk -> System.out.println("Adddd" +
+		// tk.getTicketID()));
 		notifyObs();
 		return this.ticketQueue;
 		// }
@@ -37,9 +37,9 @@ public class TicketQueue extends Subject {
 	public boolean removeTicketFromQueue(Ticket t) {
 		if (this.ticketQueue.size() > 0) {
 			this.ticketQueue.remove(t);
-			this.LastRemovedTicket = t;
-			this.setStatus("Remove");
-			notifyObs();
+//			this.LastRemovedTicket = t;
+//			this.setStatus("Remove");
+//			notifyObs();
 			return true;
 		}
 		return false;
@@ -47,6 +47,14 @@ public class TicketQueue extends Subject {
 
 	public Ticket getLastRemovedTicket() {
 		return this.LastRemovedTicket;
+	}
+
+	public Ticket pollTicketQueue() {
+		return this.ticketQueue.poll();
+	}
+
+	public Ticket peekTicketQueue() {
+		return this.ticketQueue.peek();
 	}
 
 	// ------------------------------------------------------------
@@ -68,4 +76,5 @@ public class TicketQueue extends Subject {
 	public String getStatus() {
 		return this.status;
 	}
+
 }

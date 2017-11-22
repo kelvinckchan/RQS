@@ -3,9 +3,11 @@ package AppKickstarter.myHanlderThreads;
 
 import AppKickstarter.misc.*;
 import AppKickstarter.timer.Timer;
+
+import java.util.Objects;
+
 import AppKickstarter.AppKickstarter;
-import AppKickstarter.Msg.QueueTooLong;
-import AppKickstarter.Msg.TicketRep;
+import AppKickstarter.Msg.*;
 import AppKickstarter.Server.Client;
 import AppKickstarter.Server.Ticket;
 
@@ -32,50 +34,80 @@ public class MsgHandler extends AppThread {
 
 			Msg msg = mbox.receive();
 			log.info(id + ": message received: [" + msg + "].");
-			String[] DetailParts = msg.getDetails().trim().split("\\s+");
-			int TicketId, TableNo, nPerson, totalSpending;
-			String ClientId;
 
 			switch (msg.getType()) {
 
 			case TicketReq:
-				Client ReqClient = new Client(DetailParts[0], Integer.valueOf(DetailParts[1]));
-				Ticket ticket = TicketHandler.ReqForTicket(ReqClient);
+				Client ReqClient = ((TicketReq) msg.getCommand()).getClient();
+				Ticket ticket = null;
+				try {
+					ticket = TicketHandler.ReqForTicket(ReqClient);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				// Try Requesting a Ticket, Return a Ticket if Not QueueTooLong
 				if (ticket != null) {
-					String TicketRepDetail = String.format("TicketRep: %s %s %s", ReqClient.getClientID(),
-							ReqClient.getnPerson(), ticket.getTicketID());
 					appKickstarter.getThread("SocketOutHandler").getMBox()
-							.send(new TicketRep(id, mbox, Msg.Type.TicketRep, TicketRepDetail));
+							.send(new Msg(id, mbox, Msg.Type.TicketRep, new TicketRep(ReqClient, ticket)));
 				} else {
-
-					String QueueTooLongDetail = String.format("QueueTooLong: %s %s", ReqClient.getClientID(),
-							ReqClient.getnPerson());
 					appKickstarter.getThread("SocketOutHandler").getMBox()
-							.send(new QueueTooLong(id, mbox, Msg.Type.QueueTooLong, QueueTooLongDetail));
-
+							.send(new Msg(id, mbox, Msg.Type.QueueTooLong, new QueueTooLong(ReqClient)));
 				}
 
 				break;
 
 			case TicketAck:
-				TicketId = Integer.valueOf(DetailParts[0]);
-				TableNo = Integer.valueOf(DetailParts[1]);
-				nPerson = Integer.valueOf(DetailParts[2]);
-				Timer.setTimer(id, mbox, TicketAckWaitingTime);
-				// TicketCall rep = new TicketCall(id, mbox, Msg.Type.TicketCall, "TicketCall: "
-				// + ClientId + " " + nPerson+ " "+ rep.getTicketNo());
+				// Receive TicketAsk: TicketID TableNo nPerson
+				// Cancel Timer TicketCall: TicketID TableNo
+				// CheckIn Table
+				TicketAck ticketAck = ((TicketAck) msg.getCommand());
+				TicketCall TicketCallWaiting = TicketHandler.FindWaitingTicketAndPoll(ticketAck.getTicketID());
+				if (TicketCallWaiting != null) {
+					Ticket CalledTicket = TicketCallWaiting.getTicket();
+					TableHandler.CheckInWaitingTicketToTable(CalledTicket, ticketAck.getTableNo());
+					Timer.cancelTimer(id, mbox, TicketCallWaiting.getTicket().getTicketID());
+					appKickstarter.getThread("SocketOutHandler").getMBox().send(new Msg(id, mbox, Msg.Type.TableAssign,
+							new TableAssign(CalledTicket, ticketAck.getTableNo())));
+					log.info(id + ": CheckedInTable Ticket> " + TicketCallWaiting.getTicket().getTicketID()
+							+ " Waiting For CheckOut");
+					
+				} else {
+					log.info(
+							id + ": Not Able To CheckIn Ticket> " + TicketCallWaiting.getTicket().getTicketID() + " !");
+				}
+
 				break;
 
 			case CheckOut:
-
-				TableNo = Integer.valueOf(DetailParts[0]);
-				totalSpending = Integer.valueOf(DetailParts[1]);
+				// Receive CheckOut: TableNo TotalSpending
+				// CheckOutTable
+				CheckOut checkOut = ((CheckOut) msg.getCommand());
+				TableHandler.CheckOutTable(checkOut.getTableNo(), checkOut.getTotalSpending());
+				log.info(id + ": CheckOutTable> " + checkOut.getTableNo() + "!");
 
 				break;
 
 			case TicketCall:
+				// Send TicketCall: TicketID TableNo
+				// Set Timer for Waiting TicketAck
 				appKickstarter.getThread("SocketOutHandler").getMBox().send(msg);
+				TicketCall ticketcall = (TicketCall) msg.getCommand();
+				Timer.setTimer(id, mbox, TicketAckWaitingTime, ticketcall.getTicket().getTicketID());
+				log.info(id + ": TicketCall Sent> " + ticketcall.getTicket().getTicketID() + " Wait For TickerAck");
 
+				break;
+
+			case TimesUp:
+				log.info(id + ": TimesUP! from>" + msg.getSender() + "> " + msg.getDetails());
+
+				int ticketID = Integer.valueOf(msg.getDetails().substring(2, 6));
+				TicketHandler.removeFromWaitForAckTicketQueue(ticketID);
+
+				// Waited too long for TicketAck... Remove Ticket from
+				// TicketHandler.WaitForAckTicketQueue
+				// UnHold Table
+
+				TableHandler.UnHoldTable(ticketID);
 				break;
 
 			case Hello:
@@ -87,7 +119,7 @@ public class MsgHandler extends AppThread {
 				quit = true;
 				break;
 			default:
-				log.severe(id + ": unknown message type!!");
+				log.severe(id + ": unknown message type!!> " + msg.getDetails() + " From> " + msg.getSender());
 				break;
 			}
 		}
