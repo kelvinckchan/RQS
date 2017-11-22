@@ -5,6 +5,8 @@ import java.io.DataOutputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Properties;
@@ -34,13 +36,12 @@ public class AppKickstarter {
 	private ThreadA threadA;
 	private SocketInHandler socketInHandler;
 	private SocketOutHandler socketOutHandler;
-	private TableHandler tableManager;
 	private TicketHandler ticketHandler;
 	private String ServerIP;
 	private int ServerPort;
 	private Socket socket;
-	DataInputStream in;
 	DataOutputStream out;
+	DataInputStream in;
 
 	// ------------------------------------------------------------
 	// main
@@ -103,7 +104,7 @@ public class AppKickstarter {
 		log.setUseParentHandlers(false);
 		log.setLevel(Level.ALL);
 		logConHd.setLevel(Level.FINER);
-		logFileHd.setLevel(Level.ALL);
+		logFileHd.setLevel(Level.FINER);
 		appThreads = new Hashtable<String, AppThread>();
 	} // AppKickstarter
 
@@ -121,23 +122,25 @@ public class AppKickstarter {
 		log.info(id + ": Listening at ServerIP>" + ServerIP + " ServerPort>" + ServerPort + "...");
 		try {
 			this.socket = new ServerSocket(ServerPort).accept();
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
 		log.info(id + ": accepted...");
 
 		// create threads
-		// timer = new Timer("timer", this);
+		timer = new Timer("timer", this);
 		// threadA = new ThreadA("ThreadA", this);
 		socketInHandler = new SocketInHandler("SocketInHandler", this);
 		socketOutHandler = new SocketOutHandler("SocketOutHandler", this);
-		tableManager = new TableHandler("TableManager", this);
+		// tableManager = new TableHandler("TableManager", this);
 		ticketHandler = new TicketHandler("TicketHandler", this);
 		// start threads
-		// new Thread(timer).start();
+		new Thread(timer).start();
 		// new Thread(threadA).start();
-		tableManager.createTable();
-		new Thread(tableManager).start();
+		// tableManager.createTable();
+		// new Thread(tableManager).start();
 		new Thread(ticketHandler).start();
 		new Thread(socketInHandler).start();
 		new Thread(socketOutHandler).start();
@@ -158,11 +161,36 @@ public class AppKickstarter {
 
 	// ------------------------------------------------------------
 	// getThread
-	public Socket getSocket() {
-		synchronized (socket) {
-			return socket;
-		}
+	public synchronized Socket getSocket() {
+		return socket;
 	} // getThread
+
+	public synchronized DataOutputStream getDataOutputStream() {
+		try {
+			out = new DataOutputStream(socket.getOutputStream());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return out;
+	}
+
+	public synchronized PrintWriter getPrintWriter() {
+		try {
+			return new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public synchronized DataInputStream getDataInputStream() {
+		try {
+			in = new DataInputStream(socket.getInputStream());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return in;
+	}
 
 	// ------------------------------------------------------------
 	// regThread

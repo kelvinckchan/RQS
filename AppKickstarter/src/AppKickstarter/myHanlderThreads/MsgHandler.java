@@ -2,6 +2,7 @@
 package AppKickstarter.myHanlderThreads;
 
 import AppKickstarter.misc.*;
+import AppKickstarter.timer.Timer;
 import AppKickstarter.AppKickstarter;
 import AppKickstarter.Msg.QueueTooLong;
 import AppKickstarter.Msg.TicketRep;
@@ -13,11 +14,13 @@ import AppKickstarter.Server.Ticket;
 // Server ThreadB
 public class MsgHandler extends AppThread {
 	private final int sleepTime = 2000;
+	private int TicketAckWaitingTime;
 
 	// ------------------------------------------------------------
 	// ThreadB
 	public MsgHandler(String id, AppKickstarter appKickstarter) {
 		super(id, appKickstarter);
+		this.TicketAckWaitingTime = Integer.valueOf(appKickstarter.getProperty("TicketAckWaitingTime"));
 	} // ThreadB
 
 	// ------------------------------------------------------------
@@ -30,7 +33,7 @@ public class MsgHandler extends AppThread {
 			Msg msg = mbox.receive();
 			log.info(id + ": message received: [" + msg + "].");
 			String[] DetailParts = msg.getDetails().trim().split("\\s+");
-			int TicketId, TableId, nPerson;
+			int TicketId, TableNo, nPerson, totalSpending;
 			String ClientId;
 
 			switch (msg.getType()) {
@@ -56,11 +59,23 @@ public class MsgHandler extends AppThread {
 
 			case TicketAck:
 				TicketId = Integer.valueOf(DetailParts[0]);
-				TableId = Integer.valueOf(DetailParts[1]);
+				TableNo = Integer.valueOf(DetailParts[1]);
 				nPerson = Integer.valueOf(DetailParts[2]);
-
+				Timer.setTimer(id, mbox, TicketAckWaitingTime);
 				// TicketCall rep = new TicketCall(id, mbox, Msg.Type.TicketCall, "TicketCall: "
 				// + ClientId + " " + nPerson+ " "+ rep.getTicketNo());
+				break;
+
+			case CheckOut:
+
+				TableNo = Integer.valueOf(DetailParts[0]);
+				totalSpending = Integer.valueOf(DetailParts[1]);
+
+				break;
+
+			case TicketCall:
+				appKickstarter.getThread("SocketOutHandler").getMBox().send(msg);
+
 				break;
 
 			case Hello:

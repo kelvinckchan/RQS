@@ -12,6 +12,7 @@ public class Table {
 	public Table(int TableNo, int TableSize) {
 		this.TableNo = TableNo;
 		this.TableSize = TableSize;
+		this.TicketAtTable = new ArrayList<Ticket>();
 	}
 
 	public int getTableNo() {

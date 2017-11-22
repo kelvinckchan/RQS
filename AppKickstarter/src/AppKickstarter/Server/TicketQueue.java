@@ -1,55 +1,62 @@
 package AppKickstarter.Server;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 public class TicketQueue extends Subject {
 	private String status = "";
-	private static Queue<Ticket> ticketQueue;
+	private BlockingQueue<Ticket> ticketQueue;
 	private int ForTableSize;
 	private int ServerForgetItQueueSz;
-	private ArrayList<Observer> observers = new ArrayList<>();
+	private Ticket LastRemovedTicket;
 
 	public TicketQueue(int ForTableSize, int ServerForgetItQueueSz) {
-		this.ticketQueue = new LinkedList<Ticket>();
+		this.ticketQueue = new LinkedBlockingQueue<Ticket>();
 		this.ForTableSize = ForTableSize;
 		this.ServerForgetItQueueSz = ServerForgetItQueueSz;
-		new TicketQueueObserver(this);
+
 	}
 
 	// ------------------------------------------------------------
 	// addTicketToQueue
-	public boolean addTicketToQueue(Ticket t) {
-		if (this.ticketQueue.size() < ServerForgetItQueueSz) {
-			this.ticketQueue.add(t);
-			setStatus("Add");
-			notifyObs();
-			return true;
-		}
-		return false;
+	public Queue<Ticket> addTicketToQueue(Ticket t) throws InterruptedException {
+		// if (ticketQueue.size() < ServerForgetItQueueSz) {
+		this.setStatus("Add");
+		this.ticketQueue.put(t);
+//		this.ticketQueue.forEach(tk -> System.out.println("Adddd" + tk.getTicketID()));
+		notifyObs();
+		return this.ticketQueue;
+		// }
+		// return false;
 	} // addTicketToQueue
 
 	// ------------------------------------------------------------
 	// addTicketToQueue
-	public boolean removeTicketToQueue(Ticket t) {
+	public boolean removeTicketFromQueue(Ticket t) {
 		if (this.ticketQueue.size() > 0) {
 			this.ticketQueue.remove(t);
-			setStatus("Remove");
+			this.LastRemovedTicket = t;
+			this.setStatus("Remove");
 			notifyObs();
 			return true;
 		}
 		return false;
 	} // addTicketToQueue
 
+	public Ticket getLastRemovedTicket() {
+		return this.LastRemovedTicket;
+	}
+
 	// ------------------------------------------------------------
 	// getStatus
 	public Queue<Ticket> getTicketQueue() {
-		return ticketQueue;
+		return this.ticketQueue;
 	} // getStatus
 
 	public int getForTableSize() {
-		return ForTableSize;
+		return this.ForTableSize;
 	}
 
 	@Override
@@ -59,6 +66,6 @@ public class TicketQueue extends Subject {
 
 	@Override
 	public String getStatus() {
-		return status;
+		return this.status;
 	}
 }

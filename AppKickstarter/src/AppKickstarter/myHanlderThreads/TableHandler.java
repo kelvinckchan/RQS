@@ -3,15 +3,20 @@ package AppKickstarter.myHanlderThreads;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.logging.Logger;
 import java.util.stream.Stream;
 
 import AppKickstarter.AppKickstarter;
 import AppKickstarter.Server.Table;
 import AppKickstarter.Server.Ticket;
 import AppKickstarter.misc.AppThread;
+import AppKickstarter.misc.MBox;
 import AppKickstarter.misc.Msg;
 
-public class TableHandler extends AppThread {
+public class TableHandler {
+	protected AppKickstarter appKickstarter;
+	protected MBox mbox = null;
+	protected Logger log = null;
 
 	private static ArrayList<Table> TableList;
 	private ArrayList<Boolean> Availability;
@@ -21,8 +26,10 @@ public class TableHandler extends AppThread {
 	// NTables_3=2
 	// NTables_4=1
 	// NTables_5=1
-	public TableHandler(String id, AppKickstarter appKickstarter) {
-		super(id, appKickstarter);
+	public TableHandler(AppKickstarter appKickstarter) {
+		this.appKickstarter = appKickstarter;
+		log = appKickstarter.getLogger();
+		createTable();
 	}
 
 	public void createTable() {
@@ -45,38 +52,6 @@ public class TableHandler extends AppThread {
 		}
 	}
 
-	@Override
-	public void run() {
-		log.info(id + ": starting...");
-
-		for (boolean quit = false; !quit;) {
-			Msg msg = mbox.receive();
-
-			log.info(id + ": message received: [" + msg + "].");
-
-			switch (msg.getType()) {
-
-			case Hello:
-				log.info(id + ": " + msg.getSender() + " is saying Hello to me!!!");
-				msg.getSenderMBox().send(new Msg(id, mbox, Msg.Type.HiHi, "HiHi, this is Thread B!"));
-				break;
-
-			case Terminate:
-				quit = true;
-				break;
-
-			default:
-				log.severe(id + ": unknown message type!!");
-				break;
-			}
-		}
-
-		// declaring our departure
-		appKickstarter.unregThread(this);
-		log.info(id + ": terminating...");
-
-	} // run
-
 	public ArrayList<Table> CheckAvailableTable() {
 		ArrayList<Table> result = new ArrayList<Table>();
 		for (int i = 0; i < TableList.size(); i++) {
@@ -87,13 +62,12 @@ public class TableHandler extends AppThread {
 		return result;
 	}
 
-	
-	public void call() {
-		Ticket t;
-//		CheckInTable(t,MatchTable(t));
-	}
-	
-	
+	// public void MatchAndCheckIn(Ticket ticket) {
+	// Table avaTable = MatchTable(ticket);
+	// if (avaTable != null)
+	// CheckInTable(ticket, avaTable);
+	// }
+
 	public Table MatchTable(Ticket t) {
 		ArrayList<Table> AvailbleTable = CheckAvailableTable();
 		for (int i = 0; i < AvailbleTable.size(); i++) {
@@ -106,19 +80,51 @@ public class TableHandler extends AppThread {
 		return null;
 	}
 
+	int ts;
+	String logstring = "";
+
+	public void print() {
+
+		for (ts = 1; ts <= 5; ts++) {
+			logstring += ("\nTables[" + (ts - 1) + "]:\t");
+			TableList.stream().filter(t -> t.getTableSize() == (ts * 2)).forEach(t -> {
+				if (t.getTicketAtTable().size() > 0) {
+					String tno = String.valueOf(t.getTableNo());
+					for (tno.length(); tno.length() < 4;) {
+						tno = 0 + tno;
+					}
+					logstring += ("[" + tno + ", " + t.getTicketAtTable().get(0).getClientWithTicket().getClientID()
+							+ "]\t");
+				} else {
+					logstring += ("[.................]\t");
+
+				}
+			});
+		}
+		log.info(logstring + "\n");
+		log.info("--------------------------------------------------------------");
+	}
+
 	public LocalDateTime CheckInTable(Ticket ticket, Table table) {
 		ticket.setCheckIn(LocalDateTime.now());
 		table.addTicketToTable(ticket);
 		TableList.set(findtable(table), table);
 		Availability.set(findtable(table), false);
+		print();
 		return LocalDateTime.now();
 	}
 
-	public LocalDateTime CheckOutTable(Ticket ticket, Table table) {
+	public void HoldTable(Ticket ticket, Table table) {
+		Availability.set(findtable(table), false);
+	}
+
+	public LocalDateTime CheckOutTable(Ticket ticket) {
 		ticket.setCheckOut(LocalDateTime.now());
+		Table table = TableList.stream().filter(t -> Objects.equals(t.getTicketAtTable(), ticket)).findFirst().get();
 		table.removeTicketToTable(ticket);
 		TableList.set(findtable(table), table);
 		Availability.set(findtable(table), true);
+		print();
 		return LocalDateTime.now();
 	}
 
