@@ -44,10 +44,6 @@ public class TableHandler extends AppThread {
 			}
 		}
 
-		// Availability = new ArrayList<Boolean>();
-		// for (Table t : this.TableList) {
-		// Availability.add(true);
-		// }
 	}
 
 	public static Table MatchAvailableTable(Ticket ticket) {
@@ -59,42 +55,16 @@ public class TableHandler extends AppThread {
 				.findFirst().orElse(null);
 
 		if (avaTable != null) {
-//			 HoldTable(ticket, avaTable);
+	
 			return avaTable;
 		}
 		return null;
 	}
 
-	// public ArrayList<Table> CheckAvailableTable() {
-	// // ArrayList<Table> result = new ArrayList<Table>();
-	// // for (int i = 0; i < TableList.size(); i++) {
-	// // if (Availability.get(i)) {
-	// // result.add(TableList.get(i));
-	// // }
-	// // }
-	// return TableList.stream().filter(t ->
-	// t.getAvailable()).collect(Collectors.toCollection(ArrayList<Table>::new));
-	// }
-	//
-	// public Table MatchTable(Ticket t) {
-	// ArrayList<Table> AvailbleTable = CheckAvailableTable();
-	//
-	// for (int i = 0; i < AvailbleTable.size(); i++) {
-	// if (AvailbleTable.get(i).getTableSize() ==
-	// t.getClientWithTicket().getnPerson()
-	// || AvailbleTable.get(i).getTableSize() - 1 ==
-	// t.getClientWithTicket().getnPerson()) {
-	//
-	// return AvailbleTable.get(i);
-	// }
-	// }
-	// return null;
-	// }
-
 	static int ts;
 	static String logstring;
 
-	public static void print() {
+	public static void PrintAllTable() {
 		logstring = "";
 		for (ts = 1; ts <= 5; ts++) {
 			logstring += ("\nTables[" + (ts - 1) + "]:\t");
@@ -130,20 +100,22 @@ public class TableHandler extends AppThread {
 	}
 
 	public static LocalDateTime CheckInWaitingTicketToTable(Ticket TicketWaiting, int TableNo) {
-		print();
+		
 		return CheckInTable(TicketWaiting, getTableByTableNo(TableNo));
 	}
 
 	public static LocalDateTime CheckInTable(Ticket ticket, Table table) {
-		if (table.getAvailable()) {
+//		if (table.getAvailable()) {
 			ticket.setCheckIn(LocalDateTime.now());
-			table.setAvailable(false);
-			table.addTicketToTable(ticket);
+//			table.setAvailable(false);
+//			table.addTicketToTable(ticket);
 			TableList.set(FindTableIndex(table), table);
 			// Availability.set(FindTableInTableList(table), false);
+			
+			PrintAllTable();
 			return LocalDateTime.now();
-		}
-		return null;
+//		}
+//		return null;
 	}
 
 	public static void HoldTable(Ticket ticket, Table table) {
@@ -153,16 +125,15 @@ public class TableHandler extends AppThread {
 	}
 
 	public static void UnHoldTable(int ticketID) {
-		 System.out.println("unhold> " + ticketID);
-		 Table table = TableList.stream()
-		 .filter(t -> t.getTicketAtTable().size() > 0 &&
-		 t.getTicketAtTable().get(0).getTicketID() == ticketID)
-		 .findFirst().orElse(null);
-		 if (table != null) {
-		 table.setAvailable(true);
-		 table.removeTicketToTable(ticketID);
-		 TableList.set(FindTableIndex(table), table);
-		 }
+		System.out.println("unhold> " + ticketID);
+		Table tableHeldByTicket = TableList.stream()
+				.filter(t -> t.getTicketAtTable().size() > 0 && t.getTicketAtTable().get(0).getTicketID() == ticketID)
+				.findFirst().orElse(null);
+		if (tableHeldByTicket != null) {
+			tableHeldByTicket.setAvailable(true);
+			tableHeldByTicket.removeTicketToTable(ticketID);
+			TableList.set(FindTableIndex(tableHeldByTicket), tableHeldByTicket);
+		}
 	}
 
 	public static LocalDateTime CheckOutTable(int TableNo, int totalSpending) {

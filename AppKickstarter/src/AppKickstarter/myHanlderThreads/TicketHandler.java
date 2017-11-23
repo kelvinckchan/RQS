@@ -33,7 +33,7 @@ public class TicketHandler extends AppThread {
 	public TicketHandler(String id, AppKickstarter appKickstarter) {
 		super(id, appKickstarter);
 		createTicketQueue();
-		  
+
 		this.TicketAckWaitingTime = Integer.valueOf(appKickstarter.getProperty("TicketAckWaitingTime"));
 	}
 
@@ -72,7 +72,6 @@ public class TicketHandler extends AppThread {
 				// MatchAllTicketQueue();
 				// Timer.setTimer(id, mbox, sleepTime);
 				log.info(id + ": TimesUP! from>" + msg.getSender() + "> " + msg.getDetails());
-
 				int ticketID = Integer.valueOf(msg.getDetails().substring(2, 6));
 				boolean TicketWaitingRemoved = removeFromWaitForAckTicketQueue(ticketID);
 				log.info(id + ": Tid=" + ticketID + " Removed> " + TicketWaitingRemoved);
@@ -80,16 +79,7 @@ public class TicketHandler extends AppThread {
 				// TicketHandler.WaitForAckTicketQueue
 				// UnHold Table
 				MatchAllTicketQueue();
-//				TableHandler.UnHoldTable(ticketID);
-				break;
-
-			case Hello:
-				log.info(id + ": " + msg.getSender() + " is saying Hello to me!!!");
-				msg.getSenderMBox().send(new Msg(id, mbox, Msg.Type.HiHi, "HiHi, this is Thread B!"));
-				break;
-
-			case Terminate:
-				quit = true;
+				TableHandler.UnHoldTable(ticketID);
 				break;
 
 			default:
@@ -103,40 +93,15 @@ public class TicketHandler extends AppThread {
 
 	}
 
-	// public static void MatchTicketForSize(int TableSize) {
-	// TicketQueue ticketqueue = TqueueList.get((TableSize - 1) / 2);
-	// Table avaTable;
-	// for (Ticket incomingTicket : ticketqueue.getTicketQueue()) {
-	// avaTable = tableHandler.MatchAvailableTable(incomingTicket);
-	// if (avaTable != null) {
-	// Ticket WaitForAckTicket = incomingTicket;
-	// ticketqueue.removeTicketFromQueue(incomingTicket);
-	// TicketCall tickCall = new TicketCall(WaitForAckTicket, avaTable);
-	//
-	// try {
-	// WaitForAckTicketQueue.put(tickCall);
-	// } catch (InterruptedException e) {
-	// e.printStackTrace();
-	// }
-	//
-	// appKickstarter.getThread("MsgHandler").getMBox().send(new Msg(id, mbox,
-	// Msg.Type.TicketCall, tickCall));
-	// tableHandler.print();
-	// }
-	// }
-	// }
-
-	public static Ticket ReqForTicket(Client reqClient) throws InterruptedException {
+	public static Ticket GetTicketAndAddToTicketQueueIfQueueNotFull(Client reqClient) throws InterruptedException {
 		TicketQueue ticketQueue = TqueueList.get((reqClient.getnPerson() - 1) / 2);
-		// System.out.println(reqClient.getClientID() + " " + reqClient.getnPerson() + "
-		// avaQSize: "
-		// + avaQueue.getForTableSize() + "> " + avaQueue.getTicketQueue().size());
+
 		if (ticketQueue.getTicketQueue().size() < ServerForgetItQueueSz) {
 			Ticket t = new Ticket(reqClient);
 			ticketQueue.addTicketToQueue(t);
-
 			return t;
 		}
+
 		return null;
 	}
 
@@ -161,11 +126,11 @@ public class TicketHandler extends AppThread {
 
 	public void MatchAllTicketQueue() {
 		for (TicketQueue tq : TqueueList) {
-			MatchTicketQueue(tq);
+			MatchTicketInQueueWithTable(tq);
 		}
 	}
 
-	public void MatchTicketQueue(TicketQueue ticketqueue) {
+	public void MatchTicketInQueueWithTable(TicketQueue ticketqueue) {
 		// Find Table For Ticket
 		Table avaTable = null;
 		for (Ticket incomingTicket : ticketqueue.getTicketQueue()) {
@@ -184,10 +149,11 @@ public class TicketHandler extends AppThread {
 						+ avaTable.getTableNo());
 				appKickstarter.getThread("SocketOutHandler").getMBox()
 						.send(new Msg(id, mbox, Msg.Type.TicketCall, tickCall));
+				 TableHandler.HoldTable(WaitForAckTicket, avaTable);
 				Timer.setTimer(id, mbox, TicketAckWaitingTime, WaitForAckTicket.getTicketID());
 				log.info(id + ": SetTimer>  TimerID=" + WaitForAckTicket.getTicketID());
 
-				log.info(id + ": TicketCall Sent> " + WaitForAckTicket.getTicketID() + " Wait For TickerAck");
+				log.info(id + ": TicketCall Sent> Tid=" + WaitForAckTicket.getTicketID() + " Wait For TickerAck");
 
 			} else {
 				// log.info("No Table Available For > Tid=" + incomingTicket.getTicketID());

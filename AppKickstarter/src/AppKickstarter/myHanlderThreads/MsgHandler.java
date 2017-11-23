@@ -42,7 +42,7 @@ public class MsgHandler extends AppThread {
 				Client ReqClient = ((TicketReq) msg.getCommand()).getClient();
 				Ticket ticket = null;
 				try {
-					ticket = TicketHandler.ReqForTicket(ReqClient);
+					ticket = TicketHandler.GetTicketAndAddToTicketQueueIfQueueNotFull(ReqClient);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
@@ -102,19 +102,15 @@ public class MsgHandler extends AppThread {
 				// ticketcall.getTicket().getTicketID());
 				// log.info(id + ": TicketCall Sent> " + ticketcall.getTicket().getTicketID() +
 				// " Wait For TickerAck");
-
 				break;
 
 			case TimesUp:
 				log.info(id + ": TimesUP! from>" + msg.getSender() + "> " + msg.getDetails());
-				//
 				// int ticketID = Integer.valueOf(msg.getDetails().substring(2, 6));
 				// TicketHandler.removeFromWaitForAckTicketQueue(ticketID);
-				//
 				// // Waited too long for TicketAck... Remove Ticket from
 				// // TicketHandler.WaitForAckTicketQueue
 				// // UnHold Table
-				//
 				// TableHandler.UnHoldTable(ticketID);
 				break;
 
