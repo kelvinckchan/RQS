@@ -22,7 +22,8 @@ public class GuiDisplayPanel {
 	private Socket socket;
 
 	private PrintWriter out;
-	DataInputStream in;
+	private DataInputStream in;
+	ArrayList<TicketRep> TicketRepList = new ArrayList<TicketRep>();
 
 	public void run() throws IOException {
 		this.socket = new ServerSocket(ServerPort).accept();
@@ -38,7 +39,6 @@ public class GuiDisplayPanel {
 		out.write(ticketReq.toString());
 	}
 
-	ArrayList<TicketRep> TicketRepList = new ArrayList<TicketRep>();
 
 	class SocketInHandler extends AppThread {
 		private DataInputStream in;

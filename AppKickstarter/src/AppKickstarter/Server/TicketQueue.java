@@ -23,6 +23,7 @@ public class TicketQueue extends Subject {
 	public Queue<Ticket> addTicketToQueue(Ticket t) throws InterruptedException {
 		// if (ticketQueue.size() < ServerForgetItQueueSz) {
 		this.setStatus("Add");
+		t.setInQueueTime();
 		this.ticketQueue.put(t);
 		// this.ticketQueue.forEach(tk -> System.out.println("Adddd" +
 		// tk.getTicketID()));

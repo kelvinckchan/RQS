@@ -1,6 +1,7 @@
 package AppKickstarter.myHanlderThreads;
 
 import AppKickstarter.misc.*;
+import AppKickstarter.timer.Timer;
 
 import java.io.*;
 import java.net.ServerSocket;
@@ -17,12 +18,13 @@ public class SocketInHandler extends AppThread {
 	// private int ServerPort;
 	// private Socket socket;
 	private DataInputStream in;
+	private int TimerIDForMatchTicketQueue;
 
 	// ------------------------------------------------------------
 	// ServerThread
 	public SocketInHandler(String id, AppKickstarter appKickstarter) {
 		super(id, appKickstarter);
-		// this.socket = appKickstarter.getSocket();
+		this.TimerIDForMatchTicketQueue = appKickstarter.getTimerIDForMatchTicketQueue();
 
 	} // ServerThread
 
@@ -31,7 +33,8 @@ public class SocketInHandler extends AppThread {
 	public void run() {
 		log.info(id + ": starting...");
 		try {
-
+			Timer.setSimulationTimer("TicketHandler", appKickstarter.getThread("TicketHandler").getMBox(), 10,
+					TimerIDForMatchTicketQueue);
 			log.info(id + ": waiting For incoming Msg...");
 
 			MsgHandler msghandler = new MsgHandler("MsgHandler", appKickstarter);
@@ -53,7 +56,7 @@ public class SocketInHandler extends AppThread {
 				// out.flush();
 				// MsgParser
 				msghandler.getMBox().send(IncomingMsgParser.IncomingMsgParser(this.id, this.mbox, IncomingMsg));
-//				in.close();
+				// in.close();
 				// if (!socket.isConnected())
 				// break;
 			}

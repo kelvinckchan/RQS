@@ -18,6 +18,7 @@ public class TableHandler extends AppThread {
 
 	private static ArrayList<Table> TableList;
 	private static int TotalSpending;
+	private int mode = appKickstarter.getMode();
 
 	public TableHandler(String id, AppKickstarter appKickstarter) {
 		super(id, appKickstarter);
@@ -80,16 +81,16 @@ public class TableHandler extends AppThread {
 			});
 		}
 		log.info(logstring + "\n");
-		printTicketQueue();
+		PrintTicketQueue();
 		log.info("--------------------------------------------------------------");
 	}
 
 	static String logstring2;
 
-	public static void printTicketQueue() {
+	public static void PrintTicketQueue() {
 		logstring2 = "\n";
 		TicketHandler.TqueueList.forEach(q -> {
-			logstring2 += ("TicketQueue[" + q.getForTableSize()) + "]: ";
+			logstring2 += ("TicketQueue[" + q.getForTableSize()) + "] (" + q.getTicketQueue().size() + "): ";
 			q.getTicketQueue().forEach(t -> {
 				logstring2 += (">" + String.format("%05d", t.getTicketID())) + " ";
 			});
@@ -121,7 +122,7 @@ public class TableHandler extends AppThread {
 	}
 
 	public static void UnHoldTable(int ticketID) {
-		System.out.println("unhold> " + ticketID);
+		log.info("unhold> Tid=" + ticketID);
 		Table tableHeldByTicket = TableList.stream()
 				.filter(t -> t.getTicketAtTable().size() > 0 && t.getTicketAtTable().get(0).getTicketID() == ticketID)
 				.findFirst().orElse(null);

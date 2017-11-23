@@ -15,6 +15,7 @@ import AppKickstarter.Server.Ticket;
 public class MsgHandler extends AppThread {
 	private final int sleepTime = 2000;
 	private int TicketAckWaitingTime;
+	private int mode = appKickstarter.getMode();
 
 	public MsgHandler(String id, AppKickstarter appKickstarter) {
 		super(id, appKickstarter);
@@ -98,8 +99,9 @@ public class MsgHandler extends AppThread {
 		if (ticket != null) {
 			appKickstarter.getThread("SocketOutHandler").getMBox()
 					.send(new Msg(id, mbox, Msg.Type.TicketRep, new TicketRep(ReqClient, ticket)));
-			appKickstarter.getThread("TicketHandler").getMBox()
-					.send(new Msg(id, mbox, Msg.Type.TicketRep, new TicketRep(ReqClient, ticket)));
+			// appKickstarter.getThread("TicketHandler").getMBox()
+			// .send(new Msg(id, mbox, Msg.Type.TicketRep, new TicketRep(ReqClient,
+			// ticket)));
 
 		} else {
 			appKickstarter.getThread("SocketOutHandler").getMBox()
@@ -116,9 +118,12 @@ public class MsgHandler extends AppThread {
 		if (TicketWaiting != null) {
 			LocalDateTime CheckedIn = TableHandler.CheckInWaitingTicketToTable(TicketWaiting, ticketAck.getTableNo());
 			if (CheckedIn != null) {
-				Timer.cancelTimer("TicketHandler", mbox, TicketWaiting.getTicketID());
-				appKickstarter.getThread("SocketOutHandler").getMBox().send(new Msg(id, mbox, Msg.Type.TableAssign,
-						new TableAssign(TicketWaiting, ticketAck.getTableNo())));
+				if (mode == 1) {
+					Timer.cancelTimer("TicketHandler", appKickstarter.getThread("TicketHandler").getMBox(),
+							TicketWaiting.getTicketID());
+					appKickstarter.getThread("SocketOutHandler").getMBox().send(new Msg(id, mbox, Msg.Type.TableAssign,
+							new TableAssign(TicketWaiting, ticketAck.getTableNo())));
+				}
 				log.info(id + ": CheckedInTable Ticket> " + TicketWaiting.getTicketID() + " Waiting For CheckOut");
 			} else {
 				log.info(id + ": Not Able To CheckIn Ticket> " + ticketAck.getTicketID() + " !");

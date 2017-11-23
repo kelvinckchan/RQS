@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 public class Ticket {
 	private static int AccTicketID = 0;
 	private int TicketID;
+	private long InQueueTime;
 	private LocalDateTime checkIn, checkOut;
 	private Client ClientWithTicket;
 
@@ -18,6 +19,14 @@ public class Ticket {
 	public Ticket(int TicketID, Client ClientWithTicket) {
 		this.TicketID = TicketID;
 		this.ClientWithTicket = ClientWithTicket;
+	}
+
+	public void setInQueueTime() {
+		this.InQueueTime = System.currentTimeMillis();
+	}
+
+	public boolean getWaitedTooLong() {
+		return System.currentTimeMillis() - this.InQueueTime > 500 ? true : false;
 	}
 
 	public void setCheckIn(LocalDateTime localDateTime) {

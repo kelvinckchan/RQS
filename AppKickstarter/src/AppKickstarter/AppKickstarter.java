@@ -10,6 +10,7 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Properties;
+import java.util.Scanner;
 import java.util.logging.Logger;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.FileHandler;
@@ -46,6 +47,7 @@ public class AppKickstarter {
 	private Socket socket;
 	DataOutputStream out;
 	DataInputStream in;
+	private final int TimerIDForMatchTicketQueue = 10000;
 
 	// ------------------------------------------------------------
 	// main
@@ -112,6 +114,16 @@ public class AppKickstarter {
 		appThreads = new Hashtable<String, AppThread>();
 	} // AppKickstarter
 
+	private int Mode;
+
+	public int getMode() {
+		return this.Mode;
+	}
+
+	public int getTimerIDForMatchTicketQueue() {
+		return TimerIDForMatchTicketQueue;
+	}
+
 	// ------------------------------------------------------------
 	// startApp
 	private void startApp() {
@@ -121,6 +133,27 @@ public class AppKickstarter {
 		log.info("============================================================");
 		log.info(id + ": Application Starting...");
 
+		Scanner sc = new Scanner(System.in);
+		while (true) {
+			log.info("Press 1 to Run CLIENTSTREAM MODE, 2 to Run GUI MODE: ");
+			int i = sc.nextInt();
+			if (i == 1) {
+				Mode = 1;
+				log.info("Run CLIENTSTREAM MODE!");
+				break;
+			} else if (i == 2) {
+				Mode = 2;
+				log.info("Run GUI MODE!");
+				break;
+			}
+		}
+
+		System.out.println("PRESS ANY KEY TO CONTINUE: ");
+		try {
+			System.in.read();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		// create threads
 		timer = new Timer("timer", this);
 		ticketHandler = new TicketHandler("TicketHandler", this);
@@ -253,4 +286,3 @@ public class AppKickstarter {
 		return timer.getSimulationTime();
 	} // getSimulationTime
 } // AppKickstarter
-

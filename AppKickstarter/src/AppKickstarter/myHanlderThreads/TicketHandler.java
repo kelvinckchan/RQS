@@ -25,16 +25,18 @@ import AppKickstarter.timer.Timer;
 public class TicketHandler extends AppThread {
 	public static List<TicketQueue> TqueueList = new ArrayList<TicketQueue>();
 	private static int ServerForgetItQueueSz;
-	private final int sleepTime = 10;
+	private final int sleepTime = 30;
+	private int TimerIDForMatchTicketQueue;
 	private static Queue<Ticket> WaitForAckTicketQueue = new LinkedList<Ticket>();
-
 	private int TicketAckWaitingTime;
+	private int mode = appKickstarter.getMode();
 
 	public TicketHandler(String id, AppKickstarter appKickstarter) {
 		super(id, appKickstarter);
 		createTicketQueue();
 
 		this.TicketAckWaitingTime = Integer.valueOf(appKickstarter.getProperty("TicketAckWaitingTime"));
+		this.TimerIDForMatchTicketQueue = appKickstarter.getTimerIDForMatchTicketQueue();
 	}
 
 	public void createTicketQueue() {
@@ -55,35 +57,44 @@ public class TicketHandler extends AppThread {
 	@Override
 	public void run() {
 		log.info(id + ": starting...");
-		Timer.setSimulationTimer(id, mbox, sleepTime, 10000);
 
 		for (boolean quit = false; !quit;) {
 			Msg msg = mbox.receive();
 
 			// log.info(id + ": message received: [" + msg + "].");
 			switch (msg.getType()) {
-			case TicketRep:
-				TicketRep ticketRep = (TicketRep) msg.getCommand();
-				Ticket ticketReped = ticketRep.getTicket();
-
-				// MatchAllTicketQueue();
-
-				break;
+			// case TicketRep:
+			// TicketRep ticketRep = (TicketRep) msg.getCommand();
+			// Ticket ticketReped = ticketRep.getTicket();
+			//
+			// // MatchAllTicketQueue();
+			//
+			// break;
 			case TimesUp:
-				if (Integer.valueOf(msg.getDetails().substring(2, 7)) == 10000) {
-					Timer.setSimulationTimer(id, mbox, sleepTime, 9999);
-				} else {
-					// Waited too long for TicketAck... Remove Ticket from
-					// TicketHandler.WaitForAckTicketQueue
-					// UnHold Table
-					log.info(id + ": TimesUP! from>" + msg.getSender() + "> " + msg.getDetails());
-					int ticketID = Integer.valueOf(msg.getDetails().substring(2, 6));
-					boolean TicketWaitingRemoved = removeFromWaitForAckTicketQueue(ticketID);
-					log.info(id + ": Tid=" + ticketID + " Removed> " + TicketWaitingRemoved);
+				int timerID;
+				try {
+					timerID = Integer.parseInt(msg.getDetails().substring(2, 7));
+				} catch (NumberFormatException e) {
+					timerID = 0;
+				}
 
-					TableHandler.UnHoldTable(ticketID);
+				if (timerID != TimerIDForMatchTicketQueue) {
+					if (mode == 1) {
+						// Waited too long for TicketAck... Remove Ticket from
+						// TicketHandler.WaitForAckTicketQueue
+						// UnHold Table
+						log.info(id + ": TimesUP! from>" + msg.getSender() + "> " + msg.getDetails());
+						int ticketID = Integer.valueOf(msg.getDetails().substring(2, 6));
+						boolean TicketWaitingRemoved = removeFromWaitForAckTicketQueue(ticketID);
+						log.info(id + ": Tid=" + ticketID + " Removed> " + TicketWaitingRemoved);
+
+						TableHandler.UnHoldTable(ticketID);
+					}
 				}
 				MatchAllTicketQueue();
+				log.info(id + ": Set Next Timer.");
+				Timer.setSimulationTimer(id, mbox, sleepTime, TimerIDForMatchTicketQueue);
+
 				break;
 
 			default:
@@ -116,8 +127,13 @@ public class TicketHandler extends AppThread {
 	public boolean removeFromWaitForAckTicketQueue(int TicketID) {
 		log.info("removeFromWaitForAckTicketQueue");
 		WaitForAckTicketQueue.forEach(t -> log.info(TicketID + "< >tid=" + t.getTicketID()));
-
-		return WaitForAckTicketQueue.removeIf(tc -> tc.getTicketID() == TicketID);
+		boolean removed;
+		try {
+			removed = WaitForAckTicketQueue.removeIf(tc -> tc.getTicketID() == TicketID);
+		} catch (Exception e) {
+			removed = false;
+		}
+		return removed;
 	}
 
 	public static Ticket FindWaitingTicketAndPoll(int TicketId) {
@@ -129,6 +145,7 @@ public class TicketHandler extends AppThread {
 	}
 
 	public void MatchAllTicketQueue() {
+		log.info("Match All TicketQueue.");
 		for (TicketQueue tq : TqueueList) {
 			MatchTicketInQueueWithTable(tq);
 		}
@@ -158,7 +175,14 @@ public class TicketHandler extends AppThread {
 				log.info(id + ": SetTimer>  TimerID=" + WaitForAckTicket.getTicketID());
 				log.info(id + ": TicketCall Sent> Tid=" + WaitForAckTicket.getTicketID() + " Wait For TickerAck");
 			} else {
-				log.info("No Table Available For > Tid=" + incomingTicket.getTicketID());
+				if (incomingTicket.getWaitedTooLong() && mode == 1) {
+
+					ticketqueue.removeTicketFromQueue(incomingTicket);
+				log.info("Ticket Waited Too Long> "+incomingTicket.getTicketID()+" remove From Queue");
+				} else {
+					log.info("No Table For> Tid=" + incomingTicket.getTicketID() + " Cid="
+							+ incomingTicket.getClientWithTicket().getClientID());
+				}
 			}
 		}
 	}
