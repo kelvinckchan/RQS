@@ -9,15 +9,22 @@ public class Table {
 	private boolean Available;
 	private int AvailableSize;
 	private ArrayList<Ticket> TicketAtTable;
+	private String state;
 
 	public Table(int TableNo, int TableSize) {
 		this.TableNo = TableNo;
 		this.TableSize = TableSize;
 		this.AvailableSize = TableSize;
 		this.Available = true;
+		this.state="Available";
 		this.TicketAtTable = new ArrayList<Ticket>();
 	}
 
+	public String getState() {return this.state;}
+	public void setHoldState() {this.state="Hold";}
+	public void setEatingState() {this.state="Eating";}
+	public void setAvailableState() {this.state="Available";}
+	
 	public int getTableNo() {
 		return this.TableNo;
 	}
@@ -47,7 +54,7 @@ public class Table {
 	public void clearTable() {
 		this.TicketAtTable.clear();
 	}
-	
+
 	public void removeTicketToTable(Ticket t) {
 		this.Available = true;
 		AvailableSize += t.getClientWithTicket().getnPerson();

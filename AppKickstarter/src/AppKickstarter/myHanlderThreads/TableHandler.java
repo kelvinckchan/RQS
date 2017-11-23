@@ -108,6 +108,7 @@ public class TableHandler extends AppThread {
 		ticket.setCheckIn(LocalDateTime.now());
 		// table.setAvailable(false);
 		// table.addTicketToTable(ticket);
+		table.setEatingState();
 		TableList.set(FindTableIndex(table), table);
 		PrintAllTable();
 		return LocalDateTime.now();
@@ -118,6 +119,7 @@ public class TableHandler extends AppThread {
 	public static void HoldTable(Ticket ticket, Table table) {
 		table.setAvailable(false);
 		table.addTicketToTable(ticket);
+		table.setHoldState();
 		TableList.set(FindTableIndex(table), table);
 	}
 
@@ -128,6 +130,7 @@ public class TableHandler extends AppThread {
 				.findFirst().orElse(null);
 		if (tableHeldByTicket != null) {
 			tableHeldByTicket.setAvailable(true);
+			tableHeldByTicket.setAvailableState();
 			tableHeldByTicket.removeTicketToTable(ticketID);
 			TableList.set(FindTableIndex(tableHeldByTicket), tableHeldByTicket);
 		}
@@ -140,11 +143,12 @@ public class TableHandler extends AppThread {
 		if (ticketAtTable != null) {
 			ticketAtTable.setCheckOut(LocalDateTime.now());
 			table.setAvailable(true);
+			table.setAvailableState();
 			table.removeTicketToTable(ticketAtTable);
 			table.clearTable();
 		}
 		TableList.set(FindTableIndex(table), table);
-		log.info("TotalSpending: $"+TotalSpending);
+		log.info("TotalSpending: $" + TotalSpending);
 		// TicketHandler.MatchTicketForSize(table.getTableSize());
 		return LocalDateTime.now();
 	}

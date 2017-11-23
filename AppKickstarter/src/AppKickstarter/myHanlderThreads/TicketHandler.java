@@ -25,7 +25,7 @@ import AppKickstarter.timer.Timer;
 public class TicketHandler extends AppThread {
 	public static List<TicketQueue> TqueueList = new ArrayList<TicketQueue>();
 	private static int ServerForgetItQueueSz;
-	private final int sleepTime = 3;
+	private final int sleepTime = 5;
 	private int TimerIDForMatchTicketQueue;
 	private static Queue<Ticket> WaitForAckTicketQueue = new LinkedList<Ticket>();
 	private int TicketAckWaitingTime;
@@ -73,7 +73,8 @@ public class TicketHandler extends AppThread {
 			case TimesUp:
 				int timerID;
 				try {
-					timerID = Integer.parseInt(msg.getDetails().substring(2, 7));
+					timerID = Integer.parseInt(msg.getDetails().substring(1, 6));
+					log.fine("NTimerID: "+timerID);
 				} catch (NumberFormatException e) {
 					timerID = 0;
 				}
@@ -83,16 +84,16 @@ public class TicketHandler extends AppThread {
 						// Waited too long for TicketAck... Remove Ticket from
 						// TicketHandler.WaitForAckTicketQueue
 						// UnHold Table
-						log.info(id + ": TimesUP! from>" + msg.getSender() + "> " + msg.getDetails());
-						int ticketID = Integer.valueOf(msg.getDetails().substring(2, 6));
+						log.fine(id + ": TimesUP! from>" + msg.getSender() + "> " + msg.getDetails());
+						int ticketID = Integer.valueOf(msg.getDetails().substring(1, 5));
 						boolean TicketWaitingRemoved = removeFromWaitForAckTicketQueue(ticketID);
-						log.info(id + ": Tid=" + ticketID + " Removed> " + TicketWaitingRemoved);
+						log.fine(id + ": Tid=" + ticketID + " Removed> " + TicketWaitingRemoved);
 
 						TableHandler.UnHoldTable(ticketID);
 					}
 				}
 				MatchAllTicketQueue();
-				log.info(id + ": Set Next Timer.");
+				log.fine(id + ": Set Next Timer.");
 				Timer.setSimulationTimer(id, mbox, sleepTime, TimerIDForMatchTicketQueue);
 
 				break;

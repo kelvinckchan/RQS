@@ -26,7 +26,7 @@ public class Ticket {
 	}
 
 	public boolean getWaitedTooLong() {
-		return System.currentTimeMillis() - this.InQueueTime > 500 ? true : false;
+		return System.currentTimeMillis() - this.InQueueTime > 800 ? true : false;
 	}
 
 	public void setCheckIn(LocalDateTime localDateTime) {
