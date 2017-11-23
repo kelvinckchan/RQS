@@ -17,7 +17,6 @@ import AppKickstarter.misc.Msg;
 public class TableHandler extends AppThread {
 
 	private static ArrayList<Table> TableList;
-	// private static ArrayList<Boolean> Availability;
 	private static int TotalSpending;
 
 	public TableHandler(String id, AppKickstarter appKickstarter) {
@@ -100,7 +99,6 @@ public class TableHandler extends AppThread {
 	}
 
 	public static LocalDateTime CheckInWaitingTicketToTable(Ticket TicketWaiting, int TableNo) {
-
 		return CheckInTable(TicketWaiting, getTableByTableNo(TableNo));
 	}
 
@@ -110,8 +108,6 @@ public class TableHandler extends AppThread {
 		// table.setAvailable(false);
 		// table.addTicketToTable(ticket);
 		TableList.set(FindTableIndex(table), table);
-		// Availability.set(FindTableInTableList(table), false);
-
 		PrintAllTable();
 		return LocalDateTime.now();
 		// }
@@ -147,10 +143,7 @@ public class TableHandler extends AppThread {
 			table.clearTable();
 		}
 		TableList.set(FindTableIndex(table), table);
-		// Availability.set(FindTableInTableList(table), true);
-
 		// TicketHandler.MatchTicketForSize(table.getTableSize());
-
 		return LocalDateTime.now();
 	}
 

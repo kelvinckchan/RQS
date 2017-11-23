@@ -15,6 +15,11 @@ public class Ticket {
 		this.ClientWithTicket = ClientWithTicket;
 	}
 
+	public Ticket(int TicketID, Client ClientWithTicket) {
+		this.TicketID = TicketID;
+		this.ClientWithTicket = ClientWithTicket;
+	}
+
 	public void setCheckIn(LocalDateTime localDateTime) {
 		this.checkIn = localDateTime;
 	}

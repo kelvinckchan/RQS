@@ -55,7 +55,7 @@ public class TicketHandler extends AppThread {
 	@Override
 	public void run() {
 		log.info(id + ": starting...");
-		Timer.setSimulationTimer(id, mbox, sleepTime, 9999);
+		Timer.setSimulationTimer(id, mbox, sleepTime, 10000);
 
 		for (boolean quit = false; !quit;) {
 			Msg msg = mbox.receive();
@@ -70,22 +70,20 @@ public class TicketHandler extends AppThread {
 
 				break;
 			case TimesUp:
-				// MatchAllTicketQueue();
-				// Timer.setTimer(id, mbox, sleepTime);
-				if (Integer.valueOf(msg.getDetails().substring(2, 6)) == 9999) {
-					MatchAllTicketQueue();
+				if (Integer.valueOf(msg.getDetails().substring(2, 7)) == 10000) {
 					Timer.setSimulationTimer(id, mbox, sleepTime, 9999);
 				} else {
+					// Waited too long for TicketAck... Remove Ticket from
+					// TicketHandler.WaitForAckTicketQueue
+					// UnHold Table
 					log.info(id + ": TimesUP! from>" + msg.getSender() + "> " + msg.getDetails());
 					int ticketID = Integer.valueOf(msg.getDetails().substring(2, 6));
 					boolean TicketWaitingRemoved = removeFromWaitForAckTicketQueue(ticketID);
 					log.info(id + ": Tid=" + ticketID + " Removed> " + TicketWaitingRemoved);
-					// Waited too long for TicketAck... Remove Ticket from
-					// TicketHandler.WaitForAckTicketQueue
-					// UnHold Table
-					MatchAllTicketQueue();
+
 					TableHandler.UnHoldTable(ticketID);
 				}
+				MatchAllTicketQueue();
 				break;
 
 			default:
@@ -158,11 +156,9 @@ public class TicketHandler extends AppThread {
 				TableHandler.HoldTable(WaitForAckTicket, avaTable);
 				Timer.setSimulationTimer(id, mbox, TicketAckWaitingTime, WaitForAckTicket.getTicketID());
 				log.info(id + ": SetTimer>  TimerID=" + WaitForAckTicket.getTicketID());
-
 				log.info(id + ": TicketCall Sent> Tid=" + WaitForAckTicket.getTicketID() + " Wait For TickerAck");
-
 			} else {
-				// log.info("No Table Available For > Tid=" + incomingTicket.getTicketID());
+				log.info("No Table Available For > Tid=" + incomingTicket.getTicketID());
 			}
 		}
 	}
