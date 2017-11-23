@@ -25,7 +25,7 @@ import AppKickstarter.timer.Timer;
 public class TicketHandler extends AppThread {
 	public static List<TicketQueue> TqueueList = new ArrayList<TicketQueue>();
 	private static int ServerForgetItQueueSz;
-	private final int sleepTime = 30;
+	private final int sleepTime = 3;
 	private int TimerIDForMatchTicketQueue;
 	private static Queue<Ticket> WaitForAckTicketQueue = new LinkedList<Ticket>();
 	private int TicketAckWaitingTime;
@@ -166,21 +166,21 @@ public class TicketHandler extends AppThread {
 
 				WaitForAckTicketQueue.add(tickCall.getTicket());
 
-				log.info("Found Table & Poll TicketQueue> Tid=" + WaitForAckTicket.getTicketID() + ", TableNo="
+				log.fine("Found Table & Poll TicketQueue> Tid=" + WaitForAckTicket.getTicketID() + ", TableNo="
 						+ avaTable.getTableNo());
 				appKickstarter.getThread("SocketOutHandler").getMBox()
 						.send(new Msg(id, mbox, Msg.Type.TicketCall, tickCall));
 				TableHandler.HoldTable(WaitForAckTicket, avaTable);
 				Timer.setSimulationTimer(id, mbox, TicketAckWaitingTime, WaitForAckTicket.getTicketID());
-				log.info(id + ": SetTimer>  TimerID=" + WaitForAckTicket.getTicketID());
+				log.fine(id + ": SetTimer>  TimerID=" + WaitForAckTicket.getTicketID());
 				log.info(id + ": TicketCall Sent> Tid=" + WaitForAckTicket.getTicketID() + " Wait For TickerAck");
 			} else {
 				if (incomingTicket.getWaitedTooLong() && mode == 1) {
 
 					ticketqueue.removeTicketFromQueue(incomingTicket);
-				log.info("Ticket Waited Too Long> "+incomingTicket.getTicketID()+" remove From Queue");
+				log.fine("Ticket Waited Too Long> "+incomingTicket.getTicketID()+" remove From Queue");
 				} else {
-					log.info("No Table For> Tid=" + incomingTicket.getTicketID() + " Cid="
+					log.finer("No Table For> Tid=" + incomingTicket.getTicketID() + " Cid="
 							+ incomingTicket.getClientWithTicket().getClientID());
 				}
 			}

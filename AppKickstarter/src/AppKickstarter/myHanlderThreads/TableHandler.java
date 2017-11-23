@@ -51,7 +51,7 @@ public class TableHandler extends AppThread {
 
 		avaTable = TableList.stream()
 				.filter(t -> t.getAvailable() && (t.getTableSize() >= ticket.getClientWithTicket().getnPerson()
-						&& t.getTableSize() <= ticket.getClientWithTicket().getnPerson() + 2))
+						&& t.getTableSize() <= ticket.getClientWithTicket().getnPerson() + 3))
 				.findFirst().orElse(null);
 
 		if (avaTable != null) {
@@ -122,7 +122,7 @@ public class TableHandler extends AppThread {
 	}
 
 	public static void UnHoldTable(int ticketID) {
-		log.info("unhold> Tid=" + ticketID);
+		log.fine("Unhold> Tid=" + ticketID);
 		Table tableHeldByTicket = TableList.stream()
 				.filter(t -> t.getTicketAtTable().size() > 0 && t.getTicketAtTable().get(0).getTicketID() == ticketID)
 				.findFirst().orElse(null);
@@ -144,6 +144,7 @@ public class TableHandler extends AppThread {
 			table.clearTable();
 		}
 		TableList.set(FindTableIndex(table), table);
+		log.info("TotalSpending: $"+TotalSpending);
 		// TicketHandler.MatchTicketForSize(table.getTableSize());
 		return LocalDateTime.now();
 	}
