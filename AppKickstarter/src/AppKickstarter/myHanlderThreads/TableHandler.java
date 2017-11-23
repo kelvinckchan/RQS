@@ -55,7 +55,7 @@ public class TableHandler extends AppThread {
 				.findFirst().orElse(null);
 
 		if (avaTable != null) {
-	
+
 			return avaTable;
 		}
 		return null;
@@ -100,22 +100,22 @@ public class TableHandler extends AppThread {
 	}
 
 	public static LocalDateTime CheckInWaitingTicketToTable(Ticket TicketWaiting, int TableNo) {
-		
+
 		return CheckInTable(TicketWaiting, getTableByTableNo(TableNo));
 	}
 
 	public static LocalDateTime CheckInTable(Ticket ticket, Table table) {
-//		if (table.getAvailable()) {
-			ticket.setCheckIn(LocalDateTime.now());
-//			table.setAvailable(false);
-//			table.addTicketToTable(ticket);
-			TableList.set(FindTableIndex(table), table);
-			// Availability.set(FindTableInTableList(table), false);
-			
-			PrintAllTable();
-			return LocalDateTime.now();
-//		}
-//		return null;
+		// if (table.getAvailable()) {
+		ticket.setCheckIn(LocalDateTime.now());
+		// table.setAvailable(false);
+		// table.addTicketToTable(ticket);
+		TableList.set(FindTableIndex(table), table);
+		// Availability.set(FindTableInTableList(table), false);
+
+		PrintAllTable();
+		return LocalDateTime.now();
+		// }
+		// return null;
 	}
 
 	public static void HoldTable(Ticket ticket, Table table) {
@@ -165,6 +165,10 @@ public class TableHandler extends AppThread {
 			}
 		}
 		return -1;
+	}
+
+	public static ArrayList<Table> getTableList() {
+		return TableList;
 	}
 
 }
