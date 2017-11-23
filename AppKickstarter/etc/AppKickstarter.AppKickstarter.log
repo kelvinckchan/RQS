@@ -1,0 +1,46 @@
+171124-00:28:13:0839[INFO] -- 
+171124-00:28:13:0885[INFO] -- 
+171124-00:28:13:0886[INFO] -- ============================================================
+171124-00:28:13:0887[INFO] -- AppKickstarter: Application Starting...
+171124-00:28:13:0895[FINE] -- AppKickstarter: registering timer
+171124-00:28:13:0896[FINE] -- timer: created!
+171124-00:28:13:0906[FINE] -- AppKickstarter: registering TicketHandler
+171124-00:28:13:0907[FINE] -- TicketHandler: created!
+171124-00:28:14:0037[FINE] -- Create TqueueList> 
+171124-00:28:14:0041[FINE] -- AppKickstarter: registering TableHandler
+171124-00:28:14:0042[FINE] -- TableHandler: created!
+171124-00:28:14:0044[FINE] -- Create Table> no:00000 with Size:2
+171124-00:28:14:0045[FINE] -- Create Table> no:00001 with Size:2
+171124-00:28:14:0047[FINE] -- Create Table> no:00002 with Size:2
+171124-00:28:14:0049[FINE] -- Create Table> no:00003 with Size:2
+171124-00:28:14:0050[FINE] -- Create Table> no:00004 with Size:2
+171124-00:28:14:0058[FINE] -- Create Table> no:00005 with Size:2
+171124-00:28:14:0059[FINE] -- Create Table> no:00006 with Size:2
+171124-00:28:14:0060[FINE] -- Create Table> no:00007 with Size:2
+171124-00:28:14:0060[FINE] -- Create Table> no:00008 with Size:2
+171124-00:28:14:0061[FINE] -- Create Table> no:00009 with Size:2
+171124-00:28:14:0061[FINE] -- Create Table> no:00100 with Size:4
+171124-00:28:14:0063[FINE] -- Create Table> no:00101 with Size:4
+171124-00:28:14:0064[FINE] -- Create Table> no:00102 with Size:4
+171124-00:28:14:0065[FINE] -- Create Table> no:00103 with Size:4
+171124-00:28:14:0065[FINE] -- Create Table> no:00104 with Size:4
+171124-00:28:14:0066[FINE] -- Create Table> no:00105 with Size:4
+171124-00:28:14:0067[FINE] -- Create Table> no:00106 with Size:4
+171124-00:28:14:0067[FINE] -- Create Table> no:00107 with Size:4
+171124-00:28:14:0068[FINE] -- Create Table> no:00108 with Size:4
+171124-00:28:14:0069[FINE] -- Create Table> no:00109 with Size:4
+171124-00:28:14:0069[FINE] -- Create Table> no:00200 with Size:6
+171124-00:28:14:0070[FINE] -- Create Table> no:00201 with Size:6
+171124-00:28:14:0071[FINE] -- Create Table> no:00202 with Size:6
+171124-00:28:14:0072[FINE] -- Create Table> no:00203 with Size:6
+171124-00:28:14:0073[FINE] -- Create Table> no:00204 with Size:6
+171124-00:28:14:0074[FINE] -- Create Table> no:00205 with Size:6
+171124-00:28:14:0074[FINE] -- Create Table> no:00206 with Size:6
+171124-00:28:14:0075[FINE] -- Create Table> no:00207 with Size:6
+171124-00:28:14:0076[FINE] -- Create Table> no:00300 with Size:8
+171124-00:28:14:0076[FINE] -- Create Table> no:00301 with Size:8
+171124-00:28:14:0077[FINE] -- Create Table> no:00400 with Size:10
+171124-00:28:14:0077[FINE] -- Create Table> no:00401 with Size:10
+171124-00:28:14:0078[INFO] -- timer: starting...
+171124-00:28:14:0081[INFO] -- TicketHandler: starting...
+171124-00:28:14:0083[INFO] -- AppKickstarter: Listening at ServerIP>127.0.0.1 ServerPort>54321...
