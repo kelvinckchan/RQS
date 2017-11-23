@@ -10,7 +10,7 @@ public abstract class AppThread implements Runnable {
     protected String id;
     protected AppKickstarter appKickstarter;
     protected MBox mbox = null;
-    protected Logger log = null;
+    protected static Logger log = null;
 
     //------------------------------------------------------------
     // AppThread

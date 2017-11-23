@@ -44,6 +44,10 @@ public class Table {
 		this.TicketAtTable.add(t);
 	}
 
+	public void clearTable() {
+		this.TicketAtTable.clear();
+	}
+	
 	public void removeTicketToTable(Ticket t) {
 		this.Available = true;
 		AvailableSize += t.getClientWithTicket().getnPerson();

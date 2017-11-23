@@ -3,12 +3,14 @@ package AppKickstarter.Server;
 import java.time.LocalDateTime;
 
 public class Ticket {
-	private static int AccTicketID = 1;
+	private static int AccTicketID = 0;
 	private int TicketID;
 	private LocalDateTime checkIn, checkOut;
 	private Client ClientWithTicket;
 
 	public Ticket(Client ClientWithTicket) {
+		if (AccTicketID >= 9999)
+			AccTicketID = 0;
 		this.TicketID = AccTicketID++;
 		this.ClientWithTicket = ClientWithTicket;
 	}

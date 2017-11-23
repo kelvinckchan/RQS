@@ -1,8 +1,10 @@
 package AppKickstarter.myHanlderThreads;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Queue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
@@ -23,15 +25,16 @@ import AppKickstarter.timer.Timer;
 public class TicketHandler extends AppThread {
 	public static List<TicketQueue> TqueueList = new ArrayList<TicketQueue>();
 	private static int ServerForgetItQueueSz;
-	static TableHandler tableHandler;
 	private final int sleepTime = 10;
-	private static BlockingQueue<TicketCall> WaitForAckTicketQueue = new LinkedBlockingQueue<TicketCall>();
+	private static Queue<Ticket> WaitForAckTicketQueue = new LinkedList<Ticket>();
+
+	private int TicketAckWaitingTime;
 
 	public TicketHandler(String id, AppKickstarter appKickstarter) {
 		super(id, appKickstarter);
 		createTicketQueue();
-		this.tableHandler = new TableHandler("TableHandler", this.appKickstarter);
-
+		  
+		this.TicketAckWaitingTime = Integer.valueOf(appKickstarter.getProperty("TicketAckWaitingTime"));
 	}
 
 	public void createTicketQueue() {
@@ -52,16 +55,32 @@ public class TicketHandler extends AppThread {
 	@Override
 	public void run() {
 		log.info(id + ": starting...");
-		Timer.setTimer(id, mbox, sleepTime);
+		// Timer.setTimer(id, mbox, sleepTime);
 		for (boolean quit = false; !quit;) {
 			Msg msg = mbox.receive();
 
 			// log.info(id + ": message received: [" + msg + "].");
 			switch (msg.getType()) {
+			case TicketRep:
+				TicketRep ticketRep = (TicketRep) msg.getCommand();
+				Ticket ticketReped = ticketRep.getTicket();
 
-			case TimesUp:
 				MatchAllTicketQueue();
-				Timer.setTimer(id, mbox, sleepTime);
+
+				break;
+			case TimesUp:
+				// MatchAllTicketQueue();
+				// Timer.setTimer(id, mbox, sleepTime);
+				log.info(id + ": TimesUP! from>" + msg.getSender() + "> " + msg.getDetails());
+
+				int ticketID = Integer.valueOf(msg.getDetails().substring(2, 6));
+				boolean TicketWaitingRemoved = removeFromWaitForAckTicketQueue(ticketID);
+				log.info(id + ": Tid=" + ticketID + " Removed> " + TicketWaitingRemoved);
+				// Waited too long for TicketAck... Remove Ticket from
+				// TicketHandler.WaitForAckTicketQueue
+				// UnHold Table
+
+//				TableHandler.UnHoldTable(ticketID);
 				break;
 
 			case Hello:
@@ -121,17 +140,20 @@ public class TicketHandler extends AppThread {
 		return null;
 	}
 
-	public static BlockingQueue<TicketCall> getWaitForAckTicketQueue() {
+	public static Queue<Ticket> getWaitForAckTicketQueue() {
 		return WaitForAckTicketQueue;
 	}
 
-	public static void removeFromWaitForAckTicketQueue(int TicketID) {
-		WaitForAckTicketQueue.removeIf(tc -> tc.getTicket().getTicketID() == TicketID);
+	public boolean removeFromWaitForAckTicketQueue(int TicketID) {
+		log.info("removeFromWaitForAckTicketQueue");
+		WaitForAckTicketQueue.forEach(t -> log.info(TicketID + "< >tid=" + t.getTicketID()));
+
+		return WaitForAckTicketQueue.removeIf(tc -> tc.getTicketID() == TicketID);
 	}
 
-	public static TicketCall FindWaitingTicketAndPoll(int TicketId) {
-		TicketCall tc = WaitForAckTicketQueue.stream()
-				.filter(t -> Objects.equals(t.getTicket().getTicketID(), TicketId)).findFirst().orElse(null);
+	public static Ticket FindWaitingTicketAndPoll(int TicketId) {
+		Ticket tc = WaitForAckTicketQueue.stream().filter(t -> Objects.equals(t.getTicketID(), TicketId)).findFirst()
+				.orElse(null);
 		if (tc != null)
 			WaitForAckTicketQueue.remove(tc);
 		return tc;
@@ -147,7 +169,7 @@ public class TicketHandler extends AppThread {
 		// Find Table For Ticket
 		Table avaTable = null;
 		for (Ticket incomingTicket : ticketqueue.getTicketQueue()) {
-			avaTable = tableHandler.MatchAvailableTable(incomingTicket);
+			avaTable = TableHandler.MatchAvailableTable(incomingTicket);
 			if (avaTable != null) {
 				// If Found, Create TicketCall and Sent,
 				// Poll Ticket From TicketQueue
@@ -156,15 +178,17 @@ public class TicketHandler extends AppThread {
 				ticketqueue.removeTicketFromQueue(incomingTicket);
 				TicketCall tickCall = new TicketCall(WaitForAckTicket, avaTable);
 
-				try {
-					WaitForAckTicketQueue.put(tickCall);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
+				WaitForAckTicketQueue.add(tickCall.getTicket());
 
-				log.info("Found Table & Poll TicketQueue> Tid=" + WaitForAckTicket);
-				appKickstarter.getThread("MsgHandler").getMBox().send(new Msg(id, mbox, Msg.Type.TicketCall, tickCall));
-				tableHandler.print();
+				log.info("Found Table & Poll TicketQueue> Tid=" + WaitForAckTicket.getTicketID() + ", TableNo="
+						+ avaTable.getTableNo());
+				appKickstarter.getThread("SocketOutHandler").getMBox()
+						.send(new Msg(id, mbox, Msg.Type.TicketCall, tickCall));
+				Timer.setTimer(id, mbox, TicketAckWaitingTime, WaitForAckTicket.getTicketID());
+				log.info(id + ": SetTimer>  TimerID=" + WaitForAckTicket.getTicketID());
+
+				log.info(id + ": TicketCall Sent> " + WaitForAckTicket.getTicketID() + " Wait For TickerAck");
+
 			} else {
 				// log.info("No Table Available For > Tid=" + incomingTicket.getTicketID());
 			}
@@ -186,7 +210,7 @@ public class TicketHandler extends AppThread {
 			String status = subject.getStatus();
 			// When Ticket Added To TicketQueue
 			if (status.equals("Add")) {
-				MatchTicketQueue(((TicketQueue) subject));
+				// MatchTicketQueue(((TicketQueue) subject));
 				log.info(name + ": [" + status + "] Find Table for Ticket> ");
 			}
 		} // update

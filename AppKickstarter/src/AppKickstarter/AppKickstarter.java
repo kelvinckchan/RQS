@@ -37,6 +37,7 @@ public class AppKickstarter {
 	private SocketInHandler socketInHandler;
 	private SocketOutHandler socketOutHandler;
 	private TicketHandler ticketHandler;
+	private TableHandler tableHandler;
 	private String ServerIP;
 	private int ServerPort;
 	private Socket socket;
@@ -117,6 +118,15 @@ public class AppKickstarter {
 		log.info("============================================================");
 		log.info(id + ": Application Starting...");
 
+		// create threads
+		timer = new Timer("timer", this);
+		ticketHandler = new TicketHandler("TicketHandler", this);
+		tableHandler = new TableHandler("TableHandler", this);
+		// start threads
+		new Thread(timer).start();
+		new Thread(ticketHandler).start();
+		new Thread(tableHandler).start();
+
 		this.ServerIP = getProperty("ServerIP");
 		this.ServerPort = Integer.valueOf(getProperty("ServerPort"));
 		log.info(id + ": Listening at ServerIP>" + ServerIP + " ServerPort>" + ServerPort + "...");
@@ -126,25 +136,11 @@ public class AppKickstarter {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
-		log.info(id + ": accepted...");
-
-		// create threads
-		timer = new Timer("timer", this);
-		// threadA = new ThreadA("ThreadA", this);
 		socketInHandler = new SocketInHandler("SocketInHandler", this);
 		socketOutHandler = new SocketOutHandler("SocketOutHandler", this);
-		// tableManager = new TableHandler("TableManager", this);
-		ticketHandler = new TicketHandler("TicketHandler", this);
-		// start threads
-		new Thread(timer).start();
-		// new Thread(threadA).start();
-		// tableManager.createTable();
-		// new Thread(tableManager).start();
-		new Thread(ticketHandler).start();
 		new Thread(socketInHandler).start();
 		new Thread(socketOutHandler).start();
-
+		log.info(id + ": accepted...");
 	} // startApp
 
 	// ------------------------------------------------------------
