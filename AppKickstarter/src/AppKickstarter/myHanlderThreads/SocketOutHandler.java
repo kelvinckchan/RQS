@@ -19,6 +19,10 @@ public class SocketOutHandler extends AppThread {
 
 	// ------------------------------------------------------------
 	// ServerThread
+	/** 
+	 * @param id
+	 * @param appKickstarter 
+	 */
 	public SocketOutHandler(String id, AppKickstarter appKickstarter) {
 		super(id, appKickstarter);
 		// this.socket = appKickstarter.getSocket();
