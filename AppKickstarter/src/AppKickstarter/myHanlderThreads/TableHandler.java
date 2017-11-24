@@ -15,6 +15,12 @@ import AppKickstarter.misc.MBox;
 import AppKickstarter.misc.Msg;
 import AppKickstarter.timer.Timer;
 
+/**
+ * This class implements a Table Handler
+ * @author 
+ * @version 1.0
+ */
+
 public class TableHandler extends AppThread {
 
 	private static ArrayList<Table> TableList;
@@ -23,11 +29,22 @@ public class TableHandler extends AppThread {
 	private static int KickOutTime = 30 * 1000;
 	private static int PrintTime = 3600;
 	private static int PrintTimerID = 20000;
+	
+	/**
+	 * This constructs a TableHandler with id and appKickstarter
+	 * @param id : 
+	 * @param appKickstarter : 
+	 */
 
 	public TableHandler(String id, AppKickstarter appKickstarter) {
 		super(id, appKickstarter);
 		createTable();
 	}
+	
+	/**
+	 * 
+	 * @return 
+	 */
 
 	@Override
 	public void run() {
@@ -70,6 +87,12 @@ public class TableHandler extends AppThread {
 
 	}
 
+	
+	/**
+	 * Create tables of different table size 
+	 * 
+	 */
+
 	public void createTable() {
 		String tName = "NTables_";
 		TableList = new ArrayList<Table>();
@@ -85,6 +108,12 @@ public class TableHandler extends AppThread {
 		}
 
 	}
+
+	/**
+	 * Matching all available table with the waiting clients
+	 * @param ticket : 
+	 * 
+	 */
 
 	public static Table MatchAvailableTable(Ticket ticket) {
 		Table avaTable = TableList.stream()
@@ -102,6 +131,11 @@ public class TableHandler extends AppThread {
 
 	static int ts;
 	static String logstring;
+	
+	/**
+	 * Print out all table 
+	 * 
+	 */
 
 	public static void PrintAllTable() {
 		logstring = "";
@@ -125,6 +159,11 @@ public class TableHandler extends AppThread {
 	}
 
 	static String logstring2;
+	
+	/**
+	 * Print ticket queue
+	 */
+
 
 	public static void PrintTicketQueue() {
 		logstring2 = "\n";
@@ -141,6 +180,13 @@ public class TableHandler extends AppThread {
 	public LocalDateTime CheckInWaitingTicketToTable(Ticket TicketWaiting, int TableNo) {
 		return CheckInTable(TicketWaiting, getTableByTableNo(TableNo));
 	}
+
+	
+	/**
+	 * This constructs a CheckInTable with ticket and table
+	 * @param ticket : 
+	 * @param table : 
+	 */
 
 	public LocalDateTime CheckInTable(Ticket ticket, Table table) {
 		// if (table.getAvailable()) {
