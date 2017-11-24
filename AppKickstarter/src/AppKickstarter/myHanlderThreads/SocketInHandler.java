@@ -22,6 +22,10 @@ public class SocketInHandler extends AppThread {
 
 	// ------------------------------------------------------------
 	// ServerThread
+	/** 
+	 * @param id
+	 * @param appKickstarter 
+	 */
 	public SocketInHandler(String id, AppKickstarter appKickstarter) {
 		super(id, appKickstarter);
 		this.TimerIDForMatchTicketQueue = appKickstarter.getTimerIDForMatchTicketQueue();
