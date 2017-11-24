@@ -16,10 +16,12 @@ import AppKickstarter.timer.Timer;
 
 public class GuiStaffPanel extends AppThread {
 	private final int sleepTime = 2000;
+	StaffPanel window;
 
 	public GuiStaffPanel(String id, AppKickstarter appKickstarter) {
 		super(id, appKickstarter);
 		CreatePanel();
+		this.TableList = TableHandler.getTableList();
 	}
 
 	private ArrayList<Table> TableList;
@@ -41,7 +43,7 @@ public class GuiStaffPanel extends AppThread {
 				Timer.setSimulationTimer(id, mbox, sleepTime);
 				this.TableList = TableHandler.getTableList();
 				// gui...display TableList
-				DisplayTableList();
+				window.updateJTableForTableList(TableList);
 				break;
 			default:
 				log.severe(id + ": unknown message type!!");
@@ -58,7 +60,7 @@ public class GuiStaffPanel extends AppThread {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					StaffPanel window = new StaffPanel();
+					window = new StaffPanel();
 					window.SetFrameVisible(window);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -66,20 +68,8 @@ public class GuiStaffPanel extends AppThread {
 			}
 		});
 	}
-	
-	
-	public void DisplayTableList() {
-		
-	}
-	
-	
 
-	// 1.display whole tcqueue by jlist
-	// Select tc in the list then click ack button to send ack for selected tc
-	// OR
-	// 2.display only nexttc Click ack button to send ack for nexttc
-	// if ack button clicked
-	public void Sendack() {
+	public void SendTicketAck(int TicketID) {
 		TicketCall nextTicketCall = Tcqueue.poll();
 		Ticket nextTicket = nextTicketCall.getTicket();
 		TicketAck ticketAck = new TicketAck(nextTicket.getTicketID(), nextTicketCall.getTable().getTableNo(),
@@ -88,9 +78,9 @@ public class GuiStaffPanel extends AppThread {
 	}
 
 	// Selected table and checkout button clicked, send Checkout To server
-	public void SendCheckout(int tableno) {
+	public void SendCheckout(int TableNo) {
 		int Spending = 1234;// Random
 		appKickstarter.getThread("MsgHandler").getMBox()
-				.send(new Msg(id, mbox, Msg.Type.CheckOut, new CheckOut(tableno, Spending)));
+				.send(new Msg(id, mbox, Msg.Type.CheckOut, new CheckOut(TableNo, Spending)));
 	}
 }

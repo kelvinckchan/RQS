@@ -43,8 +43,6 @@ public class StaffPanel extends JPanel {
 
 	private ArrayList<Table> TableList;
 
-
-
 	public void SetFrameVisible(StaffPanel window) {
 		window.frame.setVisible(true);
 
@@ -68,50 +66,10 @@ public class StaffPanel extends JPanel {
 			}
 		}
 
-//		MouseListener mouseListener = new MouseAdapter() {
-//			public void mousePressed(MouseEvent mouseEvent) {
-//				int modifiers = mouseEvent.getModifiers();
-//				if ((modifiers & InputEvent.BUTTON3_MASK) == InputEvent.BUTTON3_MASK) {
-//					System.out.println("Right button pressed.");
-//
-//				}
-//			}
-//
-//			public void mouseReleased(MouseEvent mouseEvent) {
-//				if (SwingUtilities.isRightMouseButton(mouseEvent)) {
-//					System.out.println("Right button released.");
-//
-//				}
-//			}
-//		};
 
-		for (int i = 0; i < 5; i++) {
-			for (int j = 0; j < 10; j++) {
-				Table t = TableList.get(i+j);
-				JButton btnAbc = new JButton(String.valueOf(t.getTableNo()));
+	}
 
-				if (t.getState().equals("Hold")) {
-					btnAbc.setForeground(Color.pink);
-					btnAbc.setBackground(Color.red);
-
-				} else {
-					btnAbc.setBackground(Color.green);
-					btnAbc.setForeground(Color.blue);
-				}
-				btnAbc.setOpaque(true);
-//				btnAbc.addMouseListener(mouseListener);
-				btnAbc.addActionListener(new ActionListener()
-				{
-					  public void actionPerformed(ActionEvent e)
-					  {
-					    JDialog d = new JDialog(frame, "Diuuu", true);
-					    d.setLocationRelativeTo(frame);
-					    d.setVisible(true);
-					  }
-					});
-				System.out.println("*************" + TableList.get(j).getTableNo());
-			}
-		}
+	public void updateJTableForTableList(ArrayList<Table> tableList2) {
 
 	}
 
