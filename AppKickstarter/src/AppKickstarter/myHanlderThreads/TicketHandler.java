@@ -169,8 +169,17 @@ public class TicketHandler extends AppThread {
 
 				log.fine("Found Table & Poll TicketQueue> Tid=" + WaitForAckTicket.getTicketID() + ", TableNo="
 						+ avaTable.getTableNo());
-				appKickstarter.getThread("SocketOutHandler").getMBox()
-						.send(new Msg(id, mbox, Msg.Type.TicketCall, tickCall));
+				if (mode == 1) {
+					appKickstarter.getThread("SocketOutHandler").getMBox()
+							.send(new Msg(id, mbox, Msg.Type.TicketCall, tickCall));
+				}
+				
+				if(mode==2) {
+//					appKickstarter.getThread("GuiStaffPanel").getMBox()
+//					.send(new Msg(id, mbox, Msg.Type.TicketCall, tickCall));
+				}
+				
+				
 				TableHandler.HoldTable(WaitForAckTicket, avaTable);
 				Timer.setSimulationTimer(id, mbox, TicketAckWaitingTime, WaitForAckTicket.getTicketID());
 				log.fine(id + ": SetTimer>  TimerID=" + WaitForAckTicket.getTicketID());
