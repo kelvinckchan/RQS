@@ -1,5 +1,6 @@
 package AppKickstarter.Gui;
 
+import java.awt.EventQueue;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -18,6 +19,7 @@ public class GuiStaffPanel extends AppThread {
 
 	public GuiStaffPanel(String id, AppKickstarter appKickstarter) {
 		super(id, appKickstarter);
+		CreatePanel();
 	}
 
 	private ArrayList<Table> TableList;
@@ -52,9 +54,25 @@ public class GuiStaffPanel extends AppThread {
 
 	}
 
-	public void DisplayTableList() {
-
+	public void CreatePanel() {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					StaffPanel window = new StaffPanel();
+					window.SetFrameVisible(window);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
+	
+	
+	public void DisplayTableList() {
+		
+	}
+	
+	
 
 	// 1.display whole tcqueue by jlist
 	// Select tc in the list then click ack button to send ack for selected tc

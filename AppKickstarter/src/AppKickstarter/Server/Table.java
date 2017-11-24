@@ -38,16 +38,19 @@ public class Table {
 		return this.state;
 	}
 
-	public void setHoldState() {
+	public Table setHoldState() {
 		this.state = "Hold";
+		return this;
 	}
 
-	public void setCheckedInState() {
+	public Table setCheckedInState() {
 		this.state = "Eating";
+		return this;
 	}
 
-	public void setAvailableState() {
+	public Table setAvailableState() {
 		this.state = "Available";
+		return this;
 	}
 
 	public int getTableNo() {
