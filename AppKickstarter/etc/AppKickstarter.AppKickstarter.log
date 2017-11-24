@@ -1,5 +1,1541 @@
-171124-19:03:07:0800[INFO] -- 
-171124-19:03:07:0949[INFO] -- 
-171124-19:03:07:0950[INFO] -- ============================================================
-171124-19:03:07:0952[INFO] -- AppKickstarter: Application Starting...
-171124-19:03:07:0992[INFO] -- Press 1 to Run CLIENTSTREAM MODE, 2 to Run GUI MODE: 
+171125-01:05:23:0599[INFO] -- 
+171125-01:05:23:0654[INFO] -- 
+171125-01:05:23:0655[INFO] -- ============================================================
+171125-01:05:23:0657[INFO] -- AppKickstarter: Application Starting...
+171125-01:05:23:0663[INFO] -- Press 1 to Run CLIENTSTREAM MODE, 2 to Run GUI MODE: 
+171125-01:05:25:0578[INFO] -- Run GUI MODE!
+171125-01:05:31:0432[FINE] -- AppKickstarter: registering timer
+171125-01:05:31:0433[FINE] -- timer: created!
+171125-01:05:31:0445[FINE] -- AppKickstarter: registering TicketHandler
+171125-01:05:31:0445[FINE] -- TicketHandler: created!
+171125-01:05:31:0511[FINE] -- Create TqueueList> 
+171125-01:05:31:0516[FINE] -- AppKickstarter: registering MsgHandler
+171125-01:05:31:0516[FINE] -- MsgHandler: created!
+171125-01:05:31:0519[FINE] -- AppKickstarter: registering TableHandler
+171125-01:05:31:0519[FINE] -- TableHandler: created!
+171125-01:05:31:0520[FINE] -- Create Table> no:00000 with Size:2
+171125-01:05:31:0520[FINE] -- Create Table> no:00001 with Size:2
+171125-01:05:31:0520[FINE] -- Create Table> no:00002 with Size:2
+171125-01:05:31:0520[FINE] -- Create Table> no:00003 with Size:2
+171125-01:05:31:0521[FINE] -- Create Table> no:00004 with Size:2
+171125-01:05:31:0521[FINE] -- Create Table> no:00005 with Size:2
+171125-01:05:31:0522[FINE] -- Create Table> no:00006 with Size:2
+171125-01:05:31:0522[FINE] -- Create Table> no:00007 with Size:2
+171125-01:05:31:0522[FINE] -- Create Table> no:00008 with Size:2
+171125-01:05:31:0522[FINE] -- Create Table> no:00009 with Size:2
+171125-01:05:31:0523[FINE] -- Create Table> no:00100 with Size:4
+171125-01:05:31:0523[FINE] -- Create Table> no:00101 with Size:4
+171125-01:05:31:0523[FINE] -- Create Table> no:00102 with Size:4
+171125-01:05:31:0524[FINE] -- Create Table> no:00103 with Size:4
+171125-01:05:31:0524[FINE] -- Create Table> no:00104 with Size:4
+171125-01:05:31:0524[FINE] -- Create Table> no:00105 with Size:4
+171125-01:05:31:0525[FINE] -- Create Table> no:00106 with Size:4
+171125-01:05:31:0525[FINE] -- Create Table> no:00107 with Size:4
+171125-01:05:31:0525[FINE] -- Create Table> no:00108 with Size:4
+171125-01:05:31:0526[FINE] -- Create Table> no:00109 with Size:4
+171125-01:05:31:0526[FINE] -- Create Table> no:00200 with Size:6
+171125-01:05:31:0526[FINE] -- Create Table> no:00201 with Size:6
+171125-01:05:31:0527[FINE] -- Create Table> no:00202 with Size:6
+171125-01:05:31:0527[FINE] -- Create Table> no:00203 with Size:6
+171125-01:05:31:0527[FINE] -- Create Table> no:00204 with Size:6
+171125-01:05:31:0528[FINE] -- Create Table> no:00205 with Size:6
+171125-01:05:31:0528[FINE] -- Create Table> no:00206 with Size:6
+171125-01:05:31:0528[FINE] -- Create Table> no:00207 with Size:6
+171125-01:05:31:0529[FINE] -- Create Table> no:00300 with Size:8
+171125-01:05:31:0529[FINE] -- Create Table> no:00301 with Size:8
+171125-01:05:31:0530[FINE] -- Create Table> no:00400 with Size:10
+171125-01:05:31:0530[FINE] -- Create Table> no:00401 with Size:10
+171125-01:05:31:0530[INFO] -- TableHandler: starting...
+171125-01:05:31:0530[INFO] -- timer: starting...
+171125-01:05:31:0531[INFO] -- MsgHandler: starting...
+171125-01:05:31:0531[INFO] -- AppKickstarter: Listening at ServerIP>127.0.0.1 ServerPort>54321...
+171125-01:05:31:0531[INFO] -- TicketHandler: starting...
+171125-01:05:37:0767[FINE] -- AppKickstarter: registering SocketInHandler
+171125-01:05:37:0768[FINE] -- SocketInHandler: created!
+171125-01:05:37:0769[FINE] -- AppKickstarter: registering SocketOutHandler
+171125-01:05:37:0771[FINE] -- SocketOutHandler: created!
+171125-01:05:37:0772[INFO] -- SocketInHandler: starting...
+171125-01:05:37:0772[INFO] -- SocketOutHandler: starting...
+171125-01:05:37:0775[INFO] -- SocketInHandler: waiting For incoming Msg...
+171125-01:05:37:0778[FINE] -- AppKickstarter: registering GuiStaffPanel
+171125-01:05:37:0779[FINE] -- GuiStaffPanel: created!
+171125-01:05:37:0779[INFO] -- OPen Staff Panel
+171125-01:05:37:0881[FINE] -- NTimerID: 10000
+171125-01:05:37:0881[FINER] -- Match All TicketQueue.
+171125-01:05:37:0882[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:37:0984[FINE] -- NTimerID: 10000
+171125-01:05:37:0985[FINER] -- Match All TicketQueue.
+171125-01:05:37:0985[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:38:0088[FINE] -- NTimerID: 10000
+171125-01:05:38:0089[FINER] -- Match All TicketQueue.
+171125-01:05:38:0089[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:38:0193[FINE] -- NTimerID: 10000
+171125-01:05:38:0194[FINER] -- Match All TicketQueue.
+171125-01:05:38:0194[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:38:0316[FINE] -- NTimerID: 10000
+171125-01:05:38:0316[FINER] -- Match All TicketQueue.
+171125-01:05:38:0317[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:38:0419[FINE] -- NTimerID: 10000
+171125-01:05:38:0420[FINER] -- Match All TicketQueue.
+171125-01:05:38:0420[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:38:0522[FINE] -- NTimerID: 10000
+171125-01:05:38:0523[FINER] -- Match All TicketQueue.
+171125-01:05:38:0523[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:38:0624[FINE] -- NTimerID: 10000
+171125-01:05:38:0624[FINER] -- Match All TicketQueue.
+171125-01:05:38:0624[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:38:0731[FINE] -- NTimerID: 10000
+171125-01:05:38:0732[FINER] -- Match All TicketQueue.
+171125-01:05:38:0732[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:38:0834[FINE] -- NTimerID: 10000
+171125-01:05:38:0834[FINER] -- Match All TicketQueue.
+171125-01:05:38:0834[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:38:0939[FINE] -- NTimerID: 10000
+171125-01:05:38:0940[FINER] -- Match All TicketQueue.
+171125-01:05:38:0940[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:39:0042[FINE] -- NTimerID: 10000
+171125-01:05:39:0042[FINER] -- Match All TicketQueue.
+171125-01:05:39:0042[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:39:0145[FINE] -- NTimerID: 10000
+171125-01:05:39:0145[FINER] -- Match All TicketQueue.
+171125-01:05:39:0146[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:39:0247[FINE] -- NTimerID: 10000
+171125-01:05:39:0247[FINER] -- Match All TicketQueue.
+171125-01:05:39:0248[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:39:0351[FINE] -- NTimerID: 10000
+171125-01:05:39:0351[FINER] -- Match All TicketQueue.
+171125-01:05:39:0351[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:39:0456[FINE] -- NTimerID: 10000
+171125-01:05:39:0456[FINER] -- Match All TicketQueue.
+171125-01:05:39:0457[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:39:0560[FINE] -- NTimerID: 10000
+171125-01:05:39:0561[FINER] -- Match All TicketQueue.
+171125-01:05:39:0561[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:39:0662[FINE] -- NTimerID: 10000
+171125-01:05:39:0662[FINER] -- Match All TicketQueue.
+171125-01:05:39:0662[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:39:0764[FINE] -- NTimerID: 10000
+171125-01:05:39:0765[FINER] -- Match All TicketQueue.
+171125-01:05:39:0765[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:39:0866[FINE] -- NTimerID: 10000
+171125-01:05:39:0866[FINER] -- Match All TicketQueue.
+171125-01:05:39:0866[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:39:0968[FINE] -- NTimerID: 10000
+171125-01:05:39:0968[FINER] -- Match All TicketQueue.
+171125-01:05:39:0969[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:40:0071[FINE] -- NTimerID: 10000
+171125-01:05:40:0071[FINER] -- Match All TicketQueue.
+171125-01:05:40:0071[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:40:0173[FINE] -- NTimerID: 10000
+171125-01:05:40:0173[FINER] -- Match All TicketQueue.
+171125-01:05:40:0173[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:40:0276[FINE] -- NTimerID: 10000
+171125-01:05:40:0277[FINER] -- Match All TicketQueue.
+171125-01:05:40:0277[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:40:0380[FINE] -- NTimerID: 10000
+171125-01:05:40:0380[FINER] -- Match All TicketQueue.
+171125-01:05:40:0381[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:40:0483[FINE] -- NTimerID: 10000
+171125-01:05:40:0484[FINER] -- Match All TicketQueue.
+171125-01:05:40:0484[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:40:0586[FINE] -- NTimerID: 10000
+171125-01:05:40:0587[FINER] -- Match All TicketQueue.
+171125-01:05:40:0587[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:40:0690[FINE] -- NTimerID: 10000
+171125-01:05:40:0691[FINER] -- Match All TicketQueue.
+171125-01:05:40:0691[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:40:0793[FINE] -- NTimerID: 10000
+171125-01:05:40:0793[FINER] -- Match All TicketQueue.
+171125-01:05:40:0794[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:40:0897[FINE] -- NTimerID: 10000
+171125-01:05:40:0897[FINER] -- Match All TicketQueue.
+171125-01:05:40:0897[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:41:0000[FINE] -- NTimerID: 10000
+171125-01:05:41:0000[FINER] -- Match All TicketQueue.
+171125-01:05:41:0000[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:41:0105[FINE] -- NTimerID: 10000
+171125-01:05:41:0105[FINER] -- Match All TicketQueue.
+171125-01:05:41:0105[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:41:0177[INFO] -- AppKickstarter: accepted...
+171125-01:05:41:0177[INFO] -- GuiStaffPanel: starting...
+171125-01:05:41:0208[FINE] -- NTimerID: 10000
+171125-01:05:41:0210[FINER] -- Match All TicketQueue.
+171125-01:05:41:0211[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:41:0314[FINE] -- NTimerID: 10000
+171125-01:05:41:0314[FINER] -- Match All TicketQueue.
+171125-01:05:41:0314[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:41:0416[FINE] -- NTimerID: 10000
+171125-01:05:41:0417[FINER] -- Match All TicketQueue.
+171125-01:05:41:0417[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:41:0521[FINE] -- NTimerID: 10000
+171125-01:05:41:0521[FINER] -- Match All TicketQueue.
+171125-01:05:41:0521[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:41:0625[FINE] -- NTimerID: 10000
+171125-01:05:41:0626[FINER] -- Match All TicketQueue.
+171125-01:05:41:0626[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:41:0728[FINE] -- NTimerID: 10000
+171125-01:05:41:0728[FINER] -- Match All TicketQueue.
+171125-01:05:41:0728[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:41:0829[FINE] -- NTimerID: 10000
+171125-01:05:41:0829[FINER] -- Match All TicketQueue.
+171125-01:05:41:0829[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:41:0933[FINE] -- NTimerID: 10000
+171125-01:05:41:0933[FINER] -- Match All TicketQueue.
+171125-01:05:41:0933[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:42:0034[FINE] -- NTimerID: 10000
+171125-01:05:42:0034[FINER] -- Match All TicketQueue.
+171125-01:05:42:0035[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:42:0137[FINE] -- NTimerID: 10000
+171125-01:05:42:0137[FINER] -- Match All TicketQueue.
+171125-01:05:42:0137[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:42:0239[FINE] -- NTimerID: 10000
+171125-01:05:42:0239[FINER] -- Match All TicketQueue.
+171125-01:05:42:0239[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:42:0341[FINE] -- NTimerID: 10000
+171125-01:05:42:0341[FINER] -- Match All TicketQueue.
+171125-01:05:42:0341[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:42:0443[FINE] -- NTimerID: 10000
+171125-01:05:42:0443[FINER] -- Match All TicketQueue.
+171125-01:05:42:0443[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:42:0546[FINE] -- NTimerID: 10000
+171125-01:05:42:0546[FINER] -- Match All TicketQueue.
+171125-01:05:42:0546[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:42:0650[FINE] -- NTimerID: 10000
+171125-01:05:42:0650[FINER] -- Match All TicketQueue.
+171125-01:05:42:0650[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:42:0756[FINE] -- NTimerID: 10000
+171125-01:05:42:0756[FINER] -- Match All TicketQueue.
+171125-01:05:42:0756[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:42:0860[FINE] -- NTimerID: 10000
+171125-01:05:42:0860[FINER] -- Match All TicketQueue.
+171125-01:05:42:0860[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:42:0964[FINE] -- NTimerID: 10000
+171125-01:05:42:0964[FINER] -- Match All TicketQueue.
+171125-01:05:42:0964[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:43:0067[FINE] -- NTimerID: 10000
+171125-01:05:43:0067[FINER] -- Match All TicketQueue.
+171125-01:05:43:0067[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:43:0169[FINE] -- NTimerID: 10000
+171125-01:05:43:0169[FINER] -- Match All TicketQueue.
+171125-01:05:43:0169[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:43:0273[FINE] -- NTimerID: 10000
+171125-01:05:43:0273[FINER] -- Match All TicketQueue.
+171125-01:05:43:0274[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:43:0376[FINE] -- NTimerID: 10000
+171125-01:05:43:0377[FINER] -- Match All TicketQueue.
+171125-01:05:43:0377[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:43:0417[INFO] -- SocketInHandler: IncomingMsg> TicketReq: Client-0001 3                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+171125-01:05:43:0423[INFO] -- MsgHandler: message received: [SocketInHandler (TicketReq) -- TicketReq: Client-0001 3].
+171125-01:05:43:0428[INFO] -- TicketQueueObserver: [Add] Find Table for Ticket> 
+171125-01:05:43:0432[INFO] -- SocketOutHandler: message Sent: [TicketRep: Client-0001 3 0].
+171125-01:05:43:0481[FINE] -- NTimerID: 10000
+171125-01:05:43:0482[FINER] -- Match All TicketQueue.
+171125-01:05:43:0495[FINE] -- Found Table & Poll TicketQueue> Tid=0, TableNo=100
+171125-01:05:43:0495[FINE] -- Hold> Tid=0 TableNo=100
+171125-01:05:43:0496[FINE] -- TicketHandler: SetTimer>  TimerID=0
+171125-01:05:43:0496[INFO] -- TicketHandler: TicketCall Sent> Tid=0 Wait For TickerAck
+171125-01:05:43:0496[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:43:0598[FINE] -- NTimerID: 10000
+171125-01:05:43:0598[FINER] -- Match All TicketQueue.
+171125-01:05:43:0598[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:43:0702[FINE] -- NTimerID: 10000
+171125-01:05:43:0702[FINER] -- Match All TicketQueue.
+171125-01:05:43:0702[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:43:0798[FINE] -- NTimerID: 0
+171125-01:05:43:0798[FINER] -- Match All TicketQueue.
+171125-01:05:43:0799[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:43:0806[FINE] -- NTimerID: 10000
+171125-01:05:43:0806[FINER] -- Match All TicketQueue.
+171125-01:05:43:0806[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:43:0902[FINE] -- NTimerID: 10000
+171125-01:05:43:0902[FINER] -- Match All TicketQueue.
+171125-01:05:43:0902[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:43:0909[FINE] -- NTimerID: 10000
+171125-01:05:43:0909[FINER] -- Match All TicketQueue.
+171125-01:05:43:0909[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:44:0003[FINE] -- NTimerID: 10000
+171125-01:05:44:0010[FINER] -- Match All TicketQueue.
+171125-01:05:44:0011[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:44:0012[FINE] -- NTimerID: 10000
+171125-01:05:44:0013[FINER] -- Match All TicketQueue.
+171125-01:05:44:0013[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:44:0120[FINE] -- NTimerID: 10000
+171125-01:05:44:0121[FINER] -- Match All TicketQueue.
+171125-01:05:44:0124[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:44:0126[FINE] -- NTimerID: 10000
+171125-01:05:44:0126[FINER] -- Match All TicketQueue.
+171125-01:05:44:0126[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:44:0230[FINE] -- NTimerID: 10000
+171125-01:05:44:0230[FINER] -- Match All TicketQueue.
+171125-01:05:44:0230[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:44:0231[FINE] -- NTimerID: 10000
+171125-01:05:44:0231[FINER] -- Match All TicketQueue.
+171125-01:05:44:0231[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:44:0333[FINE] -- NTimerID: 10000
+171125-01:05:44:0333[FINER] -- Match All TicketQueue.
+171125-01:05:44:0333[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:44:0333[FINE] -- NTimerID: 10000
+171125-01:05:44:0333[FINER] -- Match All TicketQueue.
+171125-01:05:44:0333[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:44:0435[FINE] -- NTimerID: 10000
+171125-01:05:44:0435[FINER] -- Match All TicketQueue.
+171125-01:05:44:0435[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:44:0435[FINE] -- NTimerID: 10000
+171125-01:05:44:0436[FINER] -- Match All TicketQueue.
+171125-01:05:44:0436[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:44:0538[FINE] -- NTimerID: 10000
+171125-01:05:44:0538[FINER] -- Match All TicketQueue.
+171125-01:05:44:0538[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:44:0538[FINE] -- NTimerID: 10000
+171125-01:05:44:0538[FINER] -- Match All TicketQueue.
+171125-01:05:44:0538[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:44:0641[FINE] -- NTimerID: 10000
+171125-01:05:44:0641[FINER] -- Match All TicketQueue.
+171125-01:05:44:0641[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:44:0642[FINE] -- NTimerID: 10000
+171125-01:05:44:0642[FINER] -- Match All TicketQueue.
+171125-01:05:44:0642[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:44:0745[FINE] -- NTimerID: 10000
+171125-01:05:44:0746[FINER] -- Match All TicketQueue.
+171125-01:05:44:0746[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:44:0746[FINE] -- NTimerID: 10000
+171125-01:05:44:0746[FINER] -- Match All TicketQueue.
+171125-01:05:44:0746[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:44:0851[FINE] -- NTimerID: 10000
+171125-01:05:44:0851[FINER] -- Match All TicketQueue.
+171125-01:05:44:0851[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:44:0851[FINE] -- NTimerID: 10000
+171125-01:05:44:0851[FINER] -- Match All TicketQueue.
+171125-01:05:44:0851[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:44:0954[FINE] -- NTimerID: 10000
+171125-01:05:44:0954[FINER] -- Match All TicketQueue.
+171125-01:05:44:0954[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:44:0955[FINE] -- NTimerID: 10000
+171125-01:05:44:0955[FINER] -- Match All TicketQueue.
+171125-01:05:44:0955[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:45:0058[FINE] -- NTimerID: 10000
+171125-01:05:45:0059[FINER] -- Match All TicketQueue.
+171125-01:05:45:0059[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:45:0059[FINE] -- NTimerID: 10000
+171125-01:05:45:0059[FINER] -- Match All TicketQueue.
+171125-01:05:45:0059[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:45:0087[INFO] -- MsgHandler: message received: [GuiStaffPanel (TicketAck) -- TicketAck: 0 100 3].
+171125-01:05:45:0125[INFO] -- 
+Tables[0]:	[.................]	[.................]	[.................]	[.................]	[.................]	[.................]	[.................]	[.................]	[.................]	[.................]	
+Tables[1]:	[00100, Client-0001]	[.................]	[.................]	[.................]	[.................]	[.................]	[.................]	[.................]	[.................]	[.................]	
+Tables[2]:	[.................]	[.................]	[.................]	[.................]	[.................]	[.................]	[.................]	[.................]	
+Tables[3]:	[.................]	[.................]	
+Tables[4]:	[.................]	[.................]	
+
+171125-01:05:45:0126[INFO] -- 
+TicketQueue[2] (0): 
+TicketQueue[4] (0): 
+TicketQueue[6] (0): 
+TicketQueue[8] (0): 
+TicketQueue[10] (0): 
+
+171125-01:05:45:0127[INFO] -- --------------------------------------------------------------
+171125-01:05:45:0127[INFO] -- MsgHandler: CheckedInTable Ticket> 0 Waiting For CheckOut
+171125-01:05:45:0163[FINE] -- NTimerID: 10000
+171125-01:05:45:0163[FINER] -- Match All TicketQueue.
+171125-01:05:45:0163[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:45:0163[FINE] -- NTimerID: 10000
+171125-01:05:45:0163[FINER] -- Match All TicketQueue.
+171125-01:05:45:0163[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:45:0265[FINE] -- NTimerID: 10000
+171125-01:05:45:0266[FINER] -- Match All TicketQueue.
+171125-01:05:45:0266[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:45:0266[FINE] -- NTimerID: 10000
+171125-01:05:45:0266[FINER] -- Match All TicketQueue.
+171125-01:05:45:0266[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:45:0368[FINE] -- NTimerID: 10000
+171125-01:05:45:0368[FINER] -- Match All TicketQueue.
+171125-01:05:45:0368[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:45:0368[FINE] -- NTimerID: 10000
+171125-01:05:45:0368[FINER] -- Match All TicketQueue.
+171125-01:05:45:0368[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:45:0472[FINE] -- NTimerID: 10000
+171125-01:05:45:0472[FINER] -- Match All TicketQueue.
+171125-01:05:45:0472[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:45:0472[FINE] -- NTimerID: 10000
+171125-01:05:45:0472[FINER] -- Match All TicketQueue.
+171125-01:05:45:0472[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:45:0574[FINE] -- NTimerID: 10000
+171125-01:05:45:0574[FINER] -- Match All TicketQueue.
+171125-01:05:45:0574[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:45:0574[FINE] -- NTimerID: 10000
+171125-01:05:45:0575[FINER] -- Match All TicketQueue.
+171125-01:05:45:0575[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:45:0677[FINE] -- NTimerID: 10000
+171125-01:05:45:0677[FINER] -- Match All TicketQueue.
+171125-01:05:45:0677[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:45:0677[FINE] -- NTimerID: 10000
+171125-01:05:45:0678[FINER] -- Match All TicketQueue.
+171125-01:05:45:0678[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:45:0781[FINE] -- NTimerID: 10000
+171125-01:05:45:0781[FINER] -- Match All TicketQueue.
+171125-01:05:45:0781[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:45:0782[FINE] -- NTimerID: 10000
+171125-01:05:45:0782[FINER] -- Match All TicketQueue.
+171125-01:05:45:0782[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:45:0885[FINE] -- NTimerID: 10000
+171125-01:05:45:0885[FINER] -- Match All TicketQueue.
+171125-01:05:45:0885[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:45:0885[FINE] -- NTimerID: 10000
+171125-01:05:45:0885[FINER] -- Match All TicketQueue.
+171125-01:05:45:0885[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:45:0988[FINE] -- NTimerID: 10000
+171125-01:05:45:0988[FINER] -- Match All TicketQueue.
+171125-01:05:45:0988[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:45:0988[FINE] -- NTimerID: 10000
+171125-01:05:45:0988[FINER] -- Match All TicketQueue.
+171125-01:05:45:0989[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:46:0092[FINE] -- NTimerID: 10000
+171125-01:05:46:0092[FINER] -- Match All TicketQueue.
+171125-01:05:46:0092[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:46:0092[FINE] -- NTimerID: 10000
+171125-01:05:46:0092[FINER] -- Match All TicketQueue.
+171125-01:05:46:0093[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:46:0196[FINE] -- NTimerID: 10000
+171125-01:05:46:0196[FINER] -- Match All TicketQueue.
+171125-01:05:46:0196[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:46:0196[FINE] -- NTimerID: 10000
+171125-01:05:46:0196[FINER] -- Match All TicketQueue.
+171125-01:05:46:0197[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:46:0298[FINE] -- NTimerID: 10000
+171125-01:05:46:0298[FINER] -- Match All TicketQueue.
+171125-01:05:46:0298[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:46:0298[FINE] -- NTimerID: 10000
+171125-01:05:46:0298[FINER] -- Match All TicketQueue.
+171125-01:05:46:0298[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:46:0402[FINE] -- NTimerID: 10000
+171125-01:05:46:0402[FINER] -- Match All TicketQueue.
+171125-01:05:46:0402[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:46:0402[FINE] -- NTimerID: 10000
+171125-01:05:46:0402[FINER] -- Match All TicketQueue.
+171125-01:05:46:0402[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:46:0503[FINE] -- NTimerID: 10000
+171125-01:05:46:0503[FINER] -- Match All TicketQueue.
+171125-01:05:46:0503[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:46:0504[FINE] -- NTimerID: 10000
+171125-01:05:46:0504[FINER] -- Match All TicketQueue.
+171125-01:05:46:0504[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:46:0606[FINE] -- NTimerID: 10000
+171125-01:05:46:0606[FINER] -- Match All TicketQueue.
+171125-01:05:46:0606[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:46:0606[FINE] -- NTimerID: 10000
+171125-01:05:46:0606[FINER] -- Match All TicketQueue.
+171125-01:05:46:0606[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:46:0710[FINE] -- NTimerID: 10000
+171125-01:05:46:0710[FINER] -- Match All TicketQueue.
+171125-01:05:46:0710[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:46:0710[FINE] -- NTimerID: 10000
+171125-01:05:46:0710[FINER] -- Match All TicketQueue.
+171125-01:05:46:0711[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:46:0815[FINE] -- NTimerID: 10000
+171125-01:05:46:0816[FINER] -- Match All TicketQueue.
+171125-01:05:46:0816[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:46:0816[FINE] -- NTimerID: 10000
+171125-01:05:46:0816[FINER] -- Match All TicketQueue.
+171125-01:05:46:0816[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:46:0917[FINE] -- NTimerID: 10000
+171125-01:05:46:0917[FINER] -- Match All TicketQueue.
+171125-01:05:46:0917[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:46:0917[FINE] -- NTimerID: 10000
+171125-01:05:46:0917[FINER] -- Match All TicketQueue.
+171125-01:05:46:0917[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:47:0021[FINE] -- NTimerID: 10000
+171125-01:05:47:0021[FINER] -- Match All TicketQueue.
+171125-01:05:47:0022[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:47:0022[FINE] -- NTimerID: 10000
+171125-01:05:47:0022[FINER] -- Match All TicketQueue.
+171125-01:05:47:0022[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:47:0125[FINE] -- NTimerID: 10000
+171125-01:05:47:0125[FINER] -- Match All TicketQueue.
+171125-01:05:47:0125[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:47:0126[FINE] -- NTimerID: 10000
+171125-01:05:47:0126[FINER] -- Match All TicketQueue.
+171125-01:05:47:0126[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:47:0230[FINE] -- NTimerID: 10000
+171125-01:05:47:0230[FINER] -- Match All TicketQueue.
+171125-01:05:47:0230[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:47:0230[FINE] -- NTimerID: 10000
+171125-01:05:47:0231[FINER] -- Match All TicketQueue.
+171125-01:05:47:0231[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:47:0333[FINE] -- NTimerID: 10000
+171125-01:05:47:0333[FINER] -- Match All TicketQueue.
+171125-01:05:47:0333[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:47:0333[FINE] -- NTimerID: 10000
+171125-01:05:47:0333[FINER] -- Match All TicketQueue.
+171125-01:05:47:0333[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:47:0435[FINE] -- NTimerID: 10000
+171125-01:05:47:0435[FINER] -- Match All TicketQueue.
+171125-01:05:47:0435[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:47:0435[FINE] -- NTimerID: 10000
+171125-01:05:47:0435[FINER] -- Match All TicketQueue.
+171125-01:05:47:0435[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:47:0539[FINE] -- NTimerID: 10000
+171125-01:05:47:0539[FINER] -- Match All TicketQueue.
+171125-01:05:47:0539[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:47:0539[FINE] -- NTimerID: 10000
+171125-01:05:47:0539[FINER] -- Match All TicketQueue.
+171125-01:05:47:0539[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:47:0642[FINE] -- NTimerID: 10000
+171125-01:05:47:0642[FINER] -- Match All TicketQueue.
+171125-01:05:47:0642[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:47:0642[FINE] -- NTimerID: 10000
+171125-01:05:47:0642[FINER] -- Match All TicketQueue.
+171125-01:05:47:0642[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:47:0747[FINE] -- NTimerID: 10000
+171125-01:05:47:0747[FINER] -- Match All TicketQueue.
+171125-01:05:47:0747[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:47:0747[FINE] -- NTimerID: 10000
+171125-01:05:47:0747[FINER] -- Match All TicketQueue.
+171125-01:05:47:0747[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:47:0848[FINE] -- NTimerID: 10000
+171125-01:05:47:0848[FINER] -- Match All TicketQueue.
+171125-01:05:47:0848[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:47:0849[FINE] -- NTimerID: 10000
+171125-01:05:47:0849[FINER] -- Match All TicketQueue.
+171125-01:05:47:0849[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:47:0942[INFO] -- Checked Out Table> 100 TotalSpending: $123
+171125-01:05:47:0942[INFO] -- Checked Out Table> 100 TotalSpending: $246
+171125-01:05:47:0943[INFO] -- Checked Out Table> 100 TotalSpending: $369
+171125-01:05:47:0943[INFO] -- Checked Out Table> 100 TotalSpending: $492
+171125-01:05:47:0943[INFO] -- Checked Out Table> 100 TotalSpending: $615
+171125-01:05:47:0944[INFO] -- Checked Out Table> 100 TotalSpending: $738
+171125-01:05:47:0944[INFO] -- Checked Out Table> 100 TotalSpending: $861
+171125-01:05:47:0944[INFO] -- Checked Out Table> 100 TotalSpending: $984
+171125-01:05:47:0945[INFO] -- Checked Out Table> 100 TotalSpending: $1107
+171125-01:05:47:0945[INFO] -- Checked Out Table> 100 TotalSpending: $1230
+171125-01:05:47:0945[INFO] -- Checked Out Table> 100 TotalSpending: $1353
+171125-01:05:47:0946[INFO] -- Checked Out Table> 100 TotalSpending: $1476
+171125-01:05:47:0946[INFO] -- Checked Out Table> 100 TotalSpending: $1599
+171125-01:05:47:0946[INFO] -- Checked Out Table> 100 TotalSpending: $1722
+171125-01:05:47:0946[INFO] -- Checked Out Table> 100 TotalSpending: $1845
+171125-01:05:47:0946[INFO] -- Checked Out Table> 100 TotalSpending: $1968
+171125-01:05:47:0947[INFO] -- Checked Out Table> 100 TotalSpending: $2091
+171125-01:05:47:0947[INFO] -- Checked Out Table> 100 TotalSpending: $2214
+171125-01:05:47:0947[INFO] -- Checked Out Table> 100 TotalSpending: $2337
+171125-01:05:47:0948[INFO] -- Checked Out Table> 100 TotalSpending: $2460
+171125-01:05:47:0948[INFO] -- Checked Out Table> 100 TotalSpending: $2583
+171125-01:05:47:0948[INFO] -- Checked Out Table> 100 TotalSpending: $2706
+171125-01:05:47:0948[INFO] -- Checked Out Table> 100 TotalSpending: $2829
+171125-01:05:47:0953[FINE] -- NTimerID: 10000
+171125-01:05:47:0953[FINER] -- Match All TicketQueue.
+171125-01:05:47:0953[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:47:0953[FINE] -- NTimerID: 10000
+171125-01:05:47:0954[FINER] -- Match All TicketQueue.
+171125-01:05:47:0954[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:48:0058[FINE] -- NTimerID: 10000
+171125-01:05:48:0058[FINER] -- Match All TicketQueue.
+171125-01:05:48:0058[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:48:0058[FINE] -- NTimerID: 10000
+171125-01:05:48:0058[FINER] -- Match All TicketQueue.
+171125-01:05:48:0058[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:48:0162[FINE] -- NTimerID: 10000
+171125-01:05:48:0162[FINER] -- Match All TicketQueue.
+171125-01:05:48:0162[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:48:0162[FINE] -- NTimerID: 10000
+171125-01:05:48:0162[FINER] -- Match All TicketQueue.
+171125-01:05:48:0162[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:48:0264[FINE] -- NTimerID: 10000
+171125-01:05:48:0264[FINER] -- Match All TicketQueue.
+171125-01:05:48:0264[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:48:0264[FINE] -- NTimerID: 10000
+171125-01:05:48:0264[FINER] -- Match All TicketQueue.
+171125-01:05:48:0264[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:48:0365[FINE] -- NTimerID: 10000
+171125-01:05:48:0365[FINER] -- Match All TicketQueue.
+171125-01:05:48:0365[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:48:0365[FINE] -- NTimerID: 10000
+171125-01:05:48:0365[FINER] -- Match All TicketQueue.
+171125-01:05:48:0365[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:48:0466[FINE] -- NTimerID: 10000
+171125-01:05:48:0466[FINER] -- Match All TicketQueue.
+171125-01:05:48:0466[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:48:0466[FINE] -- NTimerID: 10000
+171125-01:05:48:0466[FINER] -- Match All TicketQueue.
+171125-01:05:48:0467[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:48:0570[FINE] -- NTimerID: 10000
+171125-01:05:48:0571[FINER] -- Match All TicketQueue.
+171125-01:05:48:0571[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:48:0571[FINE] -- NTimerID: 10000
+171125-01:05:48:0571[FINER] -- Match All TicketQueue.
+171125-01:05:48:0571[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:48:0674[FINE] -- NTimerID: 10000
+171125-01:05:48:0684[FINER] -- Match All TicketQueue.
+171125-01:05:48:0684[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:48:0684[FINE] -- NTimerID: 10000
+171125-01:05:48:0684[FINER] -- Match All TicketQueue.
+171125-01:05:48:0684[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:48:0786[FINE] -- NTimerID: 10000
+171125-01:05:48:0786[FINER] -- Match All TicketQueue.
+171125-01:05:48:0786[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:48:0786[FINE] -- NTimerID: 10000
+171125-01:05:48:0786[FINER] -- Match All TicketQueue.
+171125-01:05:48:0786[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:48:0889[FINE] -- NTimerID: 10000
+171125-01:05:48:0889[FINER] -- Match All TicketQueue.
+171125-01:05:48:0889[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:48:0889[FINE] -- NTimerID: 10000
+171125-01:05:48:0889[FINER] -- Match All TicketQueue.
+171125-01:05:48:0890[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:48:0993[FINE] -- NTimerID: 10000
+171125-01:05:48:0993[FINER] -- Match All TicketQueue.
+171125-01:05:48:0993[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:48:0993[FINE] -- NTimerID: 10000
+171125-01:05:48:0993[FINER] -- Match All TicketQueue.
+171125-01:05:48:0993[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:49:0097[FINE] -- NTimerID: 10000
+171125-01:05:49:0097[FINER] -- Match All TicketQueue.
+171125-01:05:49:0097[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:49:0097[FINE] -- NTimerID: 10000
+171125-01:05:49:0097[FINER] -- Match All TicketQueue.
+171125-01:05:49:0098[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:49:0199[FINE] -- NTimerID: 10000
+171125-01:05:49:0200[FINER] -- Match All TicketQueue.
+171125-01:05:49:0200[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:49:0200[FINE] -- NTimerID: 10000
+171125-01:05:49:0200[FINER] -- Match All TicketQueue.
+171125-01:05:49:0200[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:49:0301[FINE] -- NTimerID: 10000
+171125-01:05:49:0301[FINER] -- Match All TicketQueue.
+171125-01:05:49:0301[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:49:0301[FINE] -- NTimerID: 10000
+171125-01:05:49:0302[FINER] -- Match All TicketQueue.
+171125-01:05:49:0302[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:49:0405[FINE] -- NTimerID: 10000
+171125-01:05:49:0405[FINER] -- Match All TicketQueue.
+171125-01:05:49:0405[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:49:0405[FINE] -- NTimerID: 10000
+171125-01:05:49:0405[FINER] -- Match All TicketQueue.
+171125-01:05:49:0405[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:49:0510[FINE] -- NTimerID: 10000
+171125-01:05:49:0510[FINER] -- Match All TicketQueue.
+171125-01:05:49:0510[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:49:0510[FINE] -- NTimerID: 10000
+171125-01:05:49:0510[FINER] -- Match All TicketQueue.
+171125-01:05:49:0510[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:49:0614[FINE] -- NTimerID: 10000
+171125-01:05:49:0614[FINER] -- Match All TicketQueue.
+171125-01:05:49:0614[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:49:0614[FINE] -- NTimerID: 10000
+171125-01:05:49:0614[FINER] -- Match All TicketQueue.
+171125-01:05:49:0614[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:49:0715[FINE] -- NTimerID: 10000
+171125-01:05:49:0715[FINER] -- Match All TicketQueue.
+171125-01:05:49:0715[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:49:0715[FINE] -- NTimerID: 10000
+171125-01:05:49:0715[FINER] -- Match All TicketQueue.
+171125-01:05:49:0715[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:49:0818[FINE] -- NTimerID: 10000
+171125-01:05:49:0818[FINER] -- Match All TicketQueue.
+171125-01:05:49:0818[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:49:0818[FINE] -- NTimerID: 10000
+171125-01:05:49:0818[FINER] -- Match All TicketQueue.
+171125-01:05:49:0818[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:49:0919[FINE] -- NTimerID: 10000
+171125-01:05:49:0919[FINER] -- Match All TicketQueue.
+171125-01:05:49:0919[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:49:0920[FINE] -- NTimerID: 10000
+171125-01:05:49:0920[FINER] -- Match All TicketQueue.
+171125-01:05:49:0920[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:50:0022[FINE] -- NTimerID: 10000
+171125-01:05:50:0022[FINER] -- Match All TicketQueue.
+171125-01:05:50:0022[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:50:0022[FINE] -- NTimerID: 10000
+171125-01:05:50:0022[FINER] -- Match All TicketQueue.
+171125-01:05:50:0022[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:50:0125[FINE] -- NTimerID: 10000
+171125-01:05:50:0125[FINER] -- Match All TicketQueue.
+171125-01:05:50:0125[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:50:0125[FINE] -- NTimerID: 10000
+171125-01:05:50:0125[FINER] -- Match All TicketQueue.
+171125-01:05:50:0125[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:50:0229[FINE] -- NTimerID: 10000
+171125-01:05:50:0229[FINER] -- Match All TicketQueue.
+171125-01:05:50:0229[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:50:0229[FINE] -- NTimerID: 10000
+171125-01:05:50:0229[FINER] -- Match All TicketQueue.
+171125-01:05:50:0229[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:50:0330[FINE] -- NTimerID: 10000
+171125-01:05:50:0330[FINER] -- Match All TicketQueue.
+171125-01:05:50:0330[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:50:0330[FINE] -- NTimerID: 10000
+171125-01:05:50:0330[FINER] -- Match All TicketQueue.
+171125-01:05:50:0331[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:50:0433[FINE] -- NTimerID: 10000
+171125-01:05:50:0433[FINER] -- Match All TicketQueue.
+171125-01:05:50:0433[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:50:0433[FINE] -- NTimerID: 10000
+171125-01:05:50:0433[FINER] -- Match All TicketQueue.
+171125-01:05:50:0433[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:50:0538[FINE] -- NTimerID: 10000
+171125-01:05:50:0538[FINER] -- Match All TicketQueue.
+171125-01:05:50:0538[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:50:0538[FINE] -- NTimerID: 10000
+171125-01:05:50:0538[FINER] -- Match All TicketQueue.
+171125-01:05:50:0538[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:50:0642[FINE] -- NTimerID: 10000
+171125-01:05:50:0642[FINER] -- Match All TicketQueue.
+171125-01:05:50:0642[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:50:0642[FINE] -- NTimerID: 10000
+171125-01:05:50:0642[FINER] -- Match All TicketQueue.
+171125-01:05:50:0643[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:50:0747[FINE] -- NTimerID: 10000
+171125-01:05:50:0747[FINER] -- Match All TicketQueue.
+171125-01:05:50:0747[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:50:0747[FINE] -- NTimerID: 10000
+171125-01:05:50:0747[FINER] -- Match All TicketQueue.
+171125-01:05:50:0747[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:50:0850[FINE] -- NTimerID: 10000
+171125-01:05:50:0850[FINER] -- Match All TicketQueue.
+171125-01:05:50:0850[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:50:0850[FINE] -- NTimerID: 10000
+171125-01:05:50:0850[FINER] -- Match All TicketQueue.
+171125-01:05:50:0850[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:50:0911[INFO] -- Checked Out Table> 9 TotalSpending: $2952
+171125-01:05:50:0912[INFO] -- Checked Out Table> 9 TotalSpending: $3075
+171125-01:05:50:0912[INFO] -- Checked Out Table> 9 TotalSpending: $3198
+171125-01:05:50:0913[INFO] -- Checked Out Table> 9 TotalSpending: $3321
+171125-01:05:50:0913[INFO] -- Checked Out Table> 9 TotalSpending: $3444
+171125-01:05:50:0913[INFO] -- Checked Out Table> 9 TotalSpending: $3567
+171125-01:05:50:0913[INFO] -- Checked Out Table> 9 TotalSpending: $3690
+171125-01:05:50:0914[INFO] -- Checked Out Table> 9 TotalSpending: $3813
+171125-01:05:50:0914[INFO] -- Checked Out Table> 9 TotalSpending: $3936
+171125-01:05:50:0914[INFO] -- Checked Out Table> 9 TotalSpending: $4059
+171125-01:05:50:0915[INFO] -- Checked Out Table> 9 TotalSpending: $4182
+171125-01:05:50:0915[INFO] -- Checked Out Table> 9 TotalSpending: $4305
+171125-01:05:50:0915[INFO] -- Checked Out Table> 9 TotalSpending: $4428
+171125-01:05:50:0916[INFO] -- Checked Out Table> 9 TotalSpending: $4551
+171125-01:05:50:0916[INFO] -- Checked Out Table> 9 TotalSpending: $4674
+171125-01:05:50:0916[INFO] -- Checked Out Table> 9 TotalSpending: $4797
+171125-01:05:50:0916[INFO] -- Checked Out Table> 9 TotalSpending: $4920
+171125-01:05:50:0917[INFO] -- Checked Out Table> 9 TotalSpending: $5043
+171125-01:05:50:0917[INFO] -- Checked Out Table> 9 TotalSpending: $5166
+171125-01:05:50:0917[INFO] -- Checked Out Table> 9 TotalSpending: $5289
+171125-01:05:50:0917[INFO] -- Checked Out Table> 9 TotalSpending: $5412
+171125-01:05:50:0917[INFO] -- Checked Out Table> 9 TotalSpending: $5535
+171125-01:05:50:0918[INFO] -- Checked Out Table> 9 TotalSpending: $5658
+171125-01:05:50:0918[INFO] -- Checked Out Table> 9 TotalSpending: $5781
+171125-01:05:50:0918[INFO] -- Checked Out Table> 9 TotalSpending: $5904
+171125-01:05:50:0918[INFO] -- Checked Out Table> 9 TotalSpending: $6027
+171125-01:05:50:0918[INFO] -- Checked Out Table> 9 TotalSpending: $6150
+171125-01:05:50:0919[INFO] -- Checked Out Table> 9 TotalSpending: $6273
+171125-01:05:50:0919[INFO] -- Checked Out Table> 9 TotalSpending: $6396
+171125-01:05:50:0919[INFO] -- Checked Out Table> 9 TotalSpending: $6519
+171125-01:05:50:0919[INFO] -- Checked Out Table> 9 TotalSpending: $6642
+171125-01:05:50:0919[INFO] -- Checked Out Table> 9 TotalSpending: $6765
+171125-01:05:50:0920[INFO] -- Checked Out Table> 9 TotalSpending: $6888
+171125-01:05:50:0951[FINE] -- NTimerID: 10000
+171125-01:05:50:0951[FINER] -- Match All TicketQueue.
+171125-01:05:50:0951[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:50:0951[FINE] -- NTimerID: 10000
+171125-01:05:50:0952[FINER] -- Match All TicketQueue.
+171125-01:05:50:0952[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:51:0053[INFO] -- Checked Out Table> 9 TotalSpending: $7011
+171125-01:05:51:0054[INFO] -- Checked Out Table> 9 TotalSpending: $7134
+171125-01:05:51:0054[INFO] -- Checked Out Table> 9 TotalSpending: $7257
+171125-01:05:51:0054[INFO] -- Checked Out Table> 9 TotalSpending: $7380
+171125-01:05:51:0054[INFO] -- Checked Out Table> 9 TotalSpending: $7503
+171125-01:05:51:0054[INFO] -- Checked Out Table> 9 TotalSpending: $7626
+171125-01:05:51:0054[INFO] -- Checked Out Table> 9 TotalSpending: $7749
+171125-01:05:51:0054[INFO] -- Checked Out Table> 9 TotalSpending: $7872
+171125-01:05:51:0055[INFO] -- Checked Out Table> 9 TotalSpending: $7995
+171125-01:05:51:0055[INFO] -- Checked Out Table> 9 TotalSpending: $8118
+171125-01:05:51:0055[INFO] -- Checked Out Table> 9 TotalSpending: $8241
+171125-01:05:51:0055[INFO] -- Checked Out Table> 9 TotalSpending: $8364
+171125-01:05:51:0055[INFO] -- Checked Out Table> 9 TotalSpending: $8487
+171125-01:05:51:0055[INFO] -- Checked Out Table> 9 TotalSpending: $8610
+171125-01:05:51:0055[FINE] -- NTimerID: 10000
+171125-01:05:51:0056[INFO] -- Checked Out Table> 9 TotalSpending: $8733
+171125-01:05:51:0056[FINER] -- Match All TicketQueue.
+171125-01:05:51:0056[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:51:0056[INFO] -- Checked Out Table> 9 TotalSpending: $8856
+171125-01:05:51:0056[FINE] -- NTimerID: 10000
+171125-01:05:51:0056[FINER] -- Match All TicketQueue.
+171125-01:05:51:0056[INFO] -- Checked Out Table> 9 TotalSpending: $8979
+171125-01:05:51:0056[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:51:0056[INFO] -- Checked Out Table> 9 TotalSpending: $9102
+171125-01:05:51:0056[INFO] -- Checked Out Table> 9 TotalSpending: $9225
+171125-01:05:51:0056[INFO] -- Checked Out Table> 9 TotalSpending: $9348
+171125-01:05:51:0057[INFO] -- Checked Out Table> 9 TotalSpending: $9471
+171125-01:05:51:0057[INFO] -- Checked Out Table> 9 TotalSpending: $9594
+171125-01:05:51:0057[INFO] -- Checked Out Table> 9 TotalSpending: $9717
+171125-01:05:51:0057[INFO] -- Checked Out Table> 9 TotalSpending: $9840
+171125-01:05:51:0057[INFO] -- Checked Out Table> 9 TotalSpending: $9963
+171125-01:05:51:0058[INFO] -- Checked Out Table> 9 TotalSpending: $10086
+171125-01:05:51:0058[INFO] -- Checked Out Table> 9 TotalSpending: $10209
+171125-01:05:51:0058[INFO] -- Checked Out Table> 9 TotalSpending: $10332
+171125-01:05:51:0058[INFO] -- Checked Out Table> 9 TotalSpending: $10455
+171125-01:05:51:0058[INFO] -- Checked Out Table> 9 TotalSpending: $10578
+171125-01:05:51:0058[INFO] -- Checked Out Table> 9 TotalSpending: $10701
+171125-01:05:51:0059[INFO] -- Checked Out Table> 9 TotalSpending: $10824
+171125-01:05:51:0059[INFO] -- Checked Out Table> 9 TotalSpending: $10947
+171125-01:05:51:0157[FINE] -- NTimerID: 10000
+171125-01:05:51:0157[FINER] -- Match All TicketQueue.
+171125-01:05:51:0157[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:51:0157[FINE] -- NTimerID: 10000
+171125-01:05:51:0157[FINER] -- Match All TicketQueue.
+171125-01:05:51:0157[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:51:0206[INFO] -- Checked Out Table> 9 TotalSpending: $11070
+171125-01:05:51:0206[INFO] -- Checked Out Table> 9 TotalSpending: $11193
+171125-01:05:51:0206[INFO] -- Checked Out Table> 9 TotalSpending: $11316
+171125-01:05:51:0207[INFO] -- Checked Out Table> 9 TotalSpending: $11439
+171125-01:05:51:0207[INFO] -- Checked Out Table> 9 TotalSpending: $11562
+171125-01:05:51:0207[INFO] -- Checked Out Table> 9 TotalSpending: $11685
+171125-01:05:51:0207[INFO] -- Checked Out Table> 9 TotalSpending: $11808
+171125-01:05:51:0208[INFO] -- Checked Out Table> 9 TotalSpending: $11931
+171125-01:05:51:0208[INFO] -- Checked Out Table> 9 TotalSpending: $12054
+171125-01:05:51:0208[INFO] -- Checked Out Table> 9 TotalSpending: $12177
+171125-01:05:51:0209[INFO] -- Checked Out Table> 9 TotalSpending: $12300
+171125-01:05:51:0209[INFO] -- Checked Out Table> 9 TotalSpending: $12423
+171125-01:05:51:0210[INFO] -- Checked Out Table> 9 TotalSpending: $12546
+171125-01:05:51:0210[INFO] -- Checked Out Table> 9 TotalSpending: $12669
+171125-01:05:51:0210[INFO] -- Checked Out Table> 9 TotalSpending: $12792
+171125-01:05:51:0211[INFO] -- Checked Out Table> 9 TotalSpending: $12915
+171125-01:05:51:0211[INFO] -- Checked Out Table> 9 TotalSpending: $13038
+171125-01:05:51:0211[INFO] -- Checked Out Table> 9 TotalSpending: $13161
+171125-01:05:51:0211[INFO] -- Checked Out Table> 9 TotalSpending: $13284
+171125-01:05:51:0211[INFO] -- Checked Out Table> 9 TotalSpending: $13407
+171125-01:05:51:0212[INFO] -- Checked Out Table> 9 TotalSpending: $13530
+171125-01:05:51:0212[INFO] -- Checked Out Table> 9 TotalSpending: $13653
+171125-01:05:51:0212[INFO] -- Checked Out Table> 9 TotalSpending: $13776
+171125-01:05:51:0212[INFO] -- Checked Out Table> 9 TotalSpending: $13899
+171125-01:05:51:0212[INFO] -- Checked Out Table> 9 TotalSpending: $14022
+171125-01:05:51:0212[INFO] -- Checked Out Table> 9 TotalSpending: $14145
+171125-01:05:51:0213[INFO] -- Checked Out Table> 9 TotalSpending: $14268
+171125-01:05:51:0213[INFO] -- Checked Out Table> 9 TotalSpending: $14391
+171125-01:05:51:0213[INFO] -- Checked Out Table> 9 TotalSpending: $14514
+171125-01:05:51:0213[INFO] -- Checked Out Table> 9 TotalSpending: $14637
+171125-01:05:51:0214[INFO] -- Checked Out Table> 9 TotalSpending: $14760
+171125-01:05:51:0214[INFO] -- Checked Out Table> 9 TotalSpending: $14883
+171125-01:05:51:0214[INFO] -- Checked Out Table> 9 TotalSpending: $15006
+171125-01:05:51:0214[INFO] -- Checked Out Table> 9 TotalSpending: $15129
+171125-01:05:51:0259[FINE] -- NTimerID: 10000
+171125-01:05:51:0259[FINER] -- Match All TicketQueue.
+171125-01:05:51:0259[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:51:0259[FINE] -- NTimerID: 10000
+171125-01:05:51:0259[FINER] -- Match All TicketQueue.
+171125-01:05:51:0259[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:51:0358[INFO] -- Checked Out Table> 9 TotalSpending: $15252
+171125-01:05:51:0359[INFO] -- Checked Out Table> 9 TotalSpending: $15375
+171125-01:05:51:0359[INFO] -- Checked Out Table> 9 TotalSpending: $15498
+171125-01:05:51:0359[INFO] -- Checked Out Table> 9 TotalSpending: $15621
+171125-01:05:51:0360[INFO] -- Checked Out Table> 9 TotalSpending: $15744
+171125-01:05:51:0360[INFO] -- Checked Out Table> 9 TotalSpending: $15867
+171125-01:05:51:0360[INFO] -- Checked Out Table> 9 TotalSpending: $15990
+171125-01:05:51:0360[INFO] -- Checked Out Table> 9 TotalSpending: $16113
+171125-01:05:51:0360[INFO] -- Checked Out Table> 9 TotalSpending: $16236
+171125-01:05:51:0361[INFO] -- Checked Out Table> 9 TotalSpending: $16359
+171125-01:05:51:0361[INFO] -- Checked Out Table> 9 TotalSpending: $16482
+171125-01:05:51:0361[FINE] -- NTimerID: 10000
+171125-01:05:51:0361[FINER] -- Match All TicketQueue.
+171125-01:05:51:0361[INFO] -- Checked Out Table> 9 TotalSpending: $16605
+171125-01:05:51:0361[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:51:0361[INFO] -- Checked Out Table> 9 TotalSpending: $16728
+171125-01:05:51:0361[FINE] -- NTimerID: 10000
+171125-01:05:51:0362[FINER] -- Match All TicketQueue.
+171125-01:05:51:0362[INFO] -- Checked Out Table> 9 TotalSpending: $16851
+171125-01:05:51:0362[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:51:0362[INFO] -- Checked Out Table> 9 TotalSpending: $16974
+171125-01:05:51:0362[INFO] -- Checked Out Table> 9 TotalSpending: $17097
+171125-01:05:51:0362[INFO] -- Checked Out Table> 9 TotalSpending: $17220
+171125-01:05:51:0362[INFO] -- Checked Out Table> 9 TotalSpending: $17343
+171125-01:05:51:0363[INFO] -- Checked Out Table> 9 TotalSpending: $17466
+171125-01:05:51:0363[INFO] -- Checked Out Table> 9 TotalSpending: $17589
+171125-01:05:51:0363[INFO] -- Checked Out Table> 9 TotalSpending: $17712
+171125-01:05:51:0363[INFO] -- Checked Out Table> 9 TotalSpending: $17835
+171125-01:05:51:0363[INFO] -- Checked Out Table> 9 TotalSpending: $17958
+171125-01:05:51:0363[INFO] -- Checked Out Table> 9 TotalSpending: $18081
+171125-01:05:51:0364[INFO] -- Checked Out Table> 9 TotalSpending: $18204
+171125-01:05:51:0364[INFO] -- Checked Out Table> 9 TotalSpending: $18327
+171125-01:05:51:0364[INFO] -- Checked Out Table> 9 TotalSpending: $18450
+171125-01:05:51:0364[INFO] -- Checked Out Table> 9 TotalSpending: $18573
+171125-01:05:51:0364[INFO] -- Checked Out Table> 9 TotalSpending: $18696
+171125-01:05:51:0365[INFO] -- Checked Out Table> 9 TotalSpending: $18819
+171125-01:05:51:0365[INFO] -- Checked Out Table> 9 TotalSpending: $18942
+171125-01:05:51:0365[INFO] -- Checked Out Table> 9 TotalSpending: $19065
+171125-01:05:51:0365[INFO] -- Checked Out Table> 9 TotalSpending: $19188
+171125-01:05:51:0365[INFO] -- Checked Out Table> 9 TotalSpending: $19311
+171125-01:05:51:0465[FINE] -- NTimerID: 10000
+171125-01:05:51:0465[FINER] -- Match All TicketQueue.
+171125-01:05:51:0465[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:51:0465[FINE] -- NTimerID: 10000
+171125-01:05:51:0465[FINER] -- Match All TicketQueue.
+171125-01:05:51:0465[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:51:0518[INFO] -- Checked Out Table> 9 TotalSpending: $19434
+171125-01:05:51:0518[INFO] -- Checked Out Table> 9 TotalSpending: $19557
+171125-01:05:51:0519[INFO] -- Checked Out Table> 9 TotalSpending: $19680
+171125-01:05:51:0519[INFO] -- Checked Out Table> 9 TotalSpending: $19803
+171125-01:05:51:0519[INFO] -- Checked Out Table> 9 TotalSpending: $19926
+171125-01:05:51:0519[INFO] -- Checked Out Table> 9 TotalSpending: $20049
+171125-01:05:51:0519[INFO] -- Checked Out Table> 9 TotalSpending: $20172
+171125-01:05:51:0520[INFO] -- Checked Out Table> 9 TotalSpending: $20295
+171125-01:05:51:0520[INFO] -- Checked Out Table> 9 TotalSpending: $20418
+171125-01:05:51:0520[INFO] -- Checked Out Table> 9 TotalSpending: $20541
+171125-01:05:51:0521[INFO] -- Checked Out Table> 9 TotalSpending: $20664
+171125-01:05:51:0521[INFO] -- Checked Out Table> 9 TotalSpending: $20787
+171125-01:05:51:0521[INFO] -- Checked Out Table> 9 TotalSpending: $20910
+171125-01:05:51:0521[INFO] -- Checked Out Table> 9 TotalSpending: $21033
+171125-01:05:51:0522[INFO] -- Checked Out Table> 9 TotalSpending: $21156
+171125-01:05:51:0523[INFO] -- Checked Out Table> 9 TotalSpending: $21279
+171125-01:05:51:0523[INFO] -- Checked Out Table> 9 TotalSpending: $21402
+171125-01:05:51:0523[INFO] -- Checked Out Table> 9 TotalSpending: $21525
+171125-01:05:51:0523[INFO] -- Checked Out Table> 9 TotalSpending: $21648
+171125-01:05:51:0524[INFO] -- Checked Out Table> 9 TotalSpending: $21771
+171125-01:05:51:0524[INFO] -- Checked Out Table> 9 TotalSpending: $21894
+171125-01:05:51:0524[INFO] -- Checked Out Table> 9 TotalSpending: $22017
+171125-01:05:51:0524[INFO] -- Checked Out Table> 9 TotalSpending: $22140
+171125-01:05:51:0524[INFO] -- Checked Out Table> 9 TotalSpending: $22263
+171125-01:05:51:0524[INFO] -- Checked Out Table> 9 TotalSpending: $22386
+171125-01:05:51:0525[INFO] -- Checked Out Table> 9 TotalSpending: $22509
+171125-01:05:51:0525[INFO] -- Checked Out Table> 9 TotalSpending: $22632
+171125-01:05:51:0525[INFO] -- Checked Out Table> 9 TotalSpending: $22755
+171125-01:05:51:0525[INFO] -- Checked Out Table> 9 TotalSpending: $22878
+171125-01:05:51:0525[INFO] -- Checked Out Table> 9 TotalSpending: $23001
+171125-01:05:51:0525[INFO] -- Checked Out Table> 9 TotalSpending: $23124
+171125-01:05:51:0526[INFO] -- Checked Out Table> 9 TotalSpending: $23247
+171125-01:05:51:0526[INFO] -- Checked Out Table> 9 TotalSpending: $23370
+171125-01:05:51:0526[INFO] -- Checked Out Table> 9 TotalSpending: $23493
+171125-01:05:51:0526[INFO] -- Checked Out Table> 9 TotalSpending: $23616
+171125-01:05:51:0566[FINE] -- NTimerID: 10000
+171125-01:05:51:0566[FINER] -- Match All TicketQueue.
+171125-01:05:51:0566[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:51:0566[FINE] -- NTimerID: 10000
+171125-01:05:51:0566[FINER] -- Match All TicketQueue.
+171125-01:05:51:0566[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:51:0662[INFO] -- Checked Out Table> 9 TotalSpending: $23739
+171125-01:05:51:0662[INFO] -- Checked Out Table> 9 TotalSpending: $23862
+171125-01:05:51:0662[INFO] -- Checked Out Table> 9 TotalSpending: $23985
+171125-01:05:51:0663[INFO] -- Checked Out Table> 9 TotalSpending: $24108
+171125-01:05:51:0663[INFO] -- Checked Out Table> 9 TotalSpending: $24231
+171125-01:05:51:0663[INFO] -- Checked Out Table> 9 TotalSpending: $24354
+171125-01:05:51:0663[INFO] -- Checked Out Table> 9 TotalSpending: $24477
+171125-01:05:51:0664[INFO] -- Checked Out Table> 9 TotalSpending: $24600
+171125-01:05:51:0664[INFO] -- Checked Out Table> 9 TotalSpending: $24723
+171125-01:05:51:0664[INFO] -- Checked Out Table> 9 TotalSpending: $24846
+171125-01:05:51:0664[INFO] -- Checked Out Table> 9 TotalSpending: $24969
+171125-01:05:51:0665[INFO] -- Checked Out Table> 9 TotalSpending: $25092
+171125-01:05:51:0665[INFO] -- Checked Out Table> 9 TotalSpending: $25215
+171125-01:05:51:0665[INFO] -- Checked Out Table> 9 TotalSpending: $25338
+171125-01:05:51:0665[INFO] -- Checked Out Table> 9 TotalSpending: $25461
+171125-01:05:51:0666[INFO] -- Checked Out Table> 9 TotalSpending: $25584
+171125-01:05:51:0666[INFO] -- Checked Out Table> 9 TotalSpending: $25707
+171125-01:05:51:0666[INFO] -- Checked Out Table> 9 TotalSpending: $25830
+171125-01:05:51:0666[INFO] -- Checked Out Table> 9 TotalSpending: $25953
+171125-01:05:51:0667[INFO] -- Checked Out Table> 9 TotalSpending: $26076
+171125-01:05:51:0667[INFO] -- Checked Out Table> 9 TotalSpending: $26199
+171125-01:05:51:0667[INFO] -- Checked Out Table> 9 TotalSpending: $26322
+171125-01:05:51:0667[INFO] -- Checked Out Table> 9 TotalSpending: $26445
+171125-01:05:51:0667[INFO] -- Checked Out Table> 9 TotalSpending: $26568
+171125-01:05:51:0667[INFO] -- Checked Out Table> 9 TotalSpending: $26691
+171125-01:05:51:0668[INFO] -- Checked Out Table> 9 TotalSpending: $26814
+171125-01:05:51:0668[INFO] -- Checked Out Table> 9 TotalSpending: $26937
+171125-01:05:51:0668[INFO] -- Checked Out Table> 9 TotalSpending: $27060
+171125-01:05:51:0668[INFO] -- Checked Out Table> 9 TotalSpending: $27183
+171125-01:05:51:0668[INFO] -- Checked Out Table> 9 TotalSpending: $27306
+171125-01:05:51:0668[INFO] -- Checked Out Table> 9 TotalSpending: $27429
+171125-01:05:51:0669[INFO] -- Checked Out Table> 9 TotalSpending: $27552
+171125-01:05:51:0669[INFO] -- Checked Out Table> 9 TotalSpending: $27675
+171125-01:05:51:0669[INFO] -- Checked Out Table> 9 TotalSpending: $27798
+171125-01:05:51:0669[INFO] -- Checked Out Table> 9 TotalSpending: $27921
+171125-01:05:51:0671[FINE] -- NTimerID: 10000
+171125-01:05:51:0671[FINER] -- Match All TicketQueue.
+171125-01:05:51:0671[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:51:0671[FINE] -- NTimerID: 10000
+171125-01:05:51:0671[FINER] -- Match All TicketQueue.
+171125-01:05:51:0671[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:51:0772[FINE] -- NTimerID: 10000
+171125-01:05:51:0773[FINER] -- Match All TicketQueue.
+171125-01:05:51:0773[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:51:0773[FINE] -- NTimerID: 10000
+171125-01:05:51:0773[FINER] -- Match All TicketQueue.
+171125-01:05:51:0773[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:51:0814[INFO] -- Checked Out Table> 9 TotalSpending: $28044
+171125-01:05:51:0814[INFO] -- Checked Out Table> 9 TotalSpending: $28167
+171125-01:05:51:0815[INFO] -- Checked Out Table> 9 TotalSpending: $28290
+171125-01:05:51:0815[INFO] -- Checked Out Table> 9 TotalSpending: $28413
+171125-01:05:51:0815[INFO] -- Checked Out Table> 9 TotalSpending: $28536
+171125-01:05:51:0815[INFO] -- Checked Out Table> 9 TotalSpending: $28659
+171125-01:05:51:0816[INFO] -- Checked Out Table> 9 TotalSpending: $28782
+171125-01:05:51:0816[INFO] -- Checked Out Table> 9 TotalSpending: $28905
+171125-01:05:51:0816[INFO] -- Checked Out Table> 9 TotalSpending: $29028
+171125-01:05:51:0816[INFO] -- Checked Out Table> 9 TotalSpending: $29151
+171125-01:05:51:0817[INFO] -- Checked Out Table> 9 TotalSpending: $29274
+171125-01:05:51:0817[INFO] -- Checked Out Table> 9 TotalSpending: $29397
+171125-01:05:51:0817[INFO] -- Checked Out Table> 9 TotalSpending: $29520
+171125-01:05:51:0817[INFO] -- Checked Out Table> 9 TotalSpending: $29643
+171125-01:05:51:0818[INFO] -- Checked Out Table> 9 TotalSpending: $29766
+171125-01:05:51:0818[INFO] -- Checked Out Table> 9 TotalSpending: $29889
+171125-01:05:51:0818[INFO] -- Checked Out Table> 9 TotalSpending: $30012
+171125-01:05:51:0818[INFO] -- Checked Out Table> 9 TotalSpending: $30135
+171125-01:05:51:0818[INFO] -- Checked Out Table> 9 TotalSpending: $30258
+171125-01:05:51:0818[INFO] -- Checked Out Table> 9 TotalSpending: $30381
+171125-01:05:51:0818[INFO] -- Checked Out Table> 9 TotalSpending: $30504
+171125-01:05:51:0819[INFO] -- Checked Out Table> 9 TotalSpending: $30627
+171125-01:05:51:0819[INFO] -- Checked Out Table> 9 TotalSpending: $30750
+171125-01:05:51:0819[INFO] -- Checked Out Table> 9 TotalSpending: $30873
+171125-01:05:51:0819[INFO] -- Checked Out Table> 9 TotalSpending: $30996
+171125-01:05:51:0819[INFO] -- Checked Out Table> 9 TotalSpending: $31119
+171125-01:05:51:0819[INFO] -- Checked Out Table> 9 TotalSpending: $31242
+171125-01:05:51:0820[INFO] -- Checked Out Table> 9 TotalSpending: $31365
+171125-01:05:51:0820[INFO] -- Checked Out Table> 9 TotalSpending: $31488
+171125-01:05:51:0820[INFO] -- Checked Out Table> 9 TotalSpending: $31611
+171125-01:05:51:0820[INFO] -- Checked Out Table> 9 TotalSpending: $31734
+171125-01:05:51:0820[INFO] -- Checked Out Table> 9 TotalSpending: $31857
+171125-01:05:51:0820[INFO] -- Checked Out Table> 9 TotalSpending: $31980
+171125-01:05:51:0821[INFO] -- Checked Out Table> 9 TotalSpending: $32103
+171125-01:05:51:0821[INFO] -- Checked Out Table> 9 TotalSpending: $32226
+171125-01:05:51:0821[INFO] -- Checked Out Table> 9 TotalSpending: $32349
+171125-01:05:51:0875[FINE] -- NTimerID: 10000
+171125-01:05:51:0875[FINER] -- Match All TicketQueue.
+171125-01:05:51:0876[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:51:0876[FINE] -- NTimerID: 10000
+171125-01:05:51:0876[FINER] -- Match All TicketQueue.
+171125-01:05:51:0876[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:51:0957[INFO] -- Checked Out Table> 9 TotalSpending: $32472
+171125-01:05:51:0958[INFO] -- Checked Out Table> 9 TotalSpending: $32595
+171125-01:05:51:0958[INFO] -- Checked Out Table> 9 TotalSpending: $32718
+171125-01:05:51:0958[INFO] -- Checked Out Table> 9 TotalSpending: $32841
+171125-01:05:51:0958[INFO] -- Checked Out Table> 9 TotalSpending: $32964
+171125-01:05:51:0958[INFO] -- Checked Out Table> 9 TotalSpending: $33087
+171125-01:05:51:0958[INFO] -- Checked Out Table> 9 TotalSpending: $33210
+171125-01:05:51:0959[INFO] -- Checked Out Table> 9 TotalSpending: $33333
+171125-01:05:51:0959[INFO] -- Checked Out Table> 9 TotalSpending: $33456
+171125-01:05:51:0959[INFO] -- Checked Out Table> 9 TotalSpending: $33579
+171125-01:05:51:0959[INFO] -- Checked Out Table> 9 TotalSpending: $33702
+171125-01:05:51:0959[INFO] -- Checked Out Table> 9 TotalSpending: $33825
+171125-01:05:51:0959[INFO] -- Checked Out Table> 9 TotalSpending: $33948
+171125-01:05:51:0959[INFO] -- Checked Out Table> 9 TotalSpending: $34071
+171125-01:05:51:0959[INFO] -- Checked Out Table> 9 TotalSpending: $34194
+171125-01:05:51:0960[INFO] -- Checked Out Table> 9 TotalSpending: $34317
+171125-01:05:51:0960[INFO] -- Checked Out Table> 9 TotalSpending: $34440
+171125-01:05:51:0960[INFO] -- Checked Out Table> 9 TotalSpending: $34563
+171125-01:05:51:0960[INFO] -- Checked Out Table> 9 TotalSpending: $34686
+171125-01:05:51:0960[INFO] -- Checked Out Table> 9 TotalSpending: $34809
+171125-01:05:51:0960[INFO] -- Checked Out Table> 9 TotalSpending: $34932
+171125-01:05:51:0960[INFO] -- Checked Out Table> 9 TotalSpending: $35055
+171125-01:05:51:0960[INFO] -- Checked Out Table> 9 TotalSpending: $35178
+171125-01:05:51:0961[INFO] -- Checked Out Table> 9 TotalSpending: $35301
+171125-01:05:51:0961[INFO] -- Checked Out Table> 9 TotalSpending: $35424
+171125-01:05:51:0961[INFO] -- Checked Out Table> 9 TotalSpending: $35547
+171125-01:05:51:0961[INFO] -- Checked Out Table> 9 TotalSpending: $35670
+171125-01:05:51:0961[INFO] -- Checked Out Table> 9 TotalSpending: $35793
+171125-01:05:51:0961[INFO] -- Checked Out Table> 9 TotalSpending: $35916
+171125-01:05:51:0961[INFO] -- Checked Out Table> 9 TotalSpending: $36039
+171125-01:05:51:0961[INFO] -- Checked Out Table> 9 TotalSpending: $36162
+171125-01:05:51:0962[INFO] -- Checked Out Table> 9 TotalSpending: $36285
+171125-01:05:51:0962[INFO] -- Checked Out Table> 9 TotalSpending: $36408
+171125-01:05:51:0962[INFO] -- Checked Out Table> 9 TotalSpending: $36531
+171125-01:05:51:0962[INFO] -- Checked Out Table> 9 TotalSpending: $36654
+171125-01:05:51:0962[INFO] -- Checked Out Table> 9 TotalSpending: $36777
+171125-01:05:51:0979[FINE] -- NTimerID: 10000
+171125-01:05:51:0979[FINER] -- Match All TicketQueue.
+171125-01:05:51:0979[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:51:0979[FINE] -- NTimerID: 10000
+171125-01:05:51:0980[FINER] -- Match All TicketQueue.
+171125-01:05:51:0980[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:52:0081[FINE] -- NTimerID: 10000
+171125-01:05:52:0081[FINER] -- Match All TicketQueue.
+171125-01:05:52:0081[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:52:0081[FINE] -- NTimerID: 10000
+171125-01:05:52:0081[FINER] -- Match All TicketQueue.
+171125-01:05:52:0082[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:52:0183[FINE] -- NTimerID: 10000
+171125-01:05:52:0183[FINER] -- Match All TicketQueue.
+171125-01:05:52:0183[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:52:0183[FINE] -- NTimerID: 10000
+171125-01:05:52:0183[FINER] -- Match All TicketQueue.
+171125-01:05:52:0183[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:52:0285[FINE] -- NTimerID: 10000
+171125-01:05:52:0285[FINER] -- Match All TicketQueue.
+171125-01:05:52:0285[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:52:0285[FINE] -- NTimerID: 10000
+171125-01:05:52:0285[FINER] -- Match All TicketQueue.
+171125-01:05:52:0285[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:52:0386[FINE] -- NTimerID: 10000
+171125-01:05:52:0387[FINER] -- Match All TicketQueue.
+171125-01:05:52:0387[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:52:0387[FINE] -- NTimerID: 10000
+171125-01:05:52:0387[FINER] -- Match All TicketQueue.
+171125-01:05:52:0387[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:52:0460[INFO] -- Checked Out Table> 9 TotalSpending: $36900
+171125-01:05:52:0460[INFO] -- Checked Out Table> 9 TotalSpending: $37023
+171125-01:05:52:0461[INFO] -- Checked Out Table> 9 TotalSpending: $37146
+171125-01:05:52:0461[INFO] -- Checked Out Table> 9 TotalSpending: $37269
+171125-01:05:52:0461[INFO] -- Checked Out Table> 9 TotalSpending: $37392
+171125-01:05:52:0461[INFO] -- Checked Out Table> 9 TotalSpending: $37515
+171125-01:05:52:0461[INFO] -- Checked Out Table> 9 TotalSpending: $37638
+171125-01:05:52:0461[INFO] -- Checked Out Table> 9 TotalSpending: $37761
+171125-01:05:52:0461[INFO] -- Checked Out Table> 9 TotalSpending: $37884
+171125-01:05:52:0461[INFO] -- Checked Out Table> 9 TotalSpending: $38007
+171125-01:05:52:0461[INFO] -- Checked Out Table> 9 TotalSpending: $38130
+171125-01:05:52:0462[INFO] -- Checked Out Table> 9 TotalSpending: $38253
+171125-01:05:52:0462[INFO] -- Checked Out Table> 9 TotalSpending: $38376
+171125-01:05:52:0462[INFO] -- Checked Out Table> 9 TotalSpending: $38499
+171125-01:05:52:0462[INFO] -- Checked Out Table> 9 TotalSpending: $38622
+171125-01:05:52:0462[INFO] -- Checked Out Table> 9 TotalSpending: $38745
+171125-01:05:52:0462[INFO] -- Checked Out Table> 9 TotalSpending: $38868
+171125-01:05:52:0462[INFO] -- Checked Out Table> 9 TotalSpending: $38991
+171125-01:05:52:0463[INFO] -- Checked Out Table> 9 TotalSpending: $39114
+171125-01:05:52:0463[INFO] -- Checked Out Table> 9 TotalSpending: $39237
+171125-01:05:52:0463[INFO] -- Checked Out Table> 9 TotalSpending: $39360
+171125-01:05:52:0463[INFO] -- Checked Out Table> 9 TotalSpending: $39483
+171125-01:05:52:0463[INFO] -- Checked Out Table> 9 TotalSpending: $39606
+171125-01:05:52:0463[INFO] -- Checked Out Table> 9 TotalSpending: $39729
+171125-01:05:52:0463[INFO] -- Checked Out Table> 9 TotalSpending: $39852
+171125-01:05:52:0463[INFO] -- Checked Out Table> 9 TotalSpending: $39975
+171125-01:05:52:0463[INFO] -- Checked Out Table> 9 TotalSpending: $40098
+171125-01:05:52:0463[INFO] -- Checked Out Table> 9 TotalSpending: $40221
+171125-01:05:52:0464[INFO] -- Checked Out Table> 9 TotalSpending: $40344
+171125-01:05:52:0464[INFO] -- Checked Out Table> 9 TotalSpending: $40467
+171125-01:05:52:0464[INFO] -- Checked Out Table> 9 TotalSpending: $40590
+171125-01:05:52:0464[INFO] -- Checked Out Table> 9 TotalSpending: $40713
+171125-01:05:52:0464[INFO] -- Checked Out Table> 9 TotalSpending: $40836
+171125-01:05:52:0464[INFO] -- Checked Out Table> 9 TotalSpending: $40959
+171125-01:05:52:0464[INFO] -- Checked Out Table> 9 TotalSpending: $41082
+171125-01:05:52:0464[INFO] -- Checked Out Table> 9 TotalSpending: $41205
+171125-01:05:52:0464[INFO] -- Checked Out Table> 9 TotalSpending: $41328
+171125-01:05:52:0465[INFO] -- Checked Out Table> 9 TotalSpending: $41451
+171125-01:05:52:0489[FINE] -- NTimerID: 10000
+171125-01:05:52:0489[FINER] -- Match All TicketQueue.
+171125-01:05:52:0489[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:52:0489[FINE] -- NTimerID: 10000
+171125-01:05:52:0489[FINER] -- Match All TicketQueue.
+171125-01:05:52:0489[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:52:0591[FINE] -- NTimerID: 10000
+171125-01:05:52:0591[FINER] -- Match All TicketQueue.
+171125-01:05:52:0591[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:52:0591[FINE] -- NTimerID: 10000
+171125-01:05:52:0591[FINER] -- Match All TicketQueue.
+171125-01:05:52:0591[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:52:0614[INFO] -- Checked Out Table> 9 TotalSpending: $41574
+171125-01:05:52:0615[INFO] -- Checked Out Table> 9 TotalSpending: $41697
+171125-01:05:52:0615[INFO] -- Checked Out Table> 9 TotalSpending: $41820
+171125-01:05:52:0615[INFO] -- Checked Out Table> 9 TotalSpending: $41943
+171125-01:05:52:0615[INFO] -- Checked Out Table> 9 TotalSpending: $42066
+171125-01:05:52:0616[INFO] -- Checked Out Table> 9 TotalSpending: $42189
+171125-01:05:52:0616[INFO] -- Checked Out Table> 9 TotalSpending: $42312
+171125-01:05:52:0616[INFO] -- Checked Out Table> 9 TotalSpending: $42435
+171125-01:05:52:0616[INFO] -- Checked Out Table> 9 TotalSpending: $42558
+171125-01:05:52:0616[INFO] -- Checked Out Table> 9 TotalSpending: $42681
+171125-01:05:52:0617[INFO] -- Checked Out Table> 9 TotalSpending: $42804
+171125-01:05:52:0617[INFO] -- Checked Out Table> 9 TotalSpending: $42927
+171125-01:05:52:0617[INFO] -- Checked Out Table> 9 TotalSpending: $43050
+171125-01:05:52:0617[INFO] -- Checked Out Table> 9 TotalSpending: $43173
+171125-01:05:52:0617[INFO] -- Checked Out Table> 9 TotalSpending: $43296
+171125-01:05:52:0618[INFO] -- Checked Out Table> 9 TotalSpending: $43419
+171125-01:05:52:0618[INFO] -- Checked Out Table> 9 TotalSpending: $43542
+171125-01:05:52:0618[INFO] -- Checked Out Table> 9 TotalSpending: $43665
+171125-01:05:52:0619[INFO] -- Checked Out Table> 9 TotalSpending: $43788
+171125-01:05:52:0619[INFO] -- Checked Out Table> 9 TotalSpending: $43911
+171125-01:05:52:0619[INFO] -- Checked Out Table> 9 TotalSpending: $44034
+171125-01:05:52:0619[INFO] -- Checked Out Table> 9 TotalSpending: $44157
+171125-01:05:52:0620[INFO] -- Checked Out Table> 9 TotalSpending: $44280
+171125-01:05:52:0620[INFO] -- Checked Out Table> 9 TotalSpending: $44403
+171125-01:05:52:0620[INFO] -- Checked Out Table> 9 TotalSpending: $44526
+171125-01:05:52:0620[INFO] -- Checked Out Table> 9 TotalSpending: $44649
+171125-01:05:52:0620[INFO] -- Checked Out Table> 9 TotalSpending: $44772
+171125-01:05:52:0620[INFO] -- Checked Out Table> 9 TotalSpending: $44895
+171125-01:05:52:0620[INFO] -- Checked Out Table> 9 TotalSpending: $45018
+171125-01:05:52:0620[INFO] -- Checked Out Table> 9 TotalSpending: $45141
+171125-01:05:52:0621[INFO] -- Checked Out Table> 9 TotalSpending: $45264
+171125-01:05:52:0621[INFO] -- Checked Out Table> 9 TotalSpending: $45387
+171125-01:05:52:0621[INFO] -- Checked Out Table> 9 TotalSpending: $45510
+171125-01:05:52:0621[INFO] -- Checked Out Table> 9 TotalSpending: $45633
+171125-01:05:52:0621[INFO] -- Checked Out Table> 9 TotalSpending: $45756
+171125-01:05:52:0621[INFO] -- Checked Out Table> 9 TotalSpending: $45879
+171125-01:05:52:0621[INFO] -- Checked Out Table> 9 TotalSpending: $46002
+171125-01:05:52:0622[INFO] -- Checked Out Table> 9 TotalSpending: $46125
+171125-01:05:52:0693[FINE] -- NTimerID: 10000
+171125-01:05:52:0693[FINER] -- Match All TicketQueue.
+171125-01:05:52:0693[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:52:0693[FINE] -- NTimerID: 10000
+171125-01:05:52:0693[FINER] -- Match All TicketQueue.
+171125-01:05:52:0693[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:52:0796[FINE] -- NTimerID: 10000
+171125-01:05:52:0796[FINER] -- Match All TicketQueue.
+171125-01:05:52:0796[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:52:0796[FINE] -- NTimerID: 10000
+171125-01:05:52:0796[FINER] -- Match All TicketQueue.
+171125-01:05:52:0796[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:52:0796[INFO] -- Checked Out Table> 9 TotalSpending: $46248
+171125-01:05:52:0797[INFO] -- Checked Out Table> 9 TotalSpending: $46371
+171125-01:05:52:0797[INFO] -- Checked Out Table> 9 TotalSpending: $46494
+171125-01:05:52:0797[INFO] -- Checked Out Table> 9 TotalSpending: $46617
+171125-01:05:52:0797[INFO] -- Checked Out Table> 9 TotalSpending: $46740
+171125-01:05:52:0797[INFO] -- Checked Out Table> 9 TotalSpending: $46863
+171125-01:05:52:0797[INFO] -- Checked Out Table> 9 TotalSpending: $46986
+171125-01:05:52:0797[INFO] -- Checked Out Table> 9 TotalSpending: $47109
+171125-01:05:52:0798[INFO] -- Checked Out Table> 9 TotalSpending: $47232
+171125-01:05:52:0798[INFO] -- Checked Out Table> 9 TotalSpending: $47355
+171125-01:05:52:0798[INFO] -- Checked Out Table> 9 TotalSpending: $47478
+171125-01:05:52:0798[INFO] -- Checked Out Table> 9 TotalSpending: $47601
+171125-01:05:52:0798[INFO] -- Checked Out Table> 9 TotalSpending: $47724
+171125-01:05:52:0798[INFO] -- Checked Out Table> 9 TotalSpending: $47847
+171125-01:05:52:0798[INFO] -- Checked Out Table> 9 TotalSpending: $47970
+171125-01:05:52:0798[INFO] -- Checked Out Table> 9 TotalSpending: $48093
+171125-01:05:52:0798[INFO] -- Checked Out Table> 9 TotalSpending: $48216
+171125-01:05:52:0798[INFO] -- Checked Out Table> 9 TotalSpending: $48339
+171125-01:05:52:0799[INFO] -- Checked Out Table> 9 TotalSpending: $48462
+171125-01:05:52:0799[INFO] -- Checked Out Table> 9 TotalSpending: $48585
+171125-01:05:52:0799[INFO] -- Checked Out Table> 9 TotalSpending: $48708
+171125-01:05:52:0799[INFO] -- Checked Out Table> 9 TotalSpending: $48831
+171125-01:05:52:0799[INFO] -- Checked Out Table> 9 TotalSpending: $48954
+171125-01:05:52:0799[INFO] -- Checked Out Table> 9 TotalSpending: $49077
+171125-01:05:52:0799[INFO] -- Checked Out Table> 9 TotalSpending: $49200
+171125-01:05:52:0799[INFO] -- Checked Out Table> 9 TotalSpending: $49323
+171125-01:05:52:0799[INFO] -- Checked Out Table> 9 TotalSpending: $49446
+171125-01:05:52:0800[INFO] -- Checked Out Table> 9 TotalSpending: $49569
+171125-01:05:52:0800[INFO] -- Checked Out Table> 9 TotalSpending: $49692
+171125-01:05:52:0800[INFO] -- Checked Out Table> 9 TotalSpending: $49815
+171125-01:05:52:0800[INFO] -- Checked Out Table> 9 TotalSpending: $49938
+171125-01:05:52:0800[INFO] -- Checked Out Table> 9 TotalSpending: $50061
+171125-01:05:52:0800[INFO] -- Checked Out Table> 9 TotalSpending: $50184
+171125-01:05:52:0800[INFO] -- Checked Out Table> 9 TotalSpending: $50307
+171125-01:05:52:0800[INFO] -- Checked Out Table> 9 TotalSpending: $50430
+171125-01:05:52:0800[INFO] -- Checked Out Table> 9 TotalSpending: $50553
+171125-01:05:52:0801[INFO] -- Checked Out Table> 9 TotalSpending: $50676
+171125-01:05:52:0801[INFO] -- Checked Out Table> 9 TotalSpending: $50799
+171125-01:05:52:0801[INFO] -- Checked Out Table> 9 TotalSpending: $50922
+171125-01:05:52:0899[FINE] -- NTimerID: 10000
+171125-01:05:52:0899[FINER] -- Match All TicketQueue.
+171125-01:05:52:0900[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:52:0900[FINE] -- NTimerID: 10000
+171125-01:05:52:0900[FINER] -- Match All TicketQueue.
+171125-01:05:52:0900[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:52:0917[INFO] -- Checked Out Table> 9 TotalSpending: $51045
+171125-01:05:52:0918[INFO] -- Checked Out Table> 9 TotalSpending: $51168
+171125-01:05:52:0918[INFO] -- Checked Out Table> 9 TotalSpending: $51291
+171125-01:05:52:0918[INFO] -- Checked Out Table> 9 TotalSpending: $51414
+171125-01:05:52:0918[INFO] -- Checked Out Table> 9 TotalSpending: $51537
+171125-01:05:52:0919[INFO] -- Checked Out Table> 9 TotalSpending: $51660
+171125-01:05:52:0919[INFO] -- Checked Out Table> 9 TotalSpending: $51783
+171125-01:05:52:0919[INFO] -- Checked Out Table> 9 TotalSpending: $51906
+171125-01:05:52:0919[INFO] -- Checked Out Table> 9 TotalSpending: $52029
+171125-01:05:52:0919[INFO] -- Checked Out Table> 9 TotalSpending: $52152
+171125-01:05:52:0919[INFO] -- Checked Out Table> 9 TotalSpending: $52275
+171125-01:05:52:0919[INFO] -- Checked Out Table> 9 TotalSpending: $52398
+171125-01:05:52:0919[INFO] -- Checked Out Table> 9 TotalSpending: $52521
+171125-01:05:52:0919[INFO] -- Checked Out Table> 9 TotalSpending: $52644
+171125-01:05:52:0919[INFO] -- Checked Out Table> 9 TotalSpending: $52767
+171125-01:05:52:0920[INFO] -- Checked Out Table> 9 TotalSpending: $52890
+171125-01:05:52:0920[INFO] -- Checked Out Table> 9 TotalSpending: $53013
+171125-01:05:52:0920[INFO] -- Checked Out Table> 9 TotalSpending: $53136
+171125-01:05:52:0920[INFO] -- Checked Out Table> 9 TotalSpending: $53259
+171125-01:05:52:0920[INFO] -- Checked Out Table> 9 TotalSpending: $53382
+171125-01:05:52:0920[INFO] -- Checked Out Table> 9 TotalSpending: $53505
+171125-01:05:52:0920[INFO] -- Checked Out Table> 9 TotalSpending: $53628
+171125-01:05:52:0920[INFO] -- Checked Out Table> 9 TotalSpending: $53751
+171125-01:05:52:0920[INFO] -- Checked Out Table> 9 TotalSpending: $53874
+171125-01:05:52:0920[INFO] -- Checked Out Table> 9 TotalSpending: $53997
+171125-01:05:52:0921[INFO] -- Checked Out Table> 9 TotalSpending: $54120
+171125-01:05:52:0921[INFO] -- Checked Out Table> 9 TotalSpending: $54243
+171125-01:05:52:0921[INFO] -- Checked Out Table> 9 TotalSpending: $54366
+171125-01:05:52:0921[INFO] -- Checked Out Table> 9 TotalSpending: $54489
+171125-01:05:52:0921[INFO] -- Checked Out Table> 9 TotalSpending: $54612
+171125-01:05:52:0921[INFO] -- Checked Out Table> 9 TotalSpending: $54735
+171125-01:05:52:0921[INFO] -- Checked Out Table> 9 TotalSpending: $54858
+171125-01:05:52:0921[INFO] -- Checked Out Table> 9 TotalSpending: $54981
+171125-01:05:52:0921[INFO] -- Checked Out Table> 9 TotalSpending: $55104
+171125-01:05:52:0921[INFO] -- Checked Out Table> 9 TotalSpending: $55227
+171125-01:05:52:0922[INFO] -- Checked Out Table> 9 TotalSpending: $55350
+171125-01:05:52:0922[INFO] -- Checked Out Table> 9 TotalSpending: $55473
+171125-01:05:52:0922[INFO] -- Checked Out Table> 9 TotalSpending: $55596
+171125-01:05:52:0922[INFO] -- Checked Out Table> 9 TotalSpending: $55719
+171125-01:05:53:0003[FINE] -- NTimerID: 10000
+171125-01:05:53:0003[FINER] -- Match All TicketQueue.
+171125-01:05:53:0004[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:53:0004[FINE] -- NTimerID: 10000
+171125-01:05:53:0004[FINER] -- Match All TicketQueue.
+171125-01:05:53:0004[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:53:0106[FINE] -- NTimerID: 10000
+171125-01:05:53:0106[FINER] -- Match All TicketQueue.
+171125-01:05:53:0107[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:53:0107[FINE] -- NTimerID: 10000
+171125-01:05:53:0107[FINER] -- Match All TicketQueue.
+171125-01:05:53:0107[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:53:0210[FINE] -- NTimerID: 10000
+171125-01:05:53:0210[FINER] -- Match All TicketQueue.
+171125-01:05:53:0210[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:53:0210[FINE] -- NTimerID: 10000
+171125-01:05:53:0211[FINER] -- Match All TicketQueue.
+171125-01:05:53:0211[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:53:0311[FINE] -- NTimerID: 10000
+171125-01:05:53:0311[FINER] -- Match All TicketQueue.
+171125-01:05:53:0311[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:53:0314[FINE] -- NTimerID: 10000
+171125-01:05:53:0314[FINER] -- Match All TicketQueue.
+171125-01:05:53:0314[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:53:0415[FINE] -- NTimerID: 10000
+171125-01:05:53:0422[FINER] -- Match All TicketQueue.
+171125-01:05:53:0423[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:53:0423[FINE] -- NTimerID: 10000
+171125-01:05:53:0423[FINER] -- Match All TicketQueue.
+171125-01:05:53:0423[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:53:0526[FINE] -- NTimerID: 10000
+171125-01:05:53:0526[FINER] -- Match All TicketQueue.
+171125-01:05:53:0526[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:53:0526[FINE] -- NTimerID: 10000
+171125-01:05:53:0526[FINER] -- Match All TicketQueue.
+171125-01:05:53:0526[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:53:0628[FINE] -- NTimerID: 10000
+171125-01:05:53:0628[FINER] -- Match All TicketQueue.
+171125-01:05:53:0628[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:53:0628[FINE] -- NTimerID: 10000
+171125-01:05:53:0628[FINER] -- Match All TicketQueue.
+171125-01:05:53:0628[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:53:0731[FINE] -- NTimerID: 10000
+171125-01:05:53:0731[FINER] -- Match All TicketQueue.
+171125-01:05:53:0731[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:53:0731[FINE] -- NTimerID: 10000
+171125-01:05:53:0731[FINER] -- Match All TicketQueue.
+171125-01:05:53:0731[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:53:0835[FINE] -- NTimerID: 10000
+171125-01:05:53:0842[FINER] -- Match All TicketQueue.
+171125-01:05:53:0842[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:53:0842[FINE] -- NTimerID: 10000
+171125-01:05:53:0843[FINER] -- Match All TicketQueue.
+171125-01:05:53:0843[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:53:0945[FINE] -- NTimerID: 10000
+171125-01:05:53:0945[FINER] -- Match All TicketQueue.
+171125-01:05:53:0945[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:53:0945[FINE] -- NTimerID: 10000
+171125-01:05:53:0945[FINER] -- Match All TicketQueue.
+171125-01:05:53:0945[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:54:0049[FINE] -- NTimerID: 10000
+171125-01:05:54:0049[FINER] -- Match All TicketQueue.
+171125-01:05:54:0049[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:54:0049[FINE] -- NTimerID: 10000
+171125-01:05:54:0049[FINER] -- Match All TicketQueue.
+171125-01:05:54:0049[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:54:0153[FINE] -- NTimerID: 10000
+171125-01:05:54:0153[FINER] -- Match All TicketQueue.
+171125-01:05:54:0153[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:54:0153[FINE] -- NTimerID: 10000
+171125-01:05:54:0153[FINER] -- Match All TicketQueue.
+171125-01:05:54:0153[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:54:0255[FINE] -- NTimerID: 10000
+171125-01:05:54:0255[FINER] -- Match All TicketQueue.
+171125-01:05:54:0255[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:54:0255[FINE] -- NTimerID: 10000
+171125-01:05:54:0255[FINER] -- Match All TicketQueue.
+171125-01:05:54:0255[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:54:0358[FINE] -- NTimerID: 10000
+171125-01:05:54:0358[FINER] -- Match All TicketQueue.
+171125-01:05:54:0358[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:54:0358[FINE] -- NTimerID: 10000
+171125-01:05:54:0358[FINER] -- Match All TicketQueue.
+171125-01:05:54:0358[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:54:0462[FINE] -- NTimerID: 10000
+171125-01:05:54:0462[FINER] -- Match All TicketQueue.
+171125-01:05:54:0462[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:54:0462[FINE] -- NTimerID: 10000
+171125-01:05:54:0462[FINER] -- Match All TicketQueue.
+171125-01:05:54:0462[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:54:0567[FINE] -- NTimerID: 10000
+171125-01:05:54:0567[FINER] -- Match All TicketQueue.
+171125-01:05:54:0567[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:54:0567[FINE] -- NTimerID: 10000
+171125-01:05:54:0567[FINER] -- Match All TicketQueue.
+171125-01:05:54:0567[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:54:0669[FINE] -- NTimerID: 10000
+171125-01:05:54:0669[FINER] -- Match All TicketQueue.
+171125-01:05:54:0669[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:54:0669[FINE] -- NTimerID: 10000
+171125-01:05:54:0669[FINER] -- Match All TicketQueue.
+171125-01:05:54:0669[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:54:0772[FINE] -- NTimerID: 10000
+171125-01:05:54:0772[FINER] -- Match All TicketQueue.
+171125-01:05:54:0772[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:54:0772[FINE] -- NTimerID: 10000
+171125-01:05:54:0772[FINER] -- Match All TicketQueue.
+171125-01:05:54:0772[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:54:0874[FINE] -- NTimerID: 10000
+171125-01:05:54:0875[FINER] -- Match All TicketQueue.
+171125-01:05:54:0875[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:54:0875[FINE] -- NTimerID: 10000
+171125-01:05:54:0875[FINER] -- Match All TicketQueue.
+171125-01:05:54:0875[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:54:0979[FINE] -- NTimerID: 10000
+171125-01:05:54:0979[FINER] -- Match All TicketQueue.
+171125-01:05:54:0979[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:54:0979[FINE] -- NTimerID: 10000
+171125-01:05:54:0979[FINER] -- Match All TicketQueue.
+171125-01:05:54:0979[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:55:0081[FINE] -- NTimerID: 10000
+171125-01:05:55:0081[FINER] -- Match All TicketQueue.
+171125-01:05:55:0081[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:55:0081[FINE] -- NTimerID: 10000
+171125-01:05:55:0081[FINER] -- Match All TicketQueue.
+171125-01:05:55:0081[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:55:0184[FINE] -- NTimerID: 10000
+171125-01:05:55:0184[FINER] -- Match All TicketQueue.
+171125-01:05:55:0184[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:55:0184[FINE] -- NTimerID: 10000
+171125-01:05:55:0184[FINER] -- Match All TicketQueue.
+171125-01:05:55:0184[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:55:0287[FINE] -- NTimerID: 10000
+171125-01:05:55:0287[FINER] -- Match All TicketQueue.
+171125-01:05:55:0287[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:55:0287[FINE] -- NTimerID: 10000
+171125-01:05:55:0287[FINER] -- Match All TicketQueue.
+171125-01:05:55:0287[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:55:0392[FINE] -- NTimerID: 10000
+171125-01:05:55:0392[FINER] -- Match All TicketQueue.
+171125-01:05:55:0392[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:55:0393[FINE] -- NTimerID: 10000
+171125-01:05:55:0393[FINER] -- Match All TicketQueue.
+171125-01:05:55:0393[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:55:0495[FINE] -- NTimerID: 10000
+171125-01:05:55:0495[FINER] -- Match All TicketQueue.
+171125-01:05:55:0495[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:55:0495[FINE] -- NTimerID: 10000
+171125-01:05:55:0496[FINER] -- Match All TicketQueue.
+171125-01:05:55:0496[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:55:0597[FINE] -- NTimerID: 10000
+171125-01:05:55:0597[FINER] -- Match All TicketQueue.
+171125-01:05:55:0597[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:55:0597[FINE] -- NTimerID: 10000
+171125-01:05:55:0597[FINER] -- Match All TicketQueue.
+171125-01:05:55:0597[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:55:0698[FINE] -- NTimerID: 10000
+171125-01:05:55:0698[FINER] -- Match All TicketQueue.
+171125-01:05:55:0698[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:55:0698[FINE] -- NTimerID: 10000
+171125-01:05:55:0699[FINER] -- Match All TicketQueue.
+171125-01:05:55:0699[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:55:0803[FINE] -- NTimerID: 10000
+171125-01:05:55:0803[FINER] -- Match All TicketQueue.
+171125-01:05:55:0803[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:55:0803[FINE] -- NTimerID: 10000
+171125-01:05:55:0803[FINER] -- Match All TicketQueue.
+171125-01:05:55:0803[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:55:0906[FINE] -- NTimerID: 10000
+171125-01:05:55:0906[FINER] -- Match All TicketQueue.
+171125-01:05:55:0906[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:55:0906[FINE] -- NTimerID: 10000
+171125-01:05:55:0906[FINER] -- Match All TicketQueue.
+171125-01:05:55:0906[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:56:0010[FINE] -- NTimerID: 10000
+171125-01:05:56:0011[FINER] -- Match All TicketQueue.
+171125-01:05:56:0011[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:56:0011[FINE] -- NTimerID: 10000
+171125-01:05:56:0011[FINER] -- Match All TicketQueue.
+171125-01:05:56:0011[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:56:0112[FINE] -- NTimerID: 10000
+171125-01:05:56:0112[FINER] -- Match All TicketQueue.
+171125-01:05:56:0112[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:56:0113[FINE] -- NTimerID: 10000
+171125-01:05:56:0113[FINER] -- Match All TicketQueue.
+171125-01:05:56:0113[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:56:0214[FINE] -- NTimerID: 10000
+171125-01:05:56:0214[FINER] -- Match All TicketQueue.
+171125-01:05:56:0214[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:56:0215[FINE] -- NTimerID: 10000
+171125-01:05:56:0215[FINER] -- Match All TicketQueue.
+171125-01:05:56:0215[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:56:0316[FINE] -- NTimerID: 10000
+171125-01:05:56:0316[FINER] -- Match All TicketQueue.
+171125-01:05:56:0316[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:56:0316[FINE] -- NTimerID: 10000
+171125-01:05:56:0316[FINER] -- Match All TicketQueue.
+171125-01:05:56:0316[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:56:0418[FINE] -- NTimerID: 10000
+171125-01:05:56:0418[FINER] -- Match All TicketQueue.
+171125-01:05:56:0418[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:56:0418[FINE] -- NTimerID: 10000
+171125-01:05:56:0418[FINER] -- Match All TicketQueue.
+171125-01:05:56:0418[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:56:0523[FINE] -- NTimerID: 10000
+171125-01:05:56:0523[FINER] -- Match All TicketQueue.
+171125-01:05:56:0523[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:56:0523[FINE] -- NTimerID: 10000
+171125-01:05:56:0524[FINER] -- Match All TicketQueue.
+171125-01:05:56:0524[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:56:0626[FINE] -- NTimerID: 10000
+171125-01:05:56:0626[FINER] -- Match All TicketQueue.
+171125-01:05:56:0627[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:56:0627[FINE] -- NTimerID: 10000
+171125-01:05:56:0627[FINER] -- Match All TicketQueue.
+171125-01:05:56:0627[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:56:0729[FINE] -- NTimerID: 10000
+171125-01:05:56:0729[FINER] -- Match All TicketQueue.
+171125-01:05:56:0729[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:56:0729[FINE] -- NTimerID: 10000
+171125-01:05:56:0729[FINER] -- Match All TicketQueue.
+171125-01:05:56:0729[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:56:0831[FINE] -- NTimerID: 10000
+171125-01:05:56:0831[FINER] -- Match All TicketQueue.
+171125-01:05:56:0831[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:56:0831[FINE] -- NTimerID: 10000
+171125-01:05:56:0832[FINER] -- Match All TicketQueue.
+171125-01:05:56:0832[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:56:0939[FINE] -- NTimerID: 10000
+171125-01:05:56:0939[FINER] -- Match All TicketQueue.
+171125-01:05:56:0939[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:56:0939[FINE] -- NTimerID: 10000
+171125-01:05:56:0939[FINER] -- Match All TicketQueue.
+171125-01:05:56:0939[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:57:0045[FINE] -- NTimerID: 10000
+171125-01:05:57:0045[FINER] -- Match All TicketQueue.
+171125-01:05:57:0045[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:57:0045[FINE] -- NTimerID: 10000
+171125-01:05:57:0045[FINER] -- Match All TicketQueue.
+171125-01:05:57:0045[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:57:0146[FINE] -- NTimerID: 10000
+171125-01:05:57:0146[FINER] -- Match All TicketQueue.
+171125-01:05:57:0146[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:57:0146[FINE] -- NTimerID: 10000
+171125-01:05:57:0146[FINER] -- Match All TicketQueue.
+171125-01:05:57:0146[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:57:0248[FINE] -- NTimerID: 10000
+171125-01:05:57:0248[FINER] -- Match All TicketQueue.
+171125-01:05:57:0248[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:57:0248[FINE] -- NTimerID: 10000
+171125-01:05:57:0248[FINER] -- Match All TicketQueue.
+171125-01:05:57:0248[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:57:0351[FINE] -- NTimerID: 10000
+171125-01:05:57:0351[FINER] -- Match All TicketQueue.
+171125-01:05:57:0351[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:57:0351[FINE] -- NTimerID: 10000
+171125-01:05:57:0351[FINER] -- Match All TicketQueue.
+171125-01:05:57:0351[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:57:0454[FINE] -- NTimerID: 10000
+171125-01:05:57:0454[FINER] -- Match All TicketQueue.
+171125-01:05:57:0454[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:57:0454[FINE] -- NTimerID: 10000
+171125-01:05:57:0454[FINER] -- Match All TicketQueue.
+171125-01:05:57:0454[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:57:0557[FINE] -- NTimerID: 10000
+171125-01:05:57:0558[FINER] -- Match All TicketQueue.
+171125-01:05:57:0558[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:57:0558[FINE] -- NTimerID: 10000
+171125-01:05:57:0558[FINER] -- Match All TicketQueue.
+171125-01:05:57:0558[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:57:0662[FINE] -- NTimerID: 10000
+171125-01:05:57:0662[FINER] -- Match All TicketQueue.
+171125-01:05:57:0662[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:57:0662[FINE] -- NTimerID: 10000
+171125-01:05:57:0662[FINER] -- Match All TicketQueue.
+171125-01:05:57:0662[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:57:0765[FINE] -- NTimerID: 10000
+171125-01:05:57:0765[FINER] -- Match All TicketQueue.
+171125-01:05:57:0765[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:57:0765[FINE] -- NTimerID: 10000
+171125-01:05:57:0765[FINER] -- Match All TicketQueue.
+171125-01:05:57:0765[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:57:0866[FINE] -- NTimerID: 10000
+171125-01:05:57:0866[FINER] -- Match All TicketQueue.
+171125-01:05:57:0866[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:57:0866[FINE] -- NTimerID: 10000
+171125-01:05:57:0866[FINER] -- Match All TicketQueue.
+171125-01:05:57:0866[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:57:0969[FINE] -- NTimerID: 10000
+171125-01:05:57:0970[FINER] -- Match All TicketQueue.
+171125-01:05:57:0970[FINE] -- TicketHandler: Set Next Timer.
+171125-01:05:57:0970[FINE] -- NTimerID: 10000
+171125-01:05:57:0970[FINER] -- Match All TicketQueue.
+171125-01:05:57:0970[FINE] -- TicketHandler: Set Next Timer.

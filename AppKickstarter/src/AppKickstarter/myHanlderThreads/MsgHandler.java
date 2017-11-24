@@ -12,6 +12,12 @@ import AppKickstarter.Msg.*;
 import AppKickstarter.Server.Client;
 import AppKickstarter.Server.Ticket;
 
+/**
+ * This class implements a Message Handler
+ * 
+ * @author
+ * @version 1.0
+ */
 public class MsgHandler extends AppThread {
 	private final int sleepTime = 2000;
 	private int TicketAckWaitingTime;
@@ -19,6 +25,14 @@ public class MsgHandler extends AppThread {
 	private TableHandler tableHandler;
 	private int KickOutTime = 30 * 1000;
 
+	/**
+	 * This constructs a Message Handler with id and appKickstarter
+	 * 
+	 * @param id
+	 *            :
+	 * @param appKickstarter
+	 *            :
+	 */
 	public MsgHandler(String id, AppKickstarter appKickstarter) {
 		super(id, appKickstarter);
 		tableHandler = new TableHandler("TableHandler", appKickstarter);
@@ -26,6 +40,11 @@ public class MsgHandler extends AppThread {
 		this.TicketAckWaitingTime = Integer.valueOf(appKickstarter.getProperty("TicketAckWaitingTime"));
 	}
 
+	/**
+	 * Separate different types of messages (TicketReq, TicketAck, CheckOut,
+	 * TicketCall, TimesUp, Terminate)
+	 * 
+	 */
 	public void run() {
 		log.info(id + ": starting...");
 
@@ -93,6 +112,12 @@ public class MsgHandler extends AppThread {
 		log.info(id + ": terminating...");
 	} // run
 
+	/**
+	 * This constructs a handler for ticket request with msg
+	 * 
+	 * @param msg
+	 *            : The message of ticket request
+	 */
 	private void HandlerTicketReq(Msg msg) {
 		Client ReqClient = ((TicketReq) msg.getCommand()).getClient();
 		Ticket ticket = null;
@@ -114,6 +139,13 @@ public class MsgHandler extends AppThread {
 					.send(new Msg(id, mbox, Msg.Type.QueueTooLong, new QueueTooLong(ReqClient)));
 		}
 	}
+
+	/**
+	 * This constructs a handler for ticket acknowledgement with msg
+	 * 
+	 * @param msg
+	 *            : The message of ticket acknowledgement
+	 */
 
 	private void HandlerTicketAck(Msg msg) {
 		// Receive TicketAsk: TicketID TableNo nPerson
