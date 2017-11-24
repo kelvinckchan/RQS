@@ -37,8 +37,6 @@ public class SocketInHandler extends AppThread {
 					TimerIDForMatchTicketQueue);
 			log.info(id + ": waiting For incoming Msg...");
 
-			MsgHandler msghandler = new MsgHandler("MsgHandler", appKickstarter);
-			new Thread(msghandler).start();
 			while (true) {
 				this.in = appKickstarter.getDataInputStream();
 				// DataInputStream in = new DataInputStream(socket.getInputStream());
@@ -47,18 +45,9 @@ public class SocketInHandler extends AppThread {
 				String IncomingMsg = new String(buffer);
 				log.info(id + ": IncomingMsg> " + IncomingMsg);
 
-				// DataOutputStream out = new DataOutputStream(socket.getOutputStream());
-				// String s = "TicketRep: " + MsgParser.IncomingMsgParser(this.id, this.mbox,
-				// IncomingMsg).getDetails()
-				// + " 1";
-				// log.info("s> " + s);
-				// out.write(s.getBytes());
-				// out.flush();
-				// MsgParser
-				msghandler.getMBox().send(IncomingMsgParser.IncomingMsgParser(this.id, this.mbox, IncomingMsg));
-				// in.close();
-				// if (!socket.isConnected())
-				// break;
+				// Send Parsered Msg to MsgHandler
+				appKickstarter.getThread("MsgHandler").getMBox()
+						.send(IncomingMsgParser.IncomingMsgParser(this.id, this.mbox, IncomingMsg));
 			}
 		} catch (IOException e) {
 			e.printStackTrace();

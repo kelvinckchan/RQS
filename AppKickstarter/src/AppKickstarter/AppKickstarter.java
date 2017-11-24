@@ -42,6 +42,7 @@ public class AppKickstarter {
 	private SocketOutHandler socketOutHandler;
 	private TicketHandler ticketHandler;
 	private TableHandler tableHandler;
+	private MsgHandler msgHandler;
 	private String ServerIP;
 	private int ServerPort;
 	private Socket socket;
@@ -109,7 +110,7 @@ public class AppKickstarter {
 		log.addHandler(logFileHd);
 		log.setUseParentHandlers(false);
 		log.setLevel(Level.ALL);
-		logConHd.setLevel(Level.FINER);
+		logConHd.setLevel(Level.INFO);
 		logFileHd.setLevel(Level.FINER);
 		appThreads = new Hashtable<String, AppThread>();
 	} // AppKickstarter
@@ -157,11 +158,12 @@ public class AppKickstarter {
 		// create threads
 		timer = new Timer("timer", this);
 		ticketHandler = new TicketHandler("TicketHandler", this);
-		tableHandler = new TableHandler("TableHandler", this);
+		msgHandler = new MsgHandler("MsgHandler", this);
+
 		// start threads
 		new Thread(timer).start();
 		new Thread(ticketHandler).start();
-		new Thread(tableHandler).start();
+		new Thread(msgHandler).start();
 
 		this.ServerIP = getProperty("ServerIP");
 		this.ServerPort = Integer.valueOf(getProperty("ServerPort"));

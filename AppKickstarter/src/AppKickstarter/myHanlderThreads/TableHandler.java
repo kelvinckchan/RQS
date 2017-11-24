@@ -13,12 +13,16 @@ import AppKickstarter.Server.Ticket;
 import AppKickstarter.misc.AppThread;
 import AppKickstarter.misc.MBox;
 import AppKickstarter.misc.Msg;
+import AppKickstarter.timer.Timer;
 
 public class TableHandler extends AppThread {
 
 	private static ArrayList<Table> TableList;
 	private static int TotalSpending;
 	private int mode = appKickstarter.getMode();
+	private static int KickOutTime = 30 * 1000;
+	private static int PrintTime = 3600;
+	private static int PrintTimerID = 20000;
 
 	public TableHandler(String id, AppKickstarter appKickstarter) {
 		super(id, appKickstarter);
@@ -27,6 +31,42 @@ public class TableHandler extends AppThread {
 
 	@Override
 	public void run() {
+		log.info(id + ": starting...");
+
+		for (boolean quit = false; !quit;) {
+			Msg msg = mbox.receive();
+			switch (msg.getType()) {
+			case TimesUp:
+
+				int timerID;
+				try {
+					timerID = Integer.parseInt(msg.getDetails().substring(1, 6));
+					log.fine("NTimerID: " + timerID);
+				} catch (NumberFormatException e) {
+					timerID = Integer.parseInt(msg.getDetails().substring(1, 5));
+				}
+				// TimesUP For PrintALLTable
+				if (timerID == PrintTimerID) {
+					PrintAllTable();
+					Timer.setSimulationTimer(id, mbox, PrintTime, PrintTimerID);
+				} else {
+					int TableNo = timerID;
+					if (mode == 1) {
+						CheckOutTable(TableNo, 200);
+						log.fine(id + ": CLient in Table> " + TableNo + " ate too Long, Kick out.");
+					}
+				}
+
+				break;
+
+			default:
+				log.severe(id + ": unknown message type!!");
+				break;
+			}
+		}
+		// declaring our departure
+		appKickstarter.unregThread(this);
+		log.info(id + ": terminating...");
 
 	}
 
@@ -47,17 +87,16 @@ public class TableHandler extends AppThread {
 	}
 
 	public static Table MatchAvailableTable(Ticket ticket) {
-		Table avaTable = null;
-
-		avaTable = TableList.stream()
-				.filter(t -> t.getAvailable() && (t.getTableSize() >= ticket.getClientWithTicket().getnPerson()
-						&& t.getTableSize() <= ticket.getClientWithTicket().getnPerson() + 3))
+		Table avaTable = TableList.stream()
+				.filter(table -> table.getState().equals("Available")
+						&& (table.getTableSize() >= ticket.getClientWithTicket().getnPerson()
+								&& table.getTableSize() <= ticket.getClientWithTicket().getnPerson() + 3))
 				.findFirst().orElse(null);
 
 		if (avaTable != null) {
-
 			return avaTable;
 		}
+
 		return null;
 	}
 
@@ -99,28 +138,32 @@ public class TableHandler extends AppThread {
 		log.info(logstring2);
 	}
 
-	public static LocalDateTime CheckInWaitingTicketToTable(Ticket TicketWaiting, int TableNo) {
+	public LocalDateTime CheckInWaitingTicketToTable(Ticket TicketWaiting, int TableNo) {
 		return CheckInTable(TicketWaiting, getTableByTableNo(TableNo));
 	}
 
-	public static LocalDateTime CheckInTable(Ticket ticket, Table table) {
+	public LocalDateTime CheckInTable(Ticket ticket, Table table) {
 		// if (table.getAvailable()) {
 		ticket.setCheckIn(LocalDateTime.now());
 		// table.setAvailable(false);
 		// table.addTicketToTable(ticket);
-		table.setEatingState();
+		table.setCheckedInState();
 		TableList.set(FindTableIndex(table), table);
 		PrintAllTable();
+		Timer.setSimulationTimer(id, mbox, KickOutTime, table.getTableNo());
 		return LocalDateTime.now();
 		// }
 		// return null;
 	}
 
 	public static void HoldTable(Ticket ticket, Table table) {
-		table.setAvailable(false);
-		table.addTicketToTable(ticket);
-		table.setHoldState();
-		TableList.set(FindTableIndex(table), table);
+		log.fine("Hold> Tid=" + ticket.getTicketID() + " TableNo=" + table.getTableNo());
+		if (table.getState().equals("Available")) {
+			table.setAvailable(false);
+			table.addTicketToTable(ticket);
+			table.setHoldState();
+			TableList.set(FindTableIndex(table), table);
+		}
 	}
 
 	public static void UnHoldTable(int ticketID) {
@@ -128,7 +171,7 @@ public class TableHandler extends AppThread {
 		Table tableHeldByTicket = TableList.stream()
 				.filter(t -> t.getTicketAtTable().size() > 0 && t.getTicketAtTable().get(0).getTicketID() == ticketID)
 				.findFirst().orElse(null);
-		if (tableHeldByTicket != null) {
+		if (tableHeldByTicket != null && tableHeldByTicket.getState().equals("Hold")) {
 			tableHeldByTicket.setAvailable(true);
 			tableHeldByTicket.setAvailableState();
 			tableHeldByTicket.removeTicketToTable(ticketID);
@@ -136,7 +179,7 @@ public class TableHandler extends AppThread {
 		}
 	}
 
-	public static LocalDateTime CheckOutTable(int TableNo, int totalSpending) {
+	public LocalDateTime CheckOutTable(int TableNo, int totalSpending) {
 		TotalSpending += totalSpending;
 		Table table = getTableByTableNo(TableNo);
 		Ticket ticketAtTable = table.getTicketAtTable().size() > 0 ? table.getTicketAtTable().get(0) : null;
@@ -148,7 +191,8 @@ public class TableHandler extends AppThread {
 			table.clearTable();
 		}
 		TableList.set(FindTableIndex(table), table);
-		log.info("TotalSpending: $" + TotalSpending);
+		log.info("Checked Out Table> " + TableNo + " TotalSpending: $" + TotalSpending);
+		Timer.cancelTimer(logstring, mbox, TableNo);
 		// TicketHandler.MatchTicketForSize(table.getTableSize());
 		return LocalDateTime.now();
 	}

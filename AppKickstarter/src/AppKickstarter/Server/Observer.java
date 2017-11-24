@@ -1,23 +1,22 @@
 package AppKickstarter.Server;
-
+//======================================================================
+// Observer
 /**
- * This class implements a observer.
  * 
  * @author user
- * @version 1.0
+ *
  */
 public abstract class Observer {
-	public abstract void update();
+    public abstract void update();
+    protected Subject subject;
 
-	protected Subject subject;
-
-	/**
-	 * This constructs a observer with subject.
-	 * 
-	 * @param subject
-	 *            : The current subject
-	 */
-	public Observer(Subject subject) {
-		this.subject = subject;
-	} 
-} 
+    //------------------------------------------------------------
+    // Observer
+    /**
+     * 
+     * @param subject
+     */
+    public Observer(Subject subject) {
+        this.subject = subject;
+    } // Observer
+} // Observer

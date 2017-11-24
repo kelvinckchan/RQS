@@ -16,9 +16,12 @@ public class MsgHandler extends AppThread {
 	private final int sleepTime = 2000;
 	private int TicketAckWaitingTime;
 	private int mode = appKickstarter.getMode();
+	private TableHandler tableHandler;
 
 	public MsgHandler(String id, AppKickstarter appKickstarter) {
 		super(id, appKickstarter);
+		tableHandler = new TableHandler("TableHandler", appKickstarter);
+		new Thread(tableHandler).start();
 		this.TicketAckWaitingTime = Integer.valueOf(appKickstarter.getProperty("TicketAckWaitingTime"));
 	}
 
@@ -47,7 +50,7 @@ public class MsgHandler extends AppThread {
 				// Receive CheckOut: TableNo TotalSpending
 				// CheckOutTable
 				CheckOut checkOut = ((CheckOut) msg.getCommand());
-				TableHandler.CheckOutTable(checkOut.getTableNo(), checkOut.getTotalSpending());
+				tableHandler.CheckOutTable(checkOut.getTableNo(), checkOut.getTotalSpending());
 				log.info(id + ": CheckOutTable> " + checkOut.getTableNo() + "!");
 
 				break;
@@ -116,7 +119,7 @@ public class MsgHandler extends AppThread {
 		TicketAck ticketAck = ((TicketAck) msg.getCommand());
 		Ticket TicketWaiting = TicketHandler.FindWaitingTicketAndPoll(ticketAck.getTicketID());
 		if (TicketWaiting != null) {
-			LocalDateTime CheckedIn = TableHandler.CheckInWaitingTicketToTable(TicketWaiting, ticketAck.getTableNo());
+			LocalDateTime CheckedIn = tableHandler.CheckInWaitingTicketToTable(TicketWaiting, ticketAck.getTableNo());
 			if (CheckedIn != null) {
 				if (mode == 1) {
 					Timer.cancelTimer("TicketHandler", appKickstarter.getThread("TicketHandler").getMBox(),

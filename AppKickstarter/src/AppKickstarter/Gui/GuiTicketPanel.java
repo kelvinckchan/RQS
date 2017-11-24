@@ -15,7 +15,7 @@ import AppKickstarter.Server.Client;
 import AppKickstarter.Server.Ticket;
 import AppKickstarter.misc.AppThread;
 
-public class GuiDisplayPanel {
+public class GuiTicketPanel {
 
 	private final String ServerIP = "127.0.0.1";
 	private final int ServerPort = 54321;

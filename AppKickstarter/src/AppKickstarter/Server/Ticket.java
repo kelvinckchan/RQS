@@ -35,10 +35,17 @@ public class Ticket {
 		this.ClientWithTicket = ClientWithTicket;
 	}
 
+	/**
+	 * This
+	 */
 	public void setInQueueTime() {
 		this.InQueueTime = System.currentTimeMillis();
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public boolean getWaitedTooLong() {
 		return System.currentTimeMillis() - this.InQueueTime > 800 ? true : false;
 	}

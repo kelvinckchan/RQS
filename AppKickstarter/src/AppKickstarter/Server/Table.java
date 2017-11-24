@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * This class implements a Table
  * 
  * @author user
- * @version 1.0
+ *
  */
 public class Table {
 
@@ -34,41 +34,22 @@ public class Table {
 		this.TicketAtTable = new ArrayList<Ticket>();
 	}
 
-	/**
-	 * This returns state of current table.
-	 * 
-	 * @return This table's state
-	 */
 	public String getState() {
 		return this.state;
 	}
 
-	/**
-	 * This sets current state as hold.
-	 */
 	public void setHoldState() {
 		this.state = "Hold";
 	}
 
-	/**
-	 * This sets current state as eating.
-	 */
-	public void setEatingState() {
+	public void setCheckedInState() {
 		this.state = "Eating";
 	}
 
-	/**
-	 * This sets current state as available.
-	 */
 	public void setAvailableState() {
 		this.state = "Available";
 	}
 
-	/**
-	 * This returns number of current table.
-	 * 
-	 * @return This table's number
-	 */
 	public int getTableNo() {
 		return this.TableNo;
 	}
