@@ -23,7 +23,6 @@ public class TableHandler extends AppThread {
 	private static int KickOutTime = 30 * 1000;
 	private static int PrintTime = 3600;
 	private static int PrintTimerID = 20000;
-
 	public TableHandler(String id, AppKickstarter appKickstarter) {
 		super(id, appKickstarter);
 		createTable();
@@ -179,7 +178,7 @@ public class TableHandler extends AppThread {
 		}
 	}
 
-	public LocalDateTime CheckOutTable(int TableNo, int totalSpending) {
+	public static LocalDateTime CheckOutTable(int TableNo, int totalSpending) {
 		TotalSpending += totalSpending;
 		Table table = getTableByTableNo(TableNo);
 		Ticket ticketAtTable = table.getTicketAtTable().size() > 0 ? table.getTicketAtTable().get(0) : null;
@@ -192,8 +191,6 @@ public class TableHandler extends AppThread {
 		}
 		TableList.set(FindTableIndex(table), table);
 		log.info("Checked Out Table> " + TableNo + " TotalSpending: $" + TotalSpending);
-		Timer.cancelTimer(logstring, mbox, TableNo);
-		// TicketHandler.MatchTicketForSize(table.getTableSize());
 		return LocalDateTime.now();
 	}
 

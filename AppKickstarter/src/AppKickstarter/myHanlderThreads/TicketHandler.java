@@ -146,7 +146,7 @@ public class TicketHandler extends AppThread {
 	}
 
 	public void MatchAllTicketQueue() {
-		log.info("Match All TicketQueue.");
+		log.finer("Match All TicketQueue.");
 		for (TicketQueue tq : TqueueList) {
 			MatchTicketInQueueWithTable(tq);
 		}
@@ -177,6 +177,8 @@ public class TicketHandler extends AppThread {
 				if(mode==2) {
 //					appKickstarter.getThread("GuiStaffPanel").getMBox()
 //					.send(new Msg(id, mbox, Msg.Type.TicketCall, tickCall));
+					appKickstarter.getThread("GuiStaffPanel").getMBox()
+					.send(new Msg(id, mbox, Msg.Type.TicketCall, tickCall));
 				}
 				
 				

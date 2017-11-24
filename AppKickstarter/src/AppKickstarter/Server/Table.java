@@ -44,7 +44,7 @@ public class Table {
 	}
 
 	public Table setCheckedInState() {
-		this.state = "Eating";
+		this.state = "CheckedIn";
 		return this;
 	}
 

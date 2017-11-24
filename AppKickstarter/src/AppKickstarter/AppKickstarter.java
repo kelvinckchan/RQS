@@ -18,6 +18,7 @@ import java.util.logging.Level;
 import java.util.Hashtable;
 
 import AppKickstarter.timer.Timer;
+import AppKickstarter.Gui.GuiStaffPanel;
 import AppKickstarter.Msg.QueueTooLong;
 import AppKickstarter.Msg.TicketRep;
 import AppKickstarter.Server.Ticket;
@@ -43,6 +44,7 @@ public class AppKickstarter {
 	private TicketHandler ticketHandler;
 	private TableHandler tableHandler;
 	private MsgHandler msgHandler;
+	GuiStaffPanel guiStaffPanel;
 	private String ServerIP;
 	private int ServerPort;
 	private Socket socket;
@@ -145,6 +147,7 @@ public class AppKickstarter {
 			} else if (i == 2) {
 				Mode = 2;
 				log.info("Run GUI MODE!");
+
 				break;
 			}
 		}
@@ -178,6 +181,10 @@ public class AppKickstarter {
 		socketOutHandler = new SocketOutHandler("SocketOutHandler", this);
 		new Thread(socketInHandler).start();
 		new Thread(socketOutHandler).start();
+		if (Mode == 2) {
+			guiStaffPanel = new GuiStaffPanel("GuiStaffPanel", this);
+			new Thread(guiStaffPanel).start();
+		}
 		log.info(id + ": accepted...");
 	} // startApp
 

@@ -17,6 +17,7 @@ public class MsgHandler extends AppThread {
 	private int TicketAckWaitingTime;
 	private int mode = appKickstarter.getMode();
 	private TableHandler tableHandler;
+	private int KickOutTime = 30 * 1000;
 
 	public MsgHandler(String id, AppKickstarter appKickstarter) {
 		super(id, appKickstarter);
@@ -51,6 +52,8 @@ public class MsgHandler extends AppThread {
 				// CheckOutTable
 				CheckOut checkOut = ((CheckOut) msg.getCommand());
 				tableHandler.CheckOutTable(checkOut.getTableNo(), checkOut.getTotalSpending());
+				Timer.cancelTimer("TableHandler", appKickstarter.getThread("TableHandler").getMBox(),
+						checkOut.getTableNo());
 				log.info(id + ": CheckOutTable> " + checkOut.getTableNo() + "!");
 
 				break;
