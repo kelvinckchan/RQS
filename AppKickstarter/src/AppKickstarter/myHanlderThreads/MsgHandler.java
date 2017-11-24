@@ -71,31 +71,15 @@ public class MsgHandler extends AppThread {
 				// CheckOutTable
 				CheckOut checkOut = ((CheckOut) msg.getCommand());
 				tableHandler.CheckOutTable(checkOut.getTableNo(), checkOut.getTotalSpending());
-				Timer.cancelTimer("TableHandler", appKickstarter.getThread("TableHandler").getMBox(),
-						checkOut.getTableNo());
+				if (mode == 1)
+					Timer.cancelTimer("TableHandler", appKickstarter.getThread("TableHandler").getMBox(),
+							checkOut.getTableNo());
 				log.info(id + ": CheckOutTable> " + checkOut.getTableNo() + "!");
 
 				break;
 
-			case TicketCall:
-				// Send TicketCall: TicketID TableNo
-				// Set Timer for Waiting TicketAck
-				// appKickstarter.getThread("SocketOutHandler").getMBox().send(msg);
-				// TicketCall ticketcall = (TicketCall) msg.getCommand();
-				// Timer.setTimer(id, mbox, TicketAckWaitingTime,
-				// ticketcall.getTicket().getTicketID());
-				// log.info(id + ": TicketCall Sent> " + ticketcall.getTicket().getTicketID() +
-				// " Wait For TickerAck");
-				break;
-
 			case TimesUp:
 				log.info(id + ": TimesUP! from>" + msg.getSender() + "> " + msg.getDetails());
-				// int ticketID = Integer.valueOf(msg.getDetails().substring(2, 6));
-				// TicketHandler.removeFromWaitForAckTicketQueue(ticketID);
-				// // Waited too long for TicketAck... Remove Ticket from
-				// // TicketHandler.WaitForAckTicketQueue
-				// // UnHold Table
-				// TableHandler.UnHoldTable(ticketID);
 				break;
 
 			case Terminate:
@@ -130,10 +114,6 @@ public class MsgHandler extends AppThread {
 		if (ticket != null) {
 			appKickstarter.getThread("SocketOutHandler").getMBox()
 					.send(new Msg(id, mbox, Msg.Type.TicketRep, new TicketRep(ReqClient, ticket)));
-			// appKickstarter.getThread("TicketHandler").getMBox()
-			// .send(new Msg(id, mbox, Msg.Type.TicketRep, new TicketRep(ReqClient,
-			// ticket)));
-
 		} else {
 			appKickstarter.getThread("SocketOutHandler").getMBox()
 					.send(new Msg(id, mbox, Msg.Type.QueueTooLong, new QueueTooLong(ReqClient)));

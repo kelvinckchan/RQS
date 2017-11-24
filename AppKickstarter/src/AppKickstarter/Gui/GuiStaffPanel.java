@@ -1,28 +1,24 @@
 package AppKickstarter.Gui;
 
 import java.awt.Color;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+import java.util.Random;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.JToggleButton;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.SoftBevelBorder;
-import javax.swing.table.DefaultTableModel;
 
 import AppKickstarter.AppKickstarter;
 import AppKickstarter.Msg.*;
 import AppKickstarter.Server.Table;
-import AppKickstarter.Server.Ticket;
 import AppKickstarter.misc.AppThread;
 import AppKickstarter.misc.Msg;
 import AppKickstarter.myHanlderThreads.TableHandler;
@@ -53,7 +49,7 @@ public class GuiStaffPanel extends AppThread {
 			case TicketCall:
 				TicketCall tc = (TicketCall) msg.getCommand();
 				Tcqueue.add(tc);
-				// window.updateJTableForAck(Tcqueue);
+				window.updateJButtonForAck(Tcqueue);
 				break;
 			case TimesUp:
 				Timer.setSimulationTimer(id, mbox, sleepTime);
@@ -86,10 +82,11 @@ public class GuiStaffPanel extends AppThread {
 	}
 
 	// Selected table and checkout button clicked, send Checkout To server
-	public void SendCheckout(int TableNo) {
-		int Spending = 1234;// Random
+	public void SendCheckout(Table table) {
+		int Spending = (new Random().nextInt((50 - 40) + 1) + 40)
+				* table.getTicketAtTable().get(0).getClientWithTicket().getnPerson();
 		appKickstarter.getThread("MsgHandler").getMBox()
-				.send(new Msg(id, mbox, Msg.Type.CheckOut, new CheckOut(TableNo, Spending)));
+				.send(new Msg(id, mbox, Msg.Type.CheckOut, new CheckOut(table.getTableNo(), Spending)));
 	}
 
 	class StaffPanel extends JPanel {
@@ -98,20 +95,27 @@ public class GuiStaffPanel extends AppThread {
 		public JPopupMenu popup;
 		int rows = 5;
 		int columns = 10;
-		private JTable AckTable;
-		private JTable FloorPlan;
 		private ArrayList<Table> TableList;
-		JPanel TablePanel;
-		List<JButton> btnList;
+		private JPanel TablePanel;
+		private List<JButton> btnList;
+		private JButton btnSendTicketack;
 
 		public void SetFrameVisible(StaffPanel window) {
 			window.StaffPanel.setVisible(true);
-
 		}
 
 		public StaffPanel(ArrayList<Table> TableList) {
 			this.TableList = TableList;
 			initialize();
+		}
+
+		public boolean updateJButtonForAck(Queue<TicketCall> tcqueue) {
+			if (tcqueue.size() > 0) {
+				btnSendTicketack.setText(tcqueue.peek().toString());
+				btnSendTicketack.setBackground(Color.yellow);
+				return true;
+			}
+			return false;
 		}
 
 		/**
@@ -128,14 +132,10 @@ public class GuiStaffPanel extends AppThread {
 			TablePanel = new JPanel();
 			TablePanel.setBackground(Color.WHITE);
 			TablePanel.setBounds(10, 11, 712, 351);
+			TablePanel.setLayout(new GridLayout(5, 10));
 			StaffPanel.getContentPane().add(TablePanel);
 
-			// JPanel TicketPanel = new JPanel();
-			// TicketPanel.setBackground(new Color(255, 255, 255));
-			// TicketPanel.setBounds(732, 11, 251, 351);
-			// StaffPanel.getContentPane().add(TicketPanel);
-
-			JButton btnSendTicketack = new JButton("Send TicketAck");
+			btnSendTicketack = new JButton("Wait For TicketCall");
 			btnSendTicketack.setBounds(744, 11, 239, 351);
 			StaffPanel.getContentPane().add(btnSendTicketack);
 			btnSendTicketack.addActionListener(new ActionListener() {
@@ -144,38 +144,26 @@ public class GuiStaffPanel extends AppThread {
 					if (Tcqueue.size() > 0) {
 						TicketCall tc = Tcqueue.poll();
 						int tid = tc.getTicket().getTicketID();
-						SendTicketAck(tc.getTicket().getTicketID(),tc.getTable().getTableNo(),tc.getTicket().getClientWithTicket().getnPerson());
+						SendTicketAck(tc.getTicket().getTicketID(), tc.getTable().getTableNo(),
+								tc.getTicket().getClientWithTicket().getnPerson());
 						System.out.println("***** CheckOut ***" + tid);
+						if (!updateJButtonForAck(Tcqueue)) {
+							btnSendTicketack.setText("Wait For TicketCall");
+							btnSendTicketack.setBackground(Color.white);
+						}
 					}
 				}
 			});
-			// JScrollPane scrollPane = new JScrollPane(AckTable);
-			// scrollPane.setBounds(6, 6, 239, 339);
-			//
-			//
-			// AckTable = new JTable();
-			// AckTable.setBounds(6, 6, 239, 339);
-			// AckTable.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null,
-			// null));
-			// AckTable.setCellSelectionEnabled(true);
-			// AckTable.setToolTipText("TicketCall Wait For Ack");
-			// scrollPane.add(AckTable);
-			// TicketPanel.add(scrollPane);
-
-			// for (int row = 0; row < rows; row++) {
-			// for (int column = 0; column < columns; column++) {
-			// final JToggleButton button = new JToggleButton(" seat " + column);
-			// }
-			// }
 
 			btnList = new ArrayList<JButton>();
 
 			for (int i = 0; i < TableList.size(); i++) {
 				Table t = TableList.get(i);
-				JButton btnAbc = new JButton(String.valueOf(t.getTableNo()));
-
+				JButton btnAbc = new JButton(String.format("%04d", t.getTableNo()));
+				btnAbc.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.white, 10),
+						BorderFactory.createEmptyBorder(5, 5, 10, 10)));
 				if (t.getState().equals("Hold")) {
-					btnAbc.setForeground(Color.pink);
+					btnAbc.setForeground(Color.MAGENTA);
 					btnAbc.setBackground(Color.yellow);
 
 				} else if (t.getState().equals("CheckedIn")) {
@@ -187,59 +175,40 @@ public class GuiStaffPanel extends AppThread {
 					btnAbc.setForeground(Color.blue);
 				}
 				btnAbc.setOpaque(true);
+				for (ActionListener al : btnAbc.getActionListeners())
+					btnAbc.removeActionListener(al);
 				btnAbc.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-
-						int Spending = 123;
-						TableHandler.CheckOutTable(t.getTableNo(), Spending);
-						System.out.println("***** CheckOut ***" + t.getTableNo());
+						if (t.getState().equals("CheckedIn")) {
+							SendCheckout(t);
+							System.out.println("CheckOut TableNo>" + t.getTableNo());
+						}
 					}
 				});
 				btnList.add(btnAbc);
 				TablePanel.add(btnAbc);
-
-				System.out.println("*************" + TableList.get(i).getTableNo());
 			}
 
 		}
 
-		public void updateJTableForAck(Queue<TicketCall> tcqueue) {
-			// Object[] row = tcqueue.stream().map(tc ->
-			// tc.getTicket().getTicketID()).toArray();
-			// DefaultTableModel model = (DefaultTableModel) AckTable.getModel();
-			// model.addRow(row);
-			// AckTable.repaint();
-		}
-
-		public void updateJButtonForTableList(ArrayList<Table> tableList2) {
-			for (int i = 0; i < TableList.size(); i++) {
-				Table t = TableList.get(i);
+		public void updateJButtonForTableList(ArrayList<Table> tableList) {
+			for (int i = 0; i < tableList.size(); i++) {
+				Table t = tableList.get(i);
 				JButton btnAbc = btnList.get(i);
-
 				if (t.getState().equals("Hold")) {
-					btnAbc.setForeground(Color.pink);
+					btnAbc.setForeground(Color.MAGENTA);
 					btnAbc.setBackground(Color.yellow);
-
+					btnAbc.setText(t.getOneTicket().getClientWithTicket().getClientID());
 				} else if (t.getState().equals("CheckedIn")) {
 					btnAbc.setForeground(Color.white);
 					btnAbc.setBackground(Color.red);
-
+					btnAbc.setText(t.getOneTicket().getClientWithTicket().getClientID());
 				} else {
 					btnAbc.setBackground(Color.green);
 					btnAbc.setForeground(Color.blue);
+					btnAbc.setText(String.format("%04d", t.getTableNo()));
 				}
-				btnAbc.setOpaque(true);
-				btnAbc.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-
-						int Spending = 123;
-						TableHandler.CheckOutTable(t.getTableNo(), Spending);
-						System.out.println("***** CheckOut ***" + t.getTableNo());
-					}
-				});
-				TablePanel.add(btnAbc);
-
-				// System.out.println("*************" + TableList.get(i).getTableNo());
+				// TablePanel.add(btnAbc);
 			}
 		}
 

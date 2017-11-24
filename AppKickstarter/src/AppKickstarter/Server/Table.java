@@ -141,4 +141,8 @@ public class Table {
 		TicketAtTable.removeIf(t -> t.getTicketID() == ticketID);
 	}
 
+	public Ticket getOneTicket() {
+		return this.TicketAtTable.size() > 0 ? this.TicketAtTable.get(0) : null;
+	}
+
 }

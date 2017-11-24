@@ -38,7 +38,6 @@ public class AppKickstarter {
 	private ConsoleHandler logConHd = null;
 	private FileHandler logFileHd = null;
 	private Timer timer = null;
-	private ThreadA threadA;
 	private SocketInHandler socketInHandler;
 	private SocketOutHandler socketOutHandler;
 	private TicketHandler ticketHandler;
@@ -195,7 +194,6 @@ public class AppKickstarter {
 		log.info("");
 		log.info("============================================================");
 		log.info(id + ": Application Stopping...");
-		threadA.getMBox().send(new Msg(id, null, Msg.Type.Terminate, "Terminate now!"));
 		socketInHandler.getMBox().send(new Msg(id, null, Msg.Type.Terminate, "Terminate now!"));
 		timer.getMBox().send(new Msg(id, null, Msg.Type.Terminate, "Terminate now!"));
 	} // stopApp

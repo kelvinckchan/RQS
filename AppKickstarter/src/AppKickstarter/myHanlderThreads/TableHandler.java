@@ -23,6 +23,7 @@ public class TableHandler extends AppThread {
 	private static int KickOutTime = 30 * 1000;
 	private static int PrintTime = 3600;
 	private static int PrintTimerID = 20000;
+
 	public TableHandler(String id, AppKickstarter appKickstarter) {
 		super(id, appKickstarter);
 		createTable();
@@ -179,19 +180,22 @@ public class TableHandler extends AppThread {
 	}
 
 	public static LocalDateTime CheckOutTable(int TableNo, int totalSpending) {
-		TotalSpending += totalSpending;
 		Table table = getTableByTableNo(TableNo);
-		Ticket ticketAtTable = table.getTicketAtTable().size() > 0 ? table.getTicketAtTable().get(0) : null;
-		if (ticketAtTable != null) {
-			ticketAtTable.setCheckOut(LocalDateTime.now());
-			table.setAvailable(true);
-			table.setAvailableState();
-			table.removeTicketToTable(ticketAtTable);
-			table.clearTable();
+		if (table.getState() == "CheckedIn") {
+			Ticket ticketAtTable = table.getTicketAtTable().size() > 0 ? table.getTicketAtTable().get(0) : null;
+			if (ticketAtTable != null) {
+				ticketAtTable.setCheckOut(LocalDateTime.now());
+				table.setAvailable(true);
+				table.setAvailableState();
+				table.removeTicketToTable(ticketAtTable);
+				table.clearTable();
+			}
+			TableList.set(FindTableIndex(table), table);
+			TotalSpending += totalSpending;
+			log.info("Checked Out Table> " + TableNo + " TotalSpending: $" + TotalSpending);
+			return LocalDateTime.now();
 		}
-		TableList.set(FindTableIndex(table), table);
-		log.info("Checked Out Table> " + TableNo + " TotalSpending: $" + TotalSpending);
-		return LocalDateTime.now();
+		return null;
 	}
 
 	public static Table getTableByTableNo(int TableNo) {
