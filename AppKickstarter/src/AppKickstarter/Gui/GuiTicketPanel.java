@@ -20,7 +20,6 @@ public class GuiTicketPanel {
 	private final String ServerIP = "127.0.0.1";
 	private final int ServerPort = 54321;
 	private Socket socket;
-
 	private PrintWriter out;
 	private DataInputStream in;
 	ArrayList<TicketRep> TicketRepList = new ArrayList<TicketRep>();
