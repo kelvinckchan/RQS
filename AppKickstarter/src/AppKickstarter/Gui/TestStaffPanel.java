@@ -167,10 +167,8 @@ public class TestStaffPanel extends JPanel {
 		String[] TableHeading = new String[] { "Table 1-2", "Table 3-4", "Table 5-6", "Table 7-8", "Table 9-10" };
 		Object[] tbWSize2 = TableList.stream().filter(t -> t.getTableSize() == 2).map(table -> table.getTableNo())
 				.toArray();
-		Object[] tbWSize4 = TableList.stream().filter(t -> {
-			return t.getTableSize() == 4;
-		}).map(table -> table.getTableNo()).toArray();
-
+		Object[] tbWSize4 = TableList.stream().filter(t -> t.getTableSize() == 4).map(table -> table.getTableNo())
+				.toArray();
 		Object[] tbWSize6 = TableList.stream().filter(t -> t.getTableSize() == 6).map(table -> table.getTableNo())
 				.toArray();
 		Object[] tbWSize8 = TableList.stream().filter(t -> t.getTableSize() == 8).map(table -> table.getTableNo())
@@ -178,14 +176,27 @@ public class TestStaffPanel extends JPanel {
 		Object[] tbWSize10 = TableList.stream().filter(t -> t.getTableSize() == 10).map(table -> table.getTableNo())
 				.toArray();
 
-		Object[][] AllTable = new Object[][] { tbWSize2 , tbWSize4 ,tbWSize6 , tbWSize8 ,  tbWSize10  };
+		Object[][] AllTable = new Object[][] { tbWSize2, tbWSize4, tbWSize6, tbWSize8, tbWSize10 };
 
-		
+		for (Object t : tbWSize2) {
+			System.out.println(t);
+		}
+		System.out.println("------------");
 		for (Object t : tbWSize4) {
 			System.out.println(t);
 		}
-
-		
+		System.out.println("------------");
+		for (Object t : tbWSize6) {
+			System.out.println(t);
+		}
+		System.out.println("------------");
+		for (Object t : tbWSize8) {
+			System.out.println(t);
+		}
+		System.out.println("------------");
+		for (Object t : tbWSize10) {
+			System.out.println(t);
+		}
 		FloorPlan.setModel(new DefaultTableModel(AllTable, TableHeading));
 		// FloorPlan.setModel(new DefaultTableModel(list.toArray(new Object[][] {}), new
 		// String[] { "TableNo" }));
