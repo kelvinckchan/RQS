@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * This class implements a Table
  * 
  * @author user
- *
+ * @version 1.0
  */
 public class Table {
 
@@ -30,15 +30,45 @@ public class Table {
 		this.TableSize = TableSize;
 		this.AvailableSize = TableSize;
 		this.Available = true;
-		this.state="Available";
+		this.state = "Available";
 		this.TicketAtTable = new ArrayList<Ticket>();
 	}
 
-	public String getState() {return this.state;}
-	public void setHoldState() {this.state="Hold";}
-	public void setEatingState() {this.state="Eating";}
-	public void setAvailableState() {this.state="Available";}
-	
+	/**
+	 * This returns state of current table.
+	 * 
+	 * @return This table's state
+	 */
+	public String getState() {
+		return this.state;
+	}
+
+	/**
+	 * This sets current state as hold.
+	 */
+	public void setHoldState() {
+		this.state = "Hold";
+	}
+
+	/**
+	 * This sets current state as eating.
+	 */
+	public void setEatingState() {
+		this.state = "Eating";
+	}
+
+	/**
+	 * This sets current state as available.
+	 */
+	public void setAvailableState() {
+		this.state = "Available";
+	}
+
+	/**
+	 * This returns number of current table.
+	 * 
+	 * @return This table's number
+	 */
 	public int getTableNo() {
 		return this.TableNo;
 	}
@@ -120,7 +150,8 @@ public class Table {
 	 * This remove the ticket in the ArrayList ( named as TicketAtTable ) according
 	 * to the ticket's id.
 	 * 
-	 * @param ticketID : The unique id of the ticket
+	 * @param ticketID
+	 *            : The unique id of the ticket
 	 */
 	public void removeTicketToTable(int ticketID) {
 		TicketAtTable.removeIf(t -> t.getTicketID() == ticketID);
