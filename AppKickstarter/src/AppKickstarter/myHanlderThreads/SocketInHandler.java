@@ -10,30 +10,21 @@ import java.net.Socket;
 import AppKickstarter.AppKickstarter;
 import AppKickstarter.Msg.IncomingMsgParser;
 
-//======================================================================
-// ServerThread
 public class SocketInHandler extends AppThread {
 	private final int sleepTime = 2000;
-	// private String ServerIP;
-	// private int ServerPort;
-	// private Socket socket;
 	private DataInputStream in;
 	private int TimerIDForMatchTicketQueue;
 
-	// ------------------------------------------------------------
-	// ServerThread
-	/** 
+	/**
 	 * @param id
-	 * @param appKickstarter 
+	 * @param appKickstarter
 	 */
 	public SocketInHandler(String id, AppKickstarter appKickstarter) {
 		super(id, appKickstarter);
 		this.TimerIDForMatchTicketQueue = appKickstarter.getTimerIDForMatchTicketQueue();
 
-	} // ServerThread
+	}
 
-	// ------------------------------------------------------------
-	// run
 	public void run() {
 		log.info(id + ": starting...");
 		try {
@@ -43,7 +34,6 @@ public class SocketInHandler extends AppThread {
 
 			while (true) {
 				this.in = appKickstarter.getDataInputStream();
-				// DataInputStream in = new DataInputStream(socket.getInputStream());
 				byte[] buffer = new byte[1024];
 				in.read(buffer);
 				String IncomingMsg = new String(buffer);
@@ -60,4 +50,4 @@ public class SocketInHandler extends AppThread {
 		appKickstarter.unregThread(this);
 		log.info(id + ": terminating...");
 	} // run
-} // ServerThread
+} 

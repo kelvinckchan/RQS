@@ -28,10 +28,9 @@ public class MsgHandler extends AppThread {
 	/**
 	 * This constructs a Message Handler with id and appKickstarter
 	 * 
-	 * @param id
-	 *            :
-	 * @param appKickstarter
-	 *            :
+	 * @param id:
+	 *            Thread Name
+	 * @param appKickstarter:
 	 */
 	public MsgHandler(String id, AppKickstarter appKickstarter) {
 		super(id, appKickstarter);
@@ -99,8 +98,8 @@ public class MsgHandler extends AppThread {
 	/**
 	 * This constructs a handler for ticket request with msg
 	 * 
-	 * @param msg
-	 *            : The message of ticket request
+	 * @param msg:
+	 *            The message of ticket request
 	 */
 	private void HandlerTicketReq(Msg msg) {
 		Client ReqClient = ((TicketReq) msg.getCommand()).getClient();
@@ -121,12 +120,13 @@ public class MsgHandler extends AppThread {
 	}
 
 	/**
-	 * This constructs a handler for ticket acknowledgement with msg
+	 * This Method is for handling the TicketAck Msg. Match the incoming TicketAck
+	 * and the Ticket in the WaitForAckTicketQueue, then Checkin the Ticket and Send
+	 * TableAssign to the client
 	 * 
 	 * @param msg
-	 *            : The message of ticket acknowledgement
+	 *            : The Msg contains TicketAck
 	 */
-
 	private void HandlerTicketAck(Msg msg) {
 		// Receive TicketAsk: TicketID TableNo nPerson
 		// Cancel Timer TicketCall: TicketID TableNo

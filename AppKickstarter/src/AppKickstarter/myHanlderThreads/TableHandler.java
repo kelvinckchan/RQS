@@ -15,6 +15,12 @@ import AppKickstarter.misc.MBox;
 import AppKickstarter.misc.Msg;
 import AppKickstarter.timer.Timer;
 
+/**
+ * TableHandler Class, for handling the Table
+ * 
+ * @author
+ * @version 1.0
+ */
 public class TableHandler extends AppThread {
 
 	private static ArrayList<Table> TableList;
@@ -24,6 +30,13 @@ public class TableHandler extends AppThread {
 	private static int PrintTime = 3600;
 	private static int PrintTimerID = 20000;
 
+	/**
+	 * This constructs TableHandler with id and appKickstarter
+	 * 
+	 * @param id:
+	 *            Thread Name
+	 * @param appKickstarter:
+	 */
 	public TableHandler(String id, AppKickstarter appKickstarter) {
 		super(id, appKickstarter);
 		createTable();
@@ -37,7 +50,6 @@ public class TableHandler extends AppThread {
 			Msg msg = mbox.receive();
 			switch (msg.getType()) {
 			case TimesUp:
-
 				int timerID;
 				try {
 					timerID = Integer.parseInt(msg.getDetails().substring(1, 6));
@@ -50,15 +62,11 @@ public class TableHandler extends AppThread {
 					PrintAllTable();
 					Timer.setSimulationTimer(id, mbox, PrintTime, PrintTimerID);
 				} else {
-					int TableNo = timerID;
 					if (mode == 1) {
-						CheckOutTable(TableNo, 200);
-						log.fine(id + ": CLient in Table> " + TableNo + " ate too Long, Kick out.");
+						WaitedTooLongForCheckOut(timerID);
 					}
 				}
-
 				break;
-
 			default:
 				log.severe(id + ": unknown message type!!");
 				break;
@@ -70,6 +78,10 @@ public class TableHandler extends AppThread {
 
 	}
 
+	/**
+	 * This Method for creating Table when Server start
+	 * 
+	 */
 	public void createTable() {
 		String tName = "NTables_";
 		TableList = new ArrayList<Table>();
@@ -86,6 +98,24 @@ public class TableHandler extends AppThread {
 
 	}
 
+	/**
+	 * CheckOut the Table when WaitedTooLongForCheckOut
+	 */
+	public void WaitedTooLongForCheckOut(int timerID) {
+		int TableNo = timerID;
+		CheckOutTable(TableNo, 200);
+		log.fine(id + ": CLient in Table> " + TableNo + " ate too Long, Kick out.");
+	}
+
+	/**
+	 * Match Ticket with Available Table according to nPerson and Table Size and
+	 * Table Availability
+	 * 
+	 * @param Ticket
+	 *            : ticket
+	 * @return Table
+	 * 
+	 */
 	public static Table MatchAvailableTable(Ticket ticket) {
 		Table avaTable = TableList.stream()
 				.filter(table -> table.getState().equals("Available")
@@ -103,6 +133,9 @@ public class TableHandler extends AppThread {
 	static int ts;
 	static String logstring;
 
+	/**
+	 * This Method is for Printing the Table in the log
+	 */
 	public static void PrintAllTable() {
 		logstring = "";
 		for (ts = 1; ts <= 5; ts++) {
@@ -126,6 +159,9 @@ public class TableHandler extends AppThread {
 
 	static String logstring2;
 
+	/**
+	 * This Method is for Printing the Ticket Queue in the log
+	 */
 	public static void PrintTicketQueue() {
 		logstring2 = "\n";
 		TicketHandler.TqueueList.forEach(q -> {
@@ -138,10 +174,74 @@ public class TableHandler extends AppThread {
 		log.info(logstring2);
 	}
 
+	/**
+	 * This method is for holding table when TicketCall is sent to the client, set
+	 * the table state to Hold and add Ticket to the Table
+	 * 
+	 * @param Ticket
+	 *            : ticket
+	 * @param Table
+	 *            : table
+	 * 
+	 */
+
+	public static void HoldTable(Ticket ticket, Table table) {
+		log.fine("Hold> Tid=" + ticket.getTicketID() + " TableNo=" + table.getTableNo());
+		if (table.getState().equals("Available")) {
+			table.setAvailable(false);
+			table.addTicketToTable(ticket);
+			table.setHoldState();
+			TableList.set(FindTableIndex(table), table);
+		}
+	}
+
+	/**
+	 * This method is for unholding table when the server waited too long for the
+	 * TicketAck, set the table state to Available and remove Ticket to the Table
+	 * 
+	 * @param Ticket
+	 *            : ticket
+	 * @param Table
+	 *            : table
+	 * 
+	 */
+	public static void UnHoldTable(int ticketID) {
+		log.fine("Unhold> Tid=" + ticketID);
+		Table tableHeldByTicket = TableList.stream()
+				.filter(t -> t.getTicketAtTable().size() > 0 && t.getTicketAtTable().get(0).getTicketID() == ticketID)
+				.findFirst().orElse(null);
+		if (tableHeldByTicket != null && tableHeldByTicket.getState().equals("Hold")) {
+			tableHeldByTicket.setAvailable(true);
+			tableHeldByTicket.setAvailableState();
+			tableHeldByTicket.removeTicketToTable(ticketID);
+			TableList.set(FindTableIndex(tableHeldByTicket), tableHeldByTicket);
+		}
+	}
+
+	/**
+	 * This Check in the waiting ticket to table
+	 * 
+	 * @param TicketWaiting
+	 *            : Ticket
+	 * @param TableNo
+	 *            : TableNo
+	 * @return Check in Time
+	 * 
+	 */
 	public LocalDateTime CheckInWaitingTicketToTable(Ticket TicketWaiting, int TableNo) {
 		return CheckInTable(TicketWaiting, getTableByTableNo(TableNo));
 	}
 
+	/**
+	 * This Check in the waiting ticket to table, Set table state to CheckedIn
+	 * 
+	 * @param TicketWaiting
+	 *            : Ticket
+	 * @param Table
+	 *            : table
+	 * @return Check in Time
+	 * 
+	 */
 	public LocalDateTime CheckInTable(Ticket ticket, Table table) {
 		// if (table.getAvailable()) {
 		ticket.setCheckIn(LocalDateTime.now());
@@ -156,29 +256,18 @@ public class TableHandler extends AppThread {
 		// return null;
 	}
 
-	public static void HoldTable(Ticket ticket, Table table) {
-		log.fine("Hold> Tid=" + ticket.getTicketID() + " TableNo=" + table.getTableNo());
-		if (table.getState().equals("Available")) {
-			table.setAvailable(false);
-			table.addTicketToTable(ticket);
-			table.setHoldState();
-			TableList.set(FindTableIndex(table), table);
-		}
-	}
-
-	public static void UnHoldTable(int ticketID) {
-		log.fine("Unhold> Tid=" + ticketID);
-		Table tableHeldByTicket = TableList.stream()
-				.filter(t -> t.getTicketAtTable().size() > 0 && t.getTicketAtTable().get(0).getTicketID() == ticketID)
-				.findFirst().orElse(null);
-		if (tableHeldByTicket != null && tableHeldByTicket.getState().equals("Hold")) {
-			tableHeldByTicket.setAvailable(true);
-			tableHeldByTicket.setAvailableState();
-			tableHeldByTicket.removeTicketToTable(ticketID);
-			TableList.set(FindTableIndex(tableHeldByTicket), tableHeldByTicket);
-		}
-	}
-
+	/**
+	 * This Check out the waiting ticket to table, if the table is checkedin, set
+	 * the table state to available, remove the ticket at the table, add the
+	 * totalspending
+	 * 
+	 * @param int
+	 *            : TableNo
+	 * @param int
+	 *            : totalSpending
+	 * @return Check out Time
+	 * 
+	 */
 	public static LocalDateTime CheckOutTable(int TableNo, int totalSpending) {
 		Table table = getTableByTableNo(TableNo);
 		if (table.getState() == "CheckedIn") {
@@ -198,9 +287,26 @@ public class TableHandler extends AppThread {
 		return null;
 	}
 
+	/**
+	 * Get the Table in TableList by the TableNo
+	 * 
+	 * @param int
+	 *            : TableNo
+	 * @return Table
+	 * 
+	 */
 	public static Table getTableByTableNo(int TableNo) {
 		return TableList.stream().filter(t -> Objects.equals(t.getTableNo(), TableNo)).findFirst().get();
 	}
+
+	/**
+	 * Get the Table index in TableList
+	 * 
+	 * @param Table
+	 *            : table
+	 * @return index
+	 * 
+	 */
 
 	private static int FindTableIndex(Table table) {
 		for (int i = 0; i < TableList.size(); i++) {
@@ -211,6 +317,14 @@ public class TableHandler extends AppThread {
 		return -1;
 	}
 
+	/**
+	 * Get the TableHandler.TableList
+	 * 
+	 * @return ArrayList
+	 *         <Table>
+	 *         TableList
+	 * 
+	 */
 	public static ArrayList<Table> getTableList() {
 		return TableList;
 	}

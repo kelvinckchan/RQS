@@ -9,16 +9,10 @@ import java.net.Socket;
 import AppKickstarter.AppKickstarter;
 import AppKickstarter.Msg.IncomingMsgParser;
 
-//======================================================================
-// ServerThread
 public class SocketOutHandler extends AppThread {
 	private final int sleepTime = 2000;
 	private PrintWriter out;
-	// private Socket socket;
-	// private DataOutputStream out;
 
-	// ------------------------------------------------------------
-	// ServerThread
 	/**
 	 * 
 	 * @param id
@@ -26,12 +20,8 @@ public class SocketOutHandler extends AppThread {
 	 */
 	public SocketOutHandler(String id, AppKickstarter appKickstarter) {
 		super(id, appKickstarter);
-		// this.socket = appKickstarter.getSocket();
+	}
 
-	} // ServerThread
-
-	// ------------------------------------------------------------
-	// run
 	public void run() {
 		log.info(id + ": starting...");
 		for (boolean quit = false; !quit;) {
@@ -45,4 +35,4 @@ public class SocketOutHandler extends AppThread {
 		appKickstarter.unregThread(this);
 		log.info(id + ": terminating...");
 	} // run
-} // ServerThread
+}
