@@ -27,3 +27,6 @@ The Restaurant Queuing System
 ### GUI MODE
 - Started Server in GUI MODE
 - Run **[RQSTicketPanelGui](https://github.com/kelvinckchan/RQSTicketPanelGui)** to Inreact with the RQS
+
+### :heavy_exclamation_mark: Close System
+- Just Stop All Running JVM
