@@ -1,27 +1,34 @@
 # RQS
 
-### Directory
+## Directory
+#### Main:
 ```
-* Main: \AppKickstarter\src\AppKickstarter\AppKickstarter.java
-* Config: \AppKickstarter\etc\MyApp.cfg
-* Log: \AppKickstarter\etc\AppKickstarter.AppKickstarter.log
+\AppKickstarter\src\AppKickstarter\AppKickstarter.java
 ```
-
-### Start Server
+#### Config:
 ```
-* Run \AppKickstarter\src\AppKickstarter\AppKickstarter.java
-* Press 1 to Run CLIENTSTREAM MODE, 2 to Run GUI MODE
-* Press Any to Start Running.
+\AppKickstarter\etc\MyApp.cfg
 ```
-
-### CLIENTSTREAM MODE
+#### Log: 
 ```
-* Started Server in CLIENTSTREAM MODE
-* Open ClientStream.jar to Inreact with the RQS
+\AppKickstarter\etc\AppKickstarter.AppKickstarter.log
 ```
 
-### GUI MODE
+## Start Server
 ```
-* Started Server in GUI MODE
-* Run RQSTicketPanelGui to Inreact with the RQS
+- Run \AppKickstarter\src\AppKickstarter\AppKickstarter.java
+- Press 1 to Run CLIENTSTREAM MODE, 2 to Run GUI MODE
+- Press Any to Start Running.
+```
+
+## CLIENTSTREAM MODE
+```
+- Started Server in CLIENTSTREAM MODE
+- Open ClientStream.jar to Inreact with the RQS
+```
+
+## GUI MODE
+```
+- Started Server in GUI MODE
+- Run RQSTicketPanelGui to Inreact with the RQS
 ```
